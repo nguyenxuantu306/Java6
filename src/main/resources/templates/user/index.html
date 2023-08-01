@@ -79,7 +79,7 @@
 					<div th:each="book : ${books}" class="col-lg-3">
 						<div class="single_product">
 							<div class="product_thumb">
-								<a href="single-product.html"><img th:src="@{${book.Image}}"
+								<a href="single-product.html"><img th:src="@{|/assets/images/${book.image}|}"
 									th:alt="${book.Name}"></a>
 								<div class="img_icone">
 									<img src="assets\img\cart\span-new.png" alt="">
@@ -103,7 +103,7 @@
 											Wishlist</a></li>
 									<!-- Update the th:href to correctly pass the productId parameter -->
 									<li><a
-										th:href="@{/index/product-detail/{productId}(productId=${book.Id})}"
+										th:href="@{|/product/detail/${book.id}|}" 
 										title="Quick view">View Detail</a></li>
 								</ul>
 							</div>
@@ -153,22 +153,21 @@
 		</div>
 		<!--banner area end-->
 
-		<!--featured product area start-->
 		<div class="new_product_area product_two">
 			<div class="row">
 				<div class="col-12">
 					<div class="block_title">
-						<h3>featured Products</h3>
+						<h3>New Products</h3>
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="single_p_active owl-carousel">
-					<div class="col-lg-3">
+					<div th:each="book : ${books}" class="col-lg-3">
 						<div class="single_product">
 							<div class="product_thumb">
-								<a href="single-product.html"><img
-									src="assets\img\product\product7.jpg" alt=""></a>
+								<a href="single-product.html"><img th:src="@{|/assets/images/${book.image}|}"
+									th:alt="${book.Name}"></a>
 								<div class="img_icone">
 									<img src="assets\img\cart\span-new.png" alt="">
 								</div>
@@ -179,28 +178,30 @@
 								</div>
 							</div>
 							<div class="product_content">
-								<span class="product_price">$50.00</span>
+								<span class="product_price" th:text="${book.Price}"></span>
 								<h3 class="product_title">
-									<a href="single-product.html">Curabitur sodales</a>
+									<a href="single-product.html" th:text="${book.Name}"></a>
 								</h3>
 							</div>
+							<!-- Inside the <div class="single_product"> element -->
 							<div class="product_info">
 								<ul>
-									<li><a href="#" title=" Add to Wishlist ">Add to
+									<li><a href="#" title="Add to Wishlist">Add to
 											Wishlist</a></li>
-									<li><a href="#" data-toggle="modal"
-										data-target="#modal_box" title="Quick view">View Detail</a></li>
+									<!-- Update the th:href to correctly pass the productId parameter -->
+									<li><a
+										th:href="@{|/product/detail/${book.id}|}"
+										title="Quick view">View Detail</a></li>
 								</ul>
 							</div>
+
 						</div>
 					</div>
-
-
-
 				</div>
 			</div>
+
 		</div>
-		<!--featured product area start-->
+		<!--new product area start-->
 
 		<!--blog area start-->
 		<div class="blog_area blog_two">

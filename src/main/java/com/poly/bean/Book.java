@@ -52,7 +52,7 @@ public class Book implements Serializable {
 	private Date publication_date = new Date();
 	
 	@ManyToOne
-	@JoinColumn(name = "genres_id")
+	@JoinColumn(name = "Genres_id")
 	Genres genres;
 
 	private String Publisher;

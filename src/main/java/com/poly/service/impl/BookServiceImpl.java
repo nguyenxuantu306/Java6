@@ -39,4 +39,10 @@ public class BookServiceImpl implements BookService{
 		dao.deleteById(id);
 	}
 
+	@Override
+	public List<Book> findByCategoryId(String cid) {
+		
+		return dao.findByCategoryId(cid);
+	}
+
 }

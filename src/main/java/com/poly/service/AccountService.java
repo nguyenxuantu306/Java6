@@ -26,6 +26,8 @@ public interface AccountService {
 
 
 	public void delete(String id);
+	
+	public Account  findByUsername(String username);
 
 //	public List<Account> getAdministrators();
 

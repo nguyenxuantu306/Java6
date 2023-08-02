@@ -50,20 +50,7 @@ public class HomeController {
 		return "product/product_detail";
 	}
 
-//	@GetMapping("/index/login")
-//	public String login(Model model) {
-//		return "/user/login";
-//	}
-//
-//	@GetMapping("/index/register")
-//	public String register(Model model) {
-//		return "/user/register";
-//	}
-//
-//	@GetMapping("/index/forgot")
-//	public String forgot(Model model) {
-//		return "/user/forgotpassword";
-//	}
+
 
 	@GetMapping("/index/wishlist")
 	public String getAllWishlist(Model model) {

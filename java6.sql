@@ -11,7 +11,7 @@ GO
 CREATE TABLE [dbo].[Accounts](
 	[Id][nvarchar](50) not null primary key,
 	[Username] [nvarchar](50) NOT NULL,
-	[Password] [nvarchar](50) NOT NULL,
+	[Password] [nvarchar](max) NOT NULL,
 	[Fullname] [nvarchar](50) NOT NULL,
 	[Email] [nvarchar](50) NOT NULL,
 	[Photo] [nvarchar](50) NOT NULL,

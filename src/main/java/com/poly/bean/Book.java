@@ -61,8 +61,15 @@ public class Book implements Serializable {
 
 	private Boolean Available;
 	
+	private String Image1;
+	
+	private String Image2;
+	
+	private String Image3;
+	
 	@JsonIgnore
 	@OneToMany(mappedBy = "book")
 	List<OrderDetails> orderDetails;	
+
 
 }

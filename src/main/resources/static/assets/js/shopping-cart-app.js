@@ -9,7 +9,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	   
 	   // thêm sp vào giỏ hàng
 	   add(id){
-		   alert(id)
+		   alert(id);
 		  /* var item = this.items.find(item => item.id == id);
 		   if(item){
 			   item.qty++;
@@ -98,3 +98,33 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	   }
    }
 });
+/*-------------------------------------Đóng mở modal mini-cart------------------------------------*/
+
+  // Function to display the mini cart modal
+  function displayMiniCart() {
+    var miniCart = document.querySelector(".mini_cart");
+    miniCart.style.display = "block";
+  }
+
+  // Function to close the mini cart modal
+  function closeMiniCart() {
+    var miniCart = document.querySelector(".mini_cart");
+    miniCart.style.display = "none";
+  }
+
+  // Display the mini cart modal when the shopping cart link is clicked
+  document.querySelector(".shopping_cart a").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent the link from navigating to the cart page
+    displayMiniCart();
+  });
+
+  // Close the modal when the document is clicked outside the modal
+  window.onclick = function(event) {
+    var miniCart = document.querySelector(".mini_cart");
+    if (event.target === miniCart) {
+      closeMiniCart();
+    }
+  }
+
+
+

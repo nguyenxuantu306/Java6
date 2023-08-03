@@ -18,6 +18,4 @@ public interface BookService {
 
 	List<Book> findByCategoryId(String cid);
 
-	
-
 }

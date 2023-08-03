@@ -46,25 +46,20 @@ x
 								</thead>
 								<tbody>
 									<tr ng-repeat="item in cart.items">
-										<td class="product_remove"><a href="#"><i
+										<td class="product_remove"><a th:attr="ng-click='cart.remove(item.id)'"><i
 												class="fa fa-trash-o"></i></a></td>
 										<td class="product_thumb"><a href="#">{{item.image}}</a></td>
 										<td class="product_name"><a href="#">{{item.name}}</a></td>
 										<td class="product-price">{{item.price | number :2}}</td>
 										<td class="product_quantity"><input ng-change="cart.saveToLocalStorage()" ng-model="item.qty" type="number" min="1" style="width:50px"></td>							
 										<td class="product_total">${{item.qty*item.price | number:2}}</td>
-
-
 									</tr>
-
-									
-
 								</tbody>
 							</table>
 						</div>
-						<div class="cart_submit">
-							<button type="submit">update cart</button>
-						</div>
+					</div>
+					<div class="checkout_btn">
+						<a th:href="@{product/shop_list}">Update cart</a>
 					</div>
 				</div>
 			</div>

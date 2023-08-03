@@ -8,18 +8,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.poly.interceptor.Globallnterceptor;
 
-
-
 @Configuration
 public class InterceptorConfig implements WebMvcConfigurer {
 
 	@Autowired
 	Globallnterceptor globallntercreptor;
-	
+
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(globallntercreptor)
-			.addPathPatterns("/**")
-			.excludePathPatterns("/rest/**","/admin/**","/assets/**");
+		registry.addInterceptor(globallntercreptor).addPathPatterns("/**").excludePathPatterns("/rest/**", "/admin/**",
+				"/assets/**");
 	}
 }

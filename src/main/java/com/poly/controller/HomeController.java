@@ -33,12 +33,11 @@ public class HomeController {
 		model.addAttribute("books", books);
 		return "user/index";
 	}
-	
+
 	@GetMapping("/index/profile")
 	public String profile(Model model) {
 		return "user/profile";
 	}
-	
 
 	@GetMapping("/index/product-detail/{productId}")
 	public String getProductDetail(@PathVariable String productId, Model model) {
@@ -77,12 +76,9 @@ public class HomeController {
 		return "user/wishlist";
 	}
 
-
-	
-
-	@RequestMapping({"/admin","/admin/home/index"})
+	@RequestMapping({ "/admin", "/admin/home/index" })
 	public String admin() {
 		return "redirect:/assets/admin/index.html";
 	}
-	
+
 }

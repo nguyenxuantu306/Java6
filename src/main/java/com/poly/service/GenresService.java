@@ -4,8 +4,6 @@ import java.util.List;
 
 import com.poly.bean.Genres;
 
-
-
 public interface GenresService {
 
 	List<Genres> findAll();

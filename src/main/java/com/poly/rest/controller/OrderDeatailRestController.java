@@ -2,7 +2,6 @@ package com.poly.rest.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,8 +13,6 @@ import com.poly.bean.Role;
 import com.poly.service.OrderDetailService;
 import com.poly.service.RoleService;
 
-
-
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/rest/orderdetails")
@@ -23,10 +20,10 @@ public class OrderDeatailRestController {
 
 	@Autowired
 	OrderDetailService orderDetailService;
-	
+
 	@GetMapping
-	public List<OrderDetails> getAll(){
+	public List<OrderDetails> getAll() {
 		return orderDetailService.findAll();
 	}
-	
+
 }

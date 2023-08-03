@@ -29,6 +29,4 @@ public class GenresRestController {
 		return ResponseEntity.ok(booksdao.findAll());
 	}
 
-	
-	
 }

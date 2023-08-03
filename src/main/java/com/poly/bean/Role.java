@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import java.util.List;
 
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
@@ -18,7 +16,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "roles")
-public class Role  implements Serializable{
+public class Role implements Serializable {
 	@Id
 	private String Id;
 	private String Name;

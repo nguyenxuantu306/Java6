@@ -10,7 +10,7 @@ import com.poly.dao.StateDAO;
 import com.poly.service.StateService;
 
 @Service
-public class StateServiceImpl implements StateService{
+public class StateServiceImpl implements StateService {
 	@Autowired
 	StateDAO dao;
 

@@ -119,7 +119,7 @@
                                         <label>quantity</label>
                                         <input min="0" max="100" value="1" type="number">
                                     </form>
-                                    <button th:attr="ng-click=@{|cart.add(${item.id})|}"  type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                    <button th:attr="ng-click='cart.add(\'' + ${item.Id} + '\')'"  type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                     <a href="#" title="add to wishlist"><i class="fa fa-heart" aria-hidden="true"></i></a>
                                 </div>
                                

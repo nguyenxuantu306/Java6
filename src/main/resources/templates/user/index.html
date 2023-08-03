@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org" ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl"
+<html xmlns="http://www.thymeleaf.org"
 	th:replace="~{/layout/layout::dynamic(~{::body})}">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body >
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
 	<!--pos home section-->
 	<div class="pos_home_section">
 		<div class="row">
@@ -74,26 +74,29 @@
 					</div>
 				</div>
 			</div>
-			<div class="row" >
+			<div class="row">
 				<div class="single_p_active owl-carousel">
 					<div th:each="book : ${books}" class="col-lg-3">
 						<div class="single_product">
 							<div class="product_thumb">
-								<a href="single-product.html"><img th:src="@{|/assets/images/${book.image}|}"
+								<a th:href="@{|/product/detail/${book.id}|}"><img
+									th:src="@{|/assets/images/${book.image}|}"
 									th:alt="${book.Name}"></a>
 								<div class="img_icone">
 									<img src="assets\img\cart\span-new.png" alt="">
 								</div>
 								<div class="product_action">
-									<a th:attr="ng-click=@{|cart.add(@{id})|}">
-										<i class="fa fa-shopping-cart"></i> Add to cart
+									<a th:attr="ng-click='cart.add(\'' + ${book.Id} + '\')'"> <i
+										class="fa fa-shopping-cart"></i> Add to cart
 									</a>
+
 								</div>
 							</div>
 							<div class="product_content">
 								<span class="product_price" th:text="${book.Price}"></span>
 								<h3 class="product_title">
-									<a th:href="@{|/product/detail/${book.id}|}" th:text="${book.Name}"></a>
+									<a th:href="@{|/product/detail/${book.id}|}"
+										th:text="${book.Name}"></a>
 								</h3>
 							</div>
 							<!-- Inside the <div class="single_product"> element -->
@@ -102,8 +105,7 @@
 									<li><a href="#" title="Add to Wishlist">Add to
 											Wishlist</a></li>
 									<!-- Update the th:href to correctly pass the productId parameter -->
-									<li><a
-										th:href="@{|/product/detail/${book.id}|}"
+									<li><a th:href="@{|/product/detail/${book.id}|}"
 										title="Quick view">View Detail</a></li>
 								</ul>
 							</div>

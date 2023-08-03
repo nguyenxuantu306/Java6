@@ -17,8 +17,6 @@ import com.poly.bean.Book;
 import com.poly.bean.Genres;
 import com.poly.service.GenresService;
 
-
-
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/rest/categories")
@@ -26,32 +24,30 @@ public class CategoriesRestController {
 
 	@Autowired
 	GenresService genresService;
-	
+
 	@GetMapping()
 	public List<Genres> getAll() {
 		return genresService.findAll();
 	}
-	
+
 	@GetMapping("{id}")
 	public Genres getOne(@PathVariable("id") String id) {
 		return genresService.findById(id);
 	}
-	
+
 	@PostMapping()
 	public Genres create(@RequestBody Genres genres) {
 		return genresService.create(genres);
 	}
-	
+
 	@PutMapping("{id}")
-	public  Genres update(@PathVariable("id")String id,@RequestBody  Genres  genres) {
+	public Genres update(@PathVariable("id") String id, @RequestBody Genres genres) {
 		return genresService.update(genres);
 	}
-	
+
 	@DeleteMapping("{id}")
-	public void delete(@PathVariable("id")String id) {
+	public void delete(@PathVariable("id") String id) {
 		genresService.delete(id);
 	}
-	
-	
-	
+
 }

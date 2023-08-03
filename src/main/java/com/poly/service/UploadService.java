@@ -8,5 +8,4 @@ public interface UploadService {
 
 	File save(MultipartFile file, String folder);
 
-	
 }

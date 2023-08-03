@@ -13,62 +13,50 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.poly.bean.Book;
 import com.poly.service.BookService;
 
-
-
-
-
-
 @Controller
 public class BookController {
 	@Autowired
 	BookService bookService;
-	
+
 	@RequestMapping("/product/shop_list")
-	public String shop_list(Model model,@RequestParam("cid") Optional<String> cid) {
-		if(cid.isPresent()) {
+	public String shop_list(Model model, @RequestParam("cid") Optional<String> cid) {
+		if (cid.isPresent()) {
 			List<Book> list = bookService.findByCategoryId(cid.get());
-			model.addAttribute("items",list);
-		}else {
+			model.addAttribute("items", list);
+		} else {
 			List<Book> list = bookService.findAll();
-			model.addAttribute("items",list);
+			model.addAttribute("items", list);
 		}
 		return "product/shop_list";
-		
-		
-		
-	
+
 	}
-	
+
 	@RequestMapping("/product/detail/{id}")
-	public String detail(Model model , @PathVariable("id") String id) {
+	public String detail(Model model, @PathVariable("id") String id) {
 		Book item = bookService.findById(id);
-		model.addAttribute("item",item);
+		model.addAttribute("item", item);
 		return "product/detail";
 	}
-	
-	
+
 	@RequestMapping("/product/blog")
 	public String blog(Model model) {
 		List<Book> list = bookService.findAll();
 		model.addAttribute("items", list);
 		return "product/blog";
 	}
-	
+
 	@RequestMapping("/product/portfolio")
 	public String portfolio(Model model) {
 		List<Book> list = bookService.findAll();
 		model.addAttribute("items", list);
 		return "product/portfolio";
 	}
-	
+
 	@RequestMapping("/product/contact")
 	public String shop_list3(Model model) {
 		List<Book> list = bookService.findAll();
 		model.addAttribute("items", list);
 		return "product/contact";
 	}
-	
-	
-	
-	
+
 }

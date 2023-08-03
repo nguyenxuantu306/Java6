@@ -2,12 +2,8 @@ package com.poly.bean;
 
 import java.io.Serializable;
 
-
-
 import java.util.Date;
 import java.util.List;
-
-
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,7 +19,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @Entity
 @NoArgsConstructor
@@ -34,7 +29,7 @@ public class States implements Serializable {
 	@Id
 	Integer Id;
 	String Name;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "state")
 	List<Order> order;

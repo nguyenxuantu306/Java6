@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.poly.bean.Account;
 
 public interface AccountDAO extends JpaRepository<Account, String> {
-	
+
 //	@Query("SELECT DISTINCT ar.account FROM Account_roles ar WHERE ar.role.id IN ('DIRE','STAF')")
 //	List<Account> getAdministrators();
 

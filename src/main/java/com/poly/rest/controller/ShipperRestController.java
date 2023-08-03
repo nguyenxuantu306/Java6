@@ -19,10 +19,10 @@ import com.poly.service.ShipperService;
 public class ShipperRestController {
 	@Autowired
 	ShipperService shipperService;
-	
+
 	@GetMapping
 	public List<Shipper> getAll() {
 		return shipperService.findAll();
 	}
-	
+
 }

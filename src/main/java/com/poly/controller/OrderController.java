@@ -10,6 +10,5 @@ public class OrderController {
 	public String checkout() {
 		return "order/checkout";
 	}
-	
-	
+
 }

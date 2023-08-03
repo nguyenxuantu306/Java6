@@ -11,7 +11,7 @@
 </style>
 
 </head>
-<body>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
 	<div th:fragment="navbar" class="header_area">
 		<!--header top-->
 		<div class="header_top">
@@ -76,26 +76,44 @@
 							</form>
 						</div>
 						<div class="shopping_cart">
-							<span class="cart_button" ><i
-								class="fa fa-shopping-cart"></i> {{cart.count}} item x
-								${{cart.amount | number:2}}<i class="fa fa-angle-down"></i></span>
+								<a > <i
+									class="fa fa-shopping-cart"></i> {{cart.count}} Items -
+									${{cart.amount | number:2}} <i class="fa fa-angle-down"  ng-show="showMiniCart"></i>
+								</a>
 							<!--mini cart-->
-							<div class="mini_cart">
-								<div class="mini_cart_content">
-									<!-- Cart items will be dynamically added here -->
+							<div class="mini_cart" id="miniCart">
+								<div class="cart_item" ng-repeat="item in cart.items">
+									<div class="cart_img">
+										<a th:href="@{|/product/detail/${id}|}"><img th:src="@{|/assets/images/${image}|}"
+											ng-alt="${item.name}"></a>
+									</div>
+									<div class="cart_info">
+										<a th:href="@{|/product/detail/${id}|}">{{item.name}}</a> <span class="cart_price">${{item.price
+											| number:2}}</span> <span class="quantity">Qty: <input
+											ng-change="cart.saveToLocalStorage()" ng-model="item.qty"
+											type="number" min="1" style="width: 50px"></span>
+									</div>
+									<div class="cart_remove">
+										<a title="Remove this item" 
+										th:attr="ng-click='cart.remove(item.id)'"> <i
+											class="fa fa-times-circle"></i>
+										</a>
+									</div>
 								</div>
 								<div class="shipping_price">
 									<span> Shipping </span> <span> $7.00 </span>
 								</div>
 								<div class="total_price">
-									<span> total </span> <span class="prices"> $227.00 </span>
+									<span> Total </span> <span class="prices">${{cart.amount
+										| number:2}} </span>
 								</div>
 								<div class="cart_button">
-									<a  th:href="@{/cart/view}"> Check out</a>
+									<a th:href="@{/cart/view}"> Check out</a>
 								</div>
 							</div>
 							<!--mini cart end-->
 						</div>
+
 
 
 					</div>

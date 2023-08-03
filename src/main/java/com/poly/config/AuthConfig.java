@@ -27,24 +27,41 @@ public class AuthConfig {
 	   public SecurityFilterChain fillterchain(HttpSecurity http) throws Exception{
 		   http.csrf().disable().cors().disable();
 		  
-		  http
-		    .authorizeHttpRequests((authorize) -> 
-		    authorize  .requestMatchers("/static/css/**","/static/font/**","/static/images/**","/static/img/**","/static/js/**").permitAll()	  
-		    		.requestMatchers("/index/register").permitAll()
-		    		.requestMatchers("/home/index").permitAll()
-		    		.requestMatchers("/admin/home/index").hasRole("Administrator")
-		    		.requestMatchers("/admin").hasRole("Administrator")
-		           .anyRequest().authenticated()
-		    );
-		   http
-			.formLogin(form -> form
-				.loginPage("/index/login").loginProcessingUrl("/home/index")
-				.defaultSuccessUrl("/product/shop_list")
-				.permitAll()
-			).logout(
-                    logout -> logout
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/index/logoff"))
-                    .permitAll());
+		   http.authorizeRequests(authorize -> authorize
+				  // .requestMatchers("/static/css/**", "/static/font/**", "/static/images/**", "/static/img/**", "/static/js/**").permitAll()
+				   .requestMatchers("/static/**").permitAll()
+				   .requestMatchers("/index/register").permitAll()
+				   .requestMatchers("/home/index").permitAll()
+				   .requestMatchers("/admin/home/index").hasRole("Administrator")
+				   .requestMatchers("/product/shop_list").hasRole("User")
+				   .anyRequest().authenticated()
+				   ).formLogin(form -> form
+							.loginPage("/index/login").loginProcessingUrl("/home/index")
+							.defaultSuccessUrl("/product/shop_list")
+							.permitAll()
+							.and()
+						).logout(
+			                    logout -> logout
+			                    .logoutRequestMatcher(new AntPathRequestMatcher("/index/logoff"))
+			                    .permitAll());
+						   
+//		    .authorizeHttpRequests((authorize) -> 
+//		    authorize  .requestMatchers("static/css/**","static/font/**","/static/images/**","/static/img/**","/static/js/**").permitAll()	  
+//		    		.requestMatchers("/index/register").permitAll()
+//		    		.requestMatchers("/home/index").permitAll()
+//		    		.requestMatchers("/admin/home/index").hasRole("Administrator")
+//		    		.requestMatchers("/product/shop_list").hasRole("User")
+//		           .anyRequest().authenticated()
+//		    );
+//		   http
+//			.formLogin(form -> form
+//				.loginPage("/index/login").loginProcessingUrl("/home/index")
+//				.defaultSuccessUrl("/product/shop_list")
+//				.permitAll()
+//			).logout(
+//                    logout -> logout
+//                    .logoutRequestMatcher(new AntPathRequestMatcher("/index/logoff"))
+//                    .permitAll());
 		   return http.build();
 	   }
 	   

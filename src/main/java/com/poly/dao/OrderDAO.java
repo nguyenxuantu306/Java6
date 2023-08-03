@@ -10,9 +10,7 @@ import com.poly.bean.Order;
 
 public interface OrderDAO extends JpaRepository<Order, String> {
 
-	/*
-	 * @Query("SELECT o FROM Order o WHERE o.account.username =?1") List<Order>
-	 * findByUsername(String username);
-	 */
+	@Query("SELECT o FROM Order o WHERE o.account.Username =?1")
+	List<Order> findByUsername(String username);
 
 }

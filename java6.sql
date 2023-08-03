@@ -72,7 +72,8 @@ CREATE TABLE [dbo].[Orders_details](
 	[Id][nvarchar](50) not null primary key,
 	[Order_id][int] not null,
 	[Book_id][nvarchar](50) not null,
-	[Price][float]
+	[Price][float] not null,
+	[Quantity][int] not null
 )
 GO
 /****** Object:  Table [dbo].[Discounts]     Script Date: 18/7/2023 ******/
@@ -580,12 +581,12 @@ INSERT [dbo].[Orders] (Account_id,Date,Discount_id,Shipper_id,State_id)values
 
 
 
-INSERT [dbo].[Orders_details](Id,Book_id,Order_id, Price)values
-	('odt1','BK00001',3,'86400'),
-	('odt2','BK00016',7,'171750'),
-	('odt3','BK00021',10,'86400'),
-	('odt4','BK00013',3,'184500'),
-	('odt5','BK00032',4,'119000');
+INSERT [dbo].[Orders_details](Id,Book_id,Order_id, Price,Quantity)values
+	('odt1','BK00001',3,'86400',3),
+	('odt2','BK00016',7,'171750',3),
+	('odt3','BK00021',10,'86400',4),
+	('odt4','BK00013',3,'184500',2),
+	('odt5','BK00032',4,'119000',2);
 
 INSERT [dbo].[Accounts_discounts](Account_id, Discount_id)values
 	('AC0001',2),

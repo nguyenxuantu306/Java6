@@ -169,7 +169,7 @@
 												<img src="assets\img\cart\span-new.png" alt="">
 											</div>
 											<div class="product_action">
-												<a th:attr="ng-click=@{|cart.add(${p.id})|}" href=""> <i
+												<a th:attr="ng-click='cart.add(\'' + ${p.Id} + '\')'" href=""> <i
 													class="fa fa-shopping-cart"></i> Add to cart
 												</a>
 											</div>

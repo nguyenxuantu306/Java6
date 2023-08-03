@@ -9,8 +9,14 @@ public interface OrderService {
 
 	Order create(JsonNode orderData);
 
-	Order findById(String id);
+	
 
 	List<Order> findAll();
+
+	Object findByUsername(String username);
+
+
+
+	Object findById(String id);
 
 }

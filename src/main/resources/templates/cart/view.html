@@ -27,7 +27,7 @@ x
 
 
 	<!--shopping cart area start -->
-	<div class="shopping_cart_area">
+	<div class="shopping_cart_area"th:fragment="shopping_cart">
 		<form action="#">
 			<div class="row">
 				<div class="col-12">
@@ -97,7 +97,7 @@ x
 									<p class="cart_amount">£215.00</p>
 								</div>
 								<div class="checkout_btn">
-									<a href="#">Proceed to Checkout</a>
+									<a th:href="@{/order/checkout}">Proceed to Checkout</a>
 								</div>
 							</div>
 						</div>
@@ -108,6 +108,6 @@ x
 		</form>
 	</div>
 	<!--shopping cart area end -->
-	f
+	
 </body>
 </html>

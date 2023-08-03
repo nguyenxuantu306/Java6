@@ -25,10 +25,16 @@ app.config(function($routeProvider){
 		controller:"authority-ctrl"
 	})	
 	.when("/unauthorized",{
-		templateUrl:"/assets/admin/authority/unauthorized.html",
+		templateUrl:"/assets/admin/authority/404.html",
 		controller:"authority-ctrl"
 	})	
+	.when("/main",{
+		templateUrl:"/assets/admin/result/main.html",
+		controller:"thongke-ctrl"
+	})	
+	
+	
 	.otherwise({
-		template:"<h1 class='text-center'> FPT Polytechnic Administration </h1>"
+		templateUrl:"/assets/admin/main.html",
 	});
 });

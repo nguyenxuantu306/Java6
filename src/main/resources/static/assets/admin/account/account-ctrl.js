@@ -20,7 +20,7 @@ app.controller("account-ctrl", function($scope, $http) {
 	// Xóa form
 	$scope.reset = function(){
 		$scope.form = {
-			
+			photo:'cloud-upload.jpg',
 		};
 	}
 	
@@ -37,9 +37,9 @@ app.controller("account-ctrl", function($scope, $http) {
 			resp.data.date = new Date(resp.data.date)
 			$scope.items.push(resp.data);
 			$scope.reset();
-			alert("Thêm sản phẩm thành công!");
+			alert("Thêm tài khoản thành công!");
 		}).catch(error =>{
-			alert("Lỗi thêm mới sản phẩm");
+			alert("Lỗi thêm mới tài khoản");
 			console.log("Error",error);
 		});
 	}
@@ -50,10 +50,10 @@ app.controller("account-ctrl", function($scope, $http) {
 		$http.put(`/rest/accounts/${item.id}`,item).then(resp =>{
 			var index = $scope.items.findIndex(p => p.id == item.id);
 			$scope.items[index] = item;				
-			alert("Cập nhật sản phẩm thành công!");
+			alert("Cập nhật tài khoản thành công!");
 		})
 		.catch(error =>{
-			alert("Lỗi cập nhật sản phẩm");
+			alert("Lỗi cập nhật tài khoản");
 			console.log("Error",error);
 		});
 	}
@@ -64,10 +64,10 @@ app.controller("account-ctrl", function($scope, $http) {
 			var index = $scope.items.findIndex(p => p.id == item.id);
 			$scope.items.splice(index,1);
 			$scope.reset();				
-			alert("Xóa sản phẩm thành công!");
+			alert("Xóa tài khoản thành công!");
 		})
 		.catch(error =>{
-			alert("Lỗi Xóa sản phẩm");
+			alert("Lỗi Xóa tài khoản");
 			console.log("Error",error);
 		});
 	}

@@ -31,11 +31,11 @@ public class Book implements Serializable {
 	@Column(name = "Id")
 	private String Id;
 
-	private String Name;
+	 String Name;
 
 	private String Image;
 
-	private Float Price;
+	public Float Price;
 
 	private String Author;
 
@@ -60,5 +60,10 @@ public class Book implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "book")
 	List<OrderDetails> orderDetails;
+
+	@Override
+	public String toString() {
+		return "";
+	}
 
 }

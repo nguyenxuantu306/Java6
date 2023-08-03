@@ -1,13 +1,189 @@
-<ul class="nav nav-tabs" style="font-variant: small-caps;">
-  <li> <a class="nav-link" data-toggle="tab" data-target="#edit" href="">OrderDetail</a> </li>
-  <li  class="active"> <a class="nav-link active" data-toggle="tab" data-target="#list" href="">OrderList</a> </li>
-</ul>
-<div class="tab-content">
-	<div id="edit" class="tab-pane fade ">
-		<div ng-include="'/assets/admin/order/_form.html'"></div>
+<div class="container-fluid" sty>
+
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<div class="card-header bg-primary">
+				<h3 class="text-white p-0 m-0">DANH SÁCH ĐƠN ĐẶT HÀNG</h3>
+			</div>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%"
+					cellspacing="0">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Username</th>
+							<th>Date</th>
+							<th>Shipper_id</th>
+							<th>State</th>
+							<th>Action</th>
+							<th>orderdetail</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						<tr ng-repeat="item in pager.items ">
+							<th>{{item.id}}</th>
+							<th>{{item.account.username}}</th>
+							<!-- {{item.accounts.username}}-->
+							<th>{{item.date | date:'dd-MM-yyyy'}}</th>
+							<th>{{item.shipper.id}}</th>
+							<th>{{item.state.name}}</th>
+							<td style="text-align: center;">
+								<div class="btn-group btn-group-xs">
+									<button ng-click="edit(item)">
+										<i class="fas fa-edit"></i>
+									</button>
+									<button ng-click="delete(item)">
+										<i class="bi bi-trash"></i>
+									</button>
+								</div>
+
+							</td>
+							<th><a ng-click="edit(item)">Order details</a></th>
+						</tr>
+					</tbody>
+				</table>
+				<div class="panel-footer text-center">
+					<button ng-click="pager.first()" class="btn btn-success">
+						<b class="glyphicon glyphicon-hand-up"></b> First
+					</button>
+					<button ng-click="pager.prev()" class="btn btn-success">
+						<b class="glyphicon glyphicon-hand-left"></b> prev
+					</button>
+					<button class="btn btn-success">{{pager.page + 1}} of
+						{{pager.count}}</button>
+					<button ng-click="pager.next()" class="btn btn-success">
+						<b class="glyphicon glyphicon-hand-right"></b> next
+					</button>
+					<button ng-click="pager.last()" class="btn btn-success">
+						<b class="glyphicon glyphicon-hand-down"></b> last
+					</button>
+				</div>
+			</div>
+		</div>
 	</div>
-	
-	<div id="list" class="tab-pane fade in active">
-		<div ng-include="'/assets/admin/order/_table.html'"></div>
+
+	<div class="card " id="card-form">
+		<div class="card-header bg-primary">
+			<h3 class="text-white p-0 m-0">QUẢN LÝ ĐƠN ĐẶT HÀNG</h3>
+		</div>
+		<div class="card-body">
+			<div class="row" >
+				<div class="col-sm-3 " 
+					style="background-color: aquamarine;margin: 10px">
+					<div class="form-group">
+						<div class="text-center">
+							<span>Order</span>
+						</div>
+						<div>
+							<span>Order Id: {{form.id}}</span>
+						</div>
+						<div>
+							<span>Create date: {{form.date | date:'dd-MM-yyyy'}}</span>
+						</div>
+						<div>
+							<span>Discount Id: {{form.discount.name}}</span>
+						</div>
+						<div>
+							<span>State: </span> <select ng-model="form.state.id"
+								class="form-control">
+								<option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
+							</select>
+
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3 "
+					style="background-color: aquamarine;margin: 10px">
+					<div class="form-group">
+						<div class="text-center">
+							<span>Account</span>
+						</div>
+						<div>
+							<span>Id: {{form.account.id}}</span>
+						</div>
+						<div>
+							<span>Username: {{form.account.username}}</span>
+						</div>
+						<div>
+							<span>Fullname: {{form.account.fullname}}</span>
+						</div>
+						<div>
+							<span>Email: {{form.account.email}}</span>
+						</div>
+						<div>
+							<span>Address: {{form.account.address}}</span>
+						</div>
+						<div>
+							<span>Phone: {{form.account.phone}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3 "
+					style="background-color: aquamarine;margin: 10px">
+					<div class="form-group">
+						<div class="text-center">
+							<span>Shipper</span>
+						</div>
+						<div>
+							<span>Shipper Id: {{form.shipper.id}}</span>
+						</div>
+						<div>
+							<span>Fullname: {{form.shipper.name}}</span>
+						</div>
+						<div>
+							<span>Phone: {{form.shipper.phone}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-sm-12 ">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Order id</th>
+								<th>Book id</th>
+								<th>Price</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in items2">
+								<td>{{item.id}}</td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="panel-footer text-center">
+				<button ng-click="create()" class="btn btn-success">
+					<b class="glyphicon glyphicon-plus"></b> Create
+				</button>
+				<button ng-click="update()" class="btn btn-success">
+					<b class="glyphicon glyphicon-save"></b> Update
+				</button>
+				<button ng-click="delete(form)" class="btn btn-success">
+					<b class="glyphicon glyphicon-trash"></b> Delete
+				</button>
+				<button ng-click="reset()" class="btn btn-success">
+					<b class="glyphicon glyphicon-refresh"></b> Reset
+				</button>
+			</div>
+		</div>
+
 	</div>
+
+
 </div>
+<!-- /.container-fluid -->
+
+</div>
+

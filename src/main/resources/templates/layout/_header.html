@@ -12,33 +12,64 @@
 				<div class="col-lg-6 col-md-6">
 					<div class="switcher">
 						<ul>
-							<li class="languages"><a href="#"><img
-									src="assets\img\logo\fontlogo.jpg" alt=""> English <i
-									class="fa fa-angle-down"></i></a>
+							<!-- <li class="languages"> 
+							
+							<a href="#"><img src="assets\img\logo\fontlogo.jpg" alt=""> English <i class="fa fa-angle-down"></i></a>
+							
 								<ul class="dropdown_languages">
-									<li><a href="#"><img
+									<li><a href="#" ><img
 											src="assets\img\logo\fontlogo.jpg" alt=""> English</a></li>
-									<li><a href="#"><img
-											src="assets\img\logo\fontlogo2.jpg" alt=""> French </a></li>
+									<li><a href="/?lang=vi" th:text="#{nav.vi}"><img
+											src="assets\img\logo\fontlogo3.jpg" alt=""> Tiếng Việt </a></li>
+								</ul>
+								</li> -->
+								<!-- <li>
+						<a class="dropdown-item" href="/?lang=vi" th:text="#{nav.vi}">Vietnamese</a>
+					</li>
+					<li>
+						<a class="dropdown-item" href="/?lang=en" th:text="#{nav.en}">English</a>
+					</li> -->
+					
+							<li class="nav-item dropdown"><a
+								class="nav-link dropdown-toggle" href="#" id="menu"
+								data-toggle="dropdown" th:text="#{nav.lang}">Language</a>
+								<ul class="dropdown-menu" aria-labelledby="menu">
+									<li><a href="/?lang=vi" th:text="#{nav.vi}">Vietnamese</a>
+									</li>
+									<li><a href="/?lang=en" th:text="#{nav.en}">English</a></li>
 								</ul></li>
+								
+								
+								<script>
+								$(function(){
+									$("a[href*=lang]").click(function(){
+										$.ajax({
+											url: "/home/index" + $(this).attr("href")
+										}).then(resp => {
+											location.reload();
+										});
+										return false;
+									});
+								})
+								</script>
 
-							<li class="currency"><a href="#"> Currency : $ <i
+							<!-- <li class="currency"><a href="#"> Currency : $ <i
 									class="fa fa-angle-down"></i></a>
 								<ul class="dropdown_currency">
 									<li><a href="#"> Dollar (USD)</a></li>
 									<li><a href="#"> Euro (EUR) </a></li>
-								</ul></li>
+								</ul></li> -->
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="header_links">
 						<ul>
-							<li><a th:href="@{/product/contact}" title="Contact">Contact</a></li>
-							<li><a th:href="@{/index/wishlist}" title="wishlist">My wishlist</a></li>
-							<li><a th:href="@{/index/profile}" title="My account">Profile</a></li>
-							<li><a th:href="@{/cart/view}" title="My cart">My cart</a></li>
-							<li><a th:href="@{/index/login}" title="Login">Login</a></li>
+							<li><a th:href="@{/product/contact}" title="Contact" th:text="#{nav.contact}">Contact</a></li>
+							<li><a th:href="@{/index/wishlist}" title="wishlist" th:text="#{nav.wishlist}">My wishlist</a></li>
+							<li><a th:href="@{/index/profile}" title="My account" th:text="#{nav.profile}">Profile</a></li>
+							<li><a th:href="@{/cart/view}" title="My cart" th:text="#{nav.cart}">My cart</a></li>
+							<li><a th:href="@{/index/login}" title="Login" th:text="#{nav.login}">Login</a></li>
 						</ul>
 					</div>
 				</div>

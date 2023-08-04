@@ -4,11 +4,11 @@
 	<div class="main_menu d-none d-lg-block">
 		<nav>
 			<ul>
-				<li class="active"><a th:href="@{home/index}">Home</a></li>
-				<li><a th:href="@{product/shop_list}">shop</a>
+				<li class="active"><a th:href="@{home/index}" th:text="#{nav.home}">Home</a></li>
+				<li><a th:href="@{product/shop_list}"  th:text="#{nav.shop}">Shop</a>
 					<div class="mega_menu " style="width: 1000px;">
 						<h3>
-							<a href="#">Sách Trong Nước</a>
+							<a href="#" th:text="#{nav.DomesticBooks}">Sách trong Nước</a>
 						</h3>
 						<div class="mega_top fix p-3">
 							<div class="mega_items p-3">
@@ -105,25 +105,25 @@
 					</div></li>
 			
 
-				<li><a th:href="@{/index/login}">My Account</a>
+				<li><a th:href="@{/index/login}" th:text="#{nav.MyAccount}">My Account</a>
 					<div class="mega_menu jewelry">
 						<div class="mega_items jewelry">
 							<ul>
-								<li><a th:href="@{/index/login}">Sign in</a></li>
-								<li><a th:href="@{/index/register}">Sign out</a></li>
-								<li><a th:href="@{/index/forgot}">Register</a></li>
+								<li><a th:href="@{/index/login}" th:text="#{nav.signin}">Sign in</a></li>
+								<li><a th:href="@{/index/register}" th:text="#{nav.signout}">Sign out</a></li>
+								<li><a th:href="@{/index/forgot}" th:text="#{nav.register}"v>Register</a></li>
 							</ul>
 						</div>
 					</div>
 				</li>
 
 
-				<li><a th:href="@{/product/blog}">blog</a>
+				<li><a th:href="@{/product/blog}"  th:text="#{nav.about}">Blog</a>
 					
 					</li>
 					
-					<li><a th:href="@{/product/portfolio}">Portfolio</a></li>
-				<li><a th:href="@{/product/contact}">contact us</a>
+					<li><a th:href="@{/product/portfolio}" th:text="#{nav.Portfolio}">Portfolio</a></li>
+				<li><a th:href="@{/product/contact}" th:text="#{nav.contact}">Contact us</a>
 
 				</li>
 

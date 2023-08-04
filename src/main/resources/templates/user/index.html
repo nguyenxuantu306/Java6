@@ -70,7 +70,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="block_title">
-						<h3>New Products</h3>
+						<h3 th:text="#{user.NewProducts}">New Products</h3>
 					</div>
 				</div>
 			</div>
@@ -85,8 +85,7 @@
 									<img src="assets\img\cart\span-new.png" alt="">
 								</div>
 								<div class="product_action">
-									<a href="#"> <i class="fa fa-shopping-cart"></i> Add to
-										cart
+									<a href="#" th:text="#{user.Addtocart}"> <i class="fa fa-shopping-cart"></i> Add to cart
 									</a>
 								</div>
 							</div>
@@ -99,11 +98,10 @@
 							<!-- Inside the <div class="single_product"> element -->
 							<div class="product_info">
 								<ul>
-									<li><a href="#" title="Add to Wishlist">Add to
-											Wishlist</a></li>
+									<li><a href="#" th:text="#{user.AddtoWishlist}" title="Add to Wishlist">Add to Wishlist</a></li>
 									<!-- Update the th:href to correctly pass the productId parameter -->
-									<li><a
-										th:href="@{|/product/detail/${book.id}|}" 
+									<li><a 
+										th:href="@{|/product/detail/${book.id}|}"  th:text="#{user.ViewsDetail}"
 										title="Quick view">View Detail</a></li>
 								</ul>
 							</div>

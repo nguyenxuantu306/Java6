@@ -57,9 +57,9 @@ public class BookRestController {
 	}
 	
 	
-	@GetMapping("/thongke/sp")
-	public ResponseEntity<List<Report>> getTK_SP() {
-		return new ResponseEntity<>(bookService.getTk_sp(), HttpStatus.OK);
-	}
+//	@GetMapping("/thongke/sp")
+//	public ResponseEntity<List<Report>> getTK_SP() {
+//		return new ResponseEntity<>(bookService.getTk_sp(), HttpStatus.OK);
+//	}
 
 }

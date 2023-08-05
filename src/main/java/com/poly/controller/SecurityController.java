@@ -200,5 +200,8 @@ public class SecurityController {
 		return "forward:/index/login/success";
 	}
 	
-	
+	@RequestMapping("/login/oauth2/code/google")
+	public String ggform() {
+		return "/security/login";
+	}
 }

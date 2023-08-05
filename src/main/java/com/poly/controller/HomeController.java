@@ -41,31 +41,31 @@ public class HomeController {
 		List<Book> books = booksdao.findAll();
 		
 		 // Lấy thông tin người dùng đã xác thực từ SecurityContextHolder
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        // Kiểm tra nếu người dùng đã xác thực
-        if (authentication.isAuthenticated()) {
-            // Lấy tên người dùng
-            String username = authentication.getName();
-
-            // Lấy các quyền (roles) của người dùng
-            String roles = authentication.getAuthorities().toString();
-
-            // Trả về thông tin tài khoản trong phản hồi
-            System.out.println("Xin chào, " + username + "! Bạn có các quyền: " + roles);
-        } else {
-        	System.out.println("Xin chào! Bạn chưa đăng nhập.");
-        }
-        String username = authentication.getName();
-        Account ac = acdao.findByUsername(username);
-        System.out.println(ac.getUsername());
-        System.out.println(ac.getAddress());
-        System.out.println(ac.getFullname());
-        System.out.println(ac.getPassword());
-        System.out.println(ac.getPhone());
-        System.out.println(ac.getPhoto());
-        System.out.println("*************************************************************************?///////////////////////");
-    System.out.println(ac.getAccountroles().stream().map(er -> er.getRole().getName()).collect(Collectors.toList())); 
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//
+//        // Kiểm tra nếu người dùng đã xác thực
+//        if (authentication.isAuthenticated()) {
+//            // Lấy tên người dùng
+//            String username = authentication.getName();
+//
+//            // Lấy các quyền (roles) của người dùng
+//            String roles = authentication.getAuthorities().toString();
+//
+//            // Trả về thông tin tài khoản trong phản hồi
+//            System.out.println("Xin chào, " + username + "! Bạn có các quyền: " + roles);
+//        } else {
+//        	System.out.println("Xin chào! Bạn chưa đăng nhập.");
+//        }
+//        String username = authentication.getName();
+//        Account ac = acdao.findByUsername(username);
+//        System.out.println(ac.getUsername());
+//        System.out.println(ac.getAddress());
+//        System.out.println(ac.getFullname());
+//        System.out.println(ac.getPassword());
+//        System.out.println(ac.getPhone());
+//        System.out.println(ac.getPhoto());
+//        System.out.println("*************************************************************************?///////////////////////");
+//    System.out.println(ac.getAccountroles().stream().map(er -> er.getRole().getName()).collect(Collectors.toList())); 
 		model.addAttribute("books", books);
 		return "user/index";
 	}

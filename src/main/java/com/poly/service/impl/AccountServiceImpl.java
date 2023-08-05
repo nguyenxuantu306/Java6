@@ -5,12 +5,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import com.poly.bean.Account;
@@ -24,7 +29,10 @@ import com.poly.service.AccountService;
 
 @Service
 public class AccountServiceImpl implements AccountService, UserDetailsService {
-
+	
+	@Autowired
+	PasswordEncoder pe;
+	
 	@Autowired
 	AccountDAO adao;
 
@@ -90,6 +98,16 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 //	public List<Account> getAdministrators() {
 //		return adao.getAdministrators();
 //	}
-
-	
+	 public void loginFormOAuth2(OAuth2AuthenticationToken oauth2) {
+			String email = oauth2.getPrincipal().getAttribute("email");
+			String password = Long.toHexString(System.currentTimeMillis());
+			
+			UserDetails user = User.withUsername(email)
+					.password(pe.encode(password)).roles("1","2").build();
+			org.springframework.security.core.Authentication auth = new UsernamePasswordAuthenticationToken(password, null,user.getAuthorities());
+			SecurityContextHolder.getContext().setAuthentication(auth);
+//			Authentication auth = new UsernamePasswordAuthenticationToken(user , null, user.getAuthorities());
+//			SecurityContextHolder.getContext().setAuthentication(auth);
+			
+		};
 }

@@ -11,6 +11,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.core.http.converter.OAuth2AccessTokenResponseHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ import com.poly.bean.Role;
 import com.poly.bean.Wishlist;
 import com.poly.dao.AccountDAO;
 import com.poly.service.AccountService;
+import com.poly.service.impl.AccountServiceImpl;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -31,6 +34,9 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class SecurityController {
 
+	@Autowired
+	AccountServiceImpl acipl;
+	
 	@Autowired
 	PasswordEncoder passwordE;
 			
@@ -178,4 +184,21 @@ public class SecurityController {
 
 	return "/user/profile";
 	}
+	
+	@RequestMapping("/oauth2/login/form")
+	public String fbform() {
+		return "/security/login";
+	}
+	@RequestMapping("/oauth2/login/error")
+	public String fber() {
+		return "/security/login";
+	}
+	
+	@RequestMapping("/oauth2/login/success")
+	public String fbsuccess(OAuth2AuthenticationToken oauth2) {
+		acipl.loginFormOAuth2(oauth2);
+		return "forward:/index/login/success";
+	}
+	
+	
 }

@@ -31,6 +31,7 @@ public class AuthConfig {
 				  // .requestMatchers("/static/css/**", "/static/font/**", "/static/images/**", "/static/img/**", "/static/js/**").permitAll()
 				   .requestMatchers("/static/**").permitAll()
 				   .requestMatchers("/index/register").permitAll()
+				   .requestMatchers("/index/register/save").permitAll()
 				   .requestMatchers("/home/index").permitAll()
 				   .requestMatchers("/admin/home/index").hasRole("Administrator")
 				   .requestMatchers("/product/shop_list").hasRole("Administrator")

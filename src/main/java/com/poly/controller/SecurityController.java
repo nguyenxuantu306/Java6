@@ -10,6 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +31,9 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class SecurityController {
 
+	@Autowired
+	PasswordEncoder passwordE;
+			
 			@Autowired
 			AccountDAO acdao;
 			
@@ -103,8 +107,15 @@ public class SecurityController {
 	}
 	
 	@GetMapping("/index/register")
-	public String register(Model model,@ModelAttribute Account account,HttpSession session) {
-		Account accountcreate = accountService.create(account);
+	public String register(Model model) {
+		return "/security/register";
+	}
+	
+	@GetMapping("/index/register/save")
+	public String registersave(Model model,@ModelAttribute Account account,HttpSession session) {
+		Account newacc = account;
+		 newacc.setPassword(passwordE.encode(account.getPassword()));
+		Account accountcreate = accountService.create(newacc);
 		
 		if (accountcreate != null) {
 			session.setAttribute("msg", "Register successfully");

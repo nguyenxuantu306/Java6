@@ -1,9 +1,7 @@
 package com.poly.bean;
 
 import java.io.Serializable;
-
-
-
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -34,6 +32,7 @@ import lombok.NoArgsConstructor;
 public class Account implements Serializable {
 
 	@Id
+	
 	String Id;
 	String username;
 	String Password;
@@ -45,7 +44,7 @@ public class Account implements Serializable {
 	String Phone;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Date")
-	Date date = new Date();
+	LocalDate date;
 	
 //	@JsonIgnore
 //	@OneToMany(mappedBy = "account")

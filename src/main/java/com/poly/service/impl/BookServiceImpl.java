@@ -68,6 +68,12 @@ public class BookServiceImpl implements BookService {
 
 
 
+	@Override
+	public List<Report> getTk_loai() {
+		// TODO Auto-generated method stub
+		return dao.getInventoryByCategory();
+	}
+
 	
 
 	@Override

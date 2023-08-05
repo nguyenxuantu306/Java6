@@ -2,6 +2,7 @@ package com.poly.bean;
 
 import java.io.Serializable;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -23,6 +24,7 @@ public class OrderDetails implements Serializable {
 	String Id;
 	
 	Integer Quantity;
+
 	@ManyToOne
 	@JoinColumn(name = "Order_id")
 	Order order;

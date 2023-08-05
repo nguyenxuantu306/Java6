@@ -40,4 +40,6 @@ public interface BookService {
 	Page<Book> findCategoryByKeyword(String keyword, Pageable pageable);
 
 	List<Report> getTk_sp();
+
+	List<Report> getTk_loai();
 }

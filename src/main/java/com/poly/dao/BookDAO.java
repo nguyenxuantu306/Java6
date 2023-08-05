@@ -22,6 +22,15 @@ public interface BookDAO extends JpaRepository<Book, String> {
 	@Query("SELECT o FROM Book o WHERE o.genres.Genres like ?1")
 	Page<Book> findCategoryByKeyword(String keyword, Pageable pageable);
 
+	@Query("SELECT new Report(o.genres, sum(o.Price), count(o)) " + " FROM Book o " + " GROUP BY o.genres"
+			+ " ORDER BY sum(o.Price) DESC")
+	List<Report> getInventoryByCategory();
+
+	@Query("SELECT new Report(o.book, sum(o.Price * o.Quantity),sum(o.Quantity))FROM OrderDetails o "
+			+ " GROUP BY o.book"
+			+ " ORDER BY  sum(o.Price * o.Quantity)")
+	List<Report> reportTheoProduct();
+
 	
 	@Query("SELECT new Report(o.book, sum(o.Price * o.Quantity),sum(o.Quantity)) FROM OrderDetails o "
 			+ " GROUP BY o.book"

@@ -23,9 +23,9 @@ public interface BookDAO extends JpaRepository<Book, String> {
 	Page<Book> findCategoryByKeyword(String keyword, Pageable pageable);
 
 	
-//	@Query("SELECT new Report(o.book, sum(o.Price * o.Stock_quantity), sum(o.Stock_quantity)) FROM OrderDetails o"
-//			+ " GROUP BY o.book" + " ORDER BY sum(o.Price * o.Stock_quantity) DESC")
-//	List<Report> reportTheoProduct();
-//	
+	@Query("SELECT new Report(o.book, sum(o.Price * o.quantity), sum(o.quantity)) FROM OrderDetails o"
+			+ " GROUP BY o.book" + " ORDER BY sum(o.Price * o.quantity) DESC")
+	List<Report> reportTheoProduct();
+	
 
 }

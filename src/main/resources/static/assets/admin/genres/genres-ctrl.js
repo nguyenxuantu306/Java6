@@ -2,6 +2,8 @@ app.controller("genres-ctrl", function($scope, $http) {
 	$scope.items = [];
 	$scope.cates = [];
 	$scope.form = {};
+	$scope.field = [];
+	$scope.error = ['err'];
 	
 	$scope.initialize = function(){
 		// Load genres
@@ -22,12 +24,22 @@ app.controller("genres-ctrl", function($scope, $http) {
 		$scope.form = {
 			
 		};
+		$('#id').attr('readonly', false);
+		$('#btn-create').removeAttr('disabled');
+		$('#btn-update').attr('disabled', 'disabled');
+		$('#btn-delete').attr('disabled', 'disabled');
 	}
 	
 	// Hiện thị lên form
 	$scope.edit = function(item){
 		$scope.form = angular.copy(item);
-		$(".nav-tabs a:eq(0)").tab('show')
+		$('#btn-create').attr('disabled', 'disabled');
+		$('#btn-delete').removeAttr('disabled');
+		$('#btn-update').removeAttr('disabled');			
+		$('html,body').animate({
+			scrollTop: $(".info").offset().top
+		},
+			'slow');	
 	}
 	
 	// Thêm sản phẩm mới

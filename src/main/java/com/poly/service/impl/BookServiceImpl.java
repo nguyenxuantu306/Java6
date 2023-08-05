@@ -68,9 +68,9 @@ public class BookServiceImpl implements BookService {
 
 	
 
-//	@Override
-//	public List<Report> getTk_sp() {
-//		// TODO Auto-generated method stub
-//		return dao.reportTheoProduct();
-//	}
+	@Override
+	public List<Report> getTk_sp() {
+		// TODO Auto-generated method stub
+		return dao.reportTheoProduct();
+	}
 }

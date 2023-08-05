@@ -39,5 +39,5 @@ public interface BookService {
 	// tìm sản phẩm theo loại bằng keyword
 	Page<Book> findCategoryByKeyword(String keyword, Pageable pageable);
 
-//	List<Report> getTk_sp();
+	List<Report> getTk_sp();
 }

@@ -1,12 +1,22 @@
+
 <div class="container-fluid" sty>
 
-	<!-- DataTales Example -->
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
 			<div class="card-header bg-primary">
 				<h3 class="text-white p-0 m-0">DANH SÁCH SẢN PHẨM</h3>
 			</div>
+			<div class="filter-group">
+										<label>Lọc</label> <select class="form-control"
+											ng-init="searchText.available = true"
+											ng-model="searchText.available">
+											<option ng-value="">Tất cả</option>
+											<option ng-value="true">Còn hàng</option>
+											<option ng-value="false">Hết hàng</option>
+										</select>
+									</div>
 		</div>
+		
 		<div class="card-body">
 			<div class="table-responsive">
 				<table class="table table-bordered" id="dataTable" width="100%"
@@ -25,23 +35,22 @@
 					</thead>
 
 					<tbody>
-						<tr ng-repeat="item in pager.items">
+						<tr ng-repeat="item in pager.items| filter:searchText">
 							<th>{{item.id}}</th>
 							<th style="width: 400px">{{item.name}}</th>
 							<th>{{item.price | number:0}}</th>
 							<th>{{item.publication_date | date:'dd-MM-yyyy'}}</th>
 							<th>{{item.image}}</th>
 							<th>{{item.genres.genres}}</th>
-							<th>{{item.available?'Yes':'No'}}</th>
+							<th>{{item.available?'Còn Hàng':'Hết Hàng'}}</th>
 							<td style="text-align: center;">
+								
 								<div class="btn-group btn-group-xs">
-									<button ng-click="edit(item)">
-										<i class="fas fa-edit"></i>
-									</button>
-									<button ng-click="delete(item)">
-										<i class="bi bi-trash"></i>
-									</button>
-								</div>
+											<button ng-click="edit(item)" class="btn btn-warning"
+												id="btnEdit">Edit</button>
+											<button type="button" class="btn btn-danger"
+												ng-click="delete(item)">Xóa</button>
+										</div>
 
 							</td>
 						</tr>
@@ -67,7 +76,7 @@
 		</div>
 	</div>
 
-	<div class="card " id="card-form">
+	<div class="card  info" id="card-form">
 		<div class="card-header bg-primary">
 			<h3 class="text-white p-0 m-0">QUẢN LÝ SẢN PHẨM</h3>
 		</div>
@@ -111,7 +120,6 @@
 					</div>
 					<div class="form-group col-sm-6">
 						<div>Description:</div>
-						<!-- <input ng-model="form.description" class="form-control"> -->
 						<textarea ng-model="form.description" rows="2" cols="41"></textarea>
 					</div>
 				</div>
@@ -119,7 +127,7 @@
 					<div class="form-group col-sm-6">
 						<div>Image:</div>
 						<input type="file" class="form-control" id="image"
-						onchange="angular.element(this).scope().imageChanged(this.files)">
+								onchange="angular.element(this).scope().imageChanged(this.files)">
 					</div>
 					<div class="form-group col-sm-6">
 						<div>Category:</div>
@@ -147,18 +155,19 @@
 				</div>
 			</div>
 			<div class="panel-footer text-center p-3">
-						<button ng-click="create()" class="btn btn-success">
-							<b class="glyphicon glyphicon-plus"></b> Create
+						<button id="btn-create" ng-click="create()" class="btn btn-success">
+							Create
 						</button>
-						<button ng-click="update()" class="btn btn-success">
+						<button id="btn-update" disabled="disabled" ng-click="update()" class="btn btn-success">
 							<b class="glyphicon glyphicon-save"></b> Update
 						</button>
-						<button ng-click="delete(form)" class="btn btn-success">
+						<button id="btn-delete" disabled="disabled" ng-click="delete(form)" class="btn btn-success">
 							<b class="glyphicon glyphicon-trash"></b> Delete
 						</button>
-						<button ng-click="reset()" class="btn btn-success">
+						<button id="btn-reset" ng-click="reset()" class="btn btn-success">
 							<b class="glyphicon glyphicon-refresh"></b> Reset
 						</button>
+						
 					</div>
 		</div>
 			
@@ -168,7 +177,5 @@
 
 
 </div>
-<!-- /.container-fluid -->
 
 </div>
-

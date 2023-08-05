@@ -2,6 +2,8 @@ app.controller("account-ctrl", function($scope, $http) {
 	$scope.items = [];
 	$scope.cates = [];
 	$scope.form = {};
+	$scope.field = [];
+	$scope.error = ['err'];
 
 	$scope.initialize = function() {
 		// Load products
@@ -20,16 +22,28 @@ app.controller("account-ctrl", function($scope, $http) {
 
 	// Xóa form
 	$scope.reset = function() {
+		$scope.error = ['err'];
 		$scope.form = {
 			photo: 'cloud-upload.jpg',
 		};
+		$('#id').attr('readonly', false);
+		$('#btn-create').removeAttr('disabled');
+		$('#btn-update').attr('disabled', 'disabled');
+		$('#btn-delete').attr('disabled', 'disabled');
 	}
 
 	// Hiện thị lên form
 	$scope.edit = function(item) {
 		$scope.form = angular.copy(item);
-		window.scrollTo(0, document.body.scrollHeight);
+		/*window.scrollTo(0, document.body.scrollHeight);*/
 
+		$('#btn-create').attr('disabled', 'disabled');
+		$('#btn-delete').removeAttr('disabled');
+		$('#btn-update').removeAttr('disabled');			
+		$('html,body').animate({
+			scrollTop: $(".info").offset().top
+		},
+			'slow');	
 	}
 
 

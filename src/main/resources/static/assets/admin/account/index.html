@@ -55,13 +55,11 @@
 											<th>{{item.email}}</th>
 											<td style="text-align: center;">
 												<div class="btn-group btn-group-xs">
-													<button ng-click="edit(item)">
-														<i class="fas fa-edit"></i>
-													</button>
-													<button ng-click="delete(item)">
-														<i class="bi bi-trash"></i>
-													</button>
-												</div>
+											<button ng-click="edit(item)" class="btn btn-warning"
+												id="btnEdit">Edit</button>
+											<button type="button" class="btn btn-danger"
+												ng-click="delete(item)">Xóa</button>
+										</div>
 
 											</td>
 										</tr>
@@ -96,7 +94,7 @@
 			<!-- /.container-fluid -->
 		</section>
 	</div>
-	<div class="card " id="card-form">
+	<div class="card info " id="card-form">
 		<div class="card-header bg-primary">
 			<h3 class="text-white p-0 m-0">QUẢN LÝ TÀI KHOẢN</h3>
 		</div>
@@ -166,18 +164,18 @@
 
 				</div>
 				<div class="panel-footer text-center p-3">
-					<button ng-click="create()" class="btn btn-success">
-						<b class="glyphicon glyphicon-plus"></b> Create
-					</button>
-					<button ng-click="update()" class="btn btn-success">
-						<b class="glyphicon glyphicon-save"></b> Update
-					</button>
-					<button ng-click="delete(form)" class="btn btn-success">
-						<b class="glyphicon glyphicon-trash"></b> Delete
-					</button>
-					<button ng-click="reset()" class="btn btn-success">
-						<b class="glyphicon glyphicon-refresh"></b> Reset
-					</button>
+					<button id="btn-create" ng-click="create()" class="btn btn-success">
+							Create
+						</button>
+						<button id="btn-update" disabled="disabled" ng-click="update()" class="btn btn-success">
+							<b class="glyphicon glyphicon-save"></b> Update
+						</button>
+						<button id="btn-delete" disabled="disabled" ng-click="delete(form)" class="btn btn-success">
+							<b class="glyphicon glyphicon-trash"></b> Delete
+						</button>
+						<button id="btn-reset" ng-click="reset()" class="btn btn-success">
+							<b class="glyphicon glyphicon-refresh"></b> Reset
+						</button>
 				</div>
 			</div>
 		</div>

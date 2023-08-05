@@ -31,13 +31,7 @@ public interface BookDAO extends JpaRepository<Book, String> {
 			+ " ORDER BY  sum(o.Price * o.Quantity)")
 	List<Report> reportTheoProduct();
 
-	
-	@Query("SELECT new Report(o.book, sum(o.Price * o.Quantity),sum(o.Quantity)) FROM OrderDetails o "
-			+ " GROUP BY o.book"
-			+ " ORDER BY  sum(o.Price * o.Quantity)")
-	List<Report> reportTheoProduct();
 
-	
 	
 
 }

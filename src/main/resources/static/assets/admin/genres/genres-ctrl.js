@@ -2,6 +2,8 @@ app.controller("genres-ctrl", function($scope, $http) {
 	$scope.items = [];
 	$scope.cates = [];
 	$scope.form = {};
+	$scope.field = [];
+	$scope.error = ['err'];
 	
 	$scope.initialize = function(){
 		// Load genres
@@ -22,12 +24,22 @@ app.controller("genres-ctrl", function($scope, $http) {
 		$scope.form = {
 			
 		};
+		$('#id').attr('readonly', false);
+		$('#btn-create').removeAttr('disabled');
+		$('#btn-update').attr('disabled', 'disabled');
+		$('#btn-delete').attr('disabled', 'disabled');
 	}
 	
 	// Hiện thị lên form
 	$scope.edit = function(item){
 		$scope.form = angular.copy(item);
-		$(".nav-tabs a:eq(0)").tab('show')
+		$('#btn-create').attr('disabled', 'disabled');
+		$('#btn-delete').removeAttr('disabled');
+		$('#btn-update').removeAttr('disabled');			
+		$('html,body').animate({
+			scrollTop: $(".info").offset().top
+		},
+			'slow');	
 	}
 	
 	// Thêm sản phẩm mới
@@ -36,9 +48,9 @@ app.controller("genres-ctrl", function($scope, $http) {
 		$http.post(`/rest/categories`,item).then(resp =>{
 			$scope.items.push(resp.data);
 			$scope.reset();
-			alert("Thêm sản phẩm thành công!");
+			alert("Thêm loại sản phẩm thành công!");
 		}).catch(error =>{
-			alert("Lỗi thêm mới sản phẩm");
+			alert("Lỗi thêm mới loại sản phẩm");
 			console.log("Error",error);
 		});
 	}
@@ -49,10 +61,10 @@ app.controller("genres-ctrl", function($scope, $http) {
 		$http.put(`/rest/categories/${item.id}`,item).then(resp =>{
 			var index = $scope.items.findIndex(p => p.id == item.id);
 			$scope.items[index] = item;				
-			alert("Cập nhật sản phẩm thành công!");
+			alert("Cập nhật loại sản phẩm thành công!");
 		})
 		.catch(error =>{
-			alert("Lỗi cập nhật sản phẩm");
+			alert("Lỗi cập nhật loại sản phẩm");
 			console.log("Error",error);
 		});
 	}
@@ -63,10 +75,10 @@ app.controller("genres-ctrl", function($scope, $http) {
 			var index = $scope.items.findIndex(p => p.id == item.id);
 			$scope.items.splice(index,1);
 			$scope.reset();				
-			alert("Xóa sản phẩm thành công!");
+			alert("Xóa loại sản phẩm thành công!");
 		})
 		.catch(error =>{
-			alert("Lỗi Xóa sản phẩm");
+			alert("Lỗi Xóa loại sản phẩm");
 			console.log("Error",error);
 		});
 	}

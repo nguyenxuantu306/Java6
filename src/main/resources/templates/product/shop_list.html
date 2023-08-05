@@ -29,8 +29,9 @@
 						<h4>Categories</h4>
 					</div>
 					<div class="layere_categorie">
-						<a th:each="c:${cates}" th:href="@{|/product/shop_list?cid=${c.id}|}" 
-            	class="list-group-item">[[${c.genres}]]</a>
+						<a th:each="c:${cates}"
+							th:href="@{|/product/shop_list?cid=${c.id}|}"
+							class="list-group-item">[[${c.genres}]]</a>
 					</div>
 				</div>
 				<!--layere categorie end-->
@@ -82,7 +83,7 @@
 
 			</div>
 			<div class="col-lg-9 col-md-12">
-		<!-- 		<div class="banner_slider slider_1">
+				<!-- 		<div class="banner_slider slider_1">
 					<div class="slider_active owl-carousel">
 						<div class="single_slider"
 							style="background-image: url(assets/img/slider/slider_1.jpg)">
@@ -169,8 +170,9 @@
 												<img src="assets\img\cart\span-new.png" alt="">
 											</div>
 											<div class="product_action">
-												<a th:attr="ng-click=@{|cart.add(${p.id})|}" href=""> <i
-													class="fa fa-shopping-cart" th:text="#{list.Addtocart}"></i> 
+												<a th:attr="ng-click='cart.add(\'' + ${p.Id} + '\')'"
+													href=""> <i class="fa fa-shopping-cart"></i> Add to
+													cart
 												</a>
 											</div>
 										</div>
@@ -193,12 +195,13 @@
 
 							</div>
 						</div>
-						<div  class="tab-pane fade " id="large" role="tabpanel">
+						<div class="tab-pane fade " id="large" role="tabpanel">
 							<div th:each="p:${items}" class="product_list_item mb-35">
 								<div class="row align-items-center">
 									<div class="col-lg-4 col-md-6 col-sm-6">
 										<div class="product_thumb">
-											<a href="single-product.html"><img th:src="@{|/assets/images/${p.image}|}" alt=""></a>
+											<a href="single-product.html"><img
+												th:src="@{|/assets/images/${p.image}|}" alt=""></a>
 											<div class="hot_img">
 												<img src="assets\img\cart\span-hot.png" alt="">
 											</div>
@@ -268,16 +271,27 @@
 							</select> <span>Products by page</span>
 						</form>
 					</div>
-					<div class="page_number">
+					<div th:if="${cid==null}" class="page_number">
 						<span>Pages: </span>
 						<ul>
-							<li>«</li>
-							<li class="current_number">1</li>
-							<li><a href="#">2</a></li>
-							<li>»</li>
+							<li><a
+								th:href="@{/product/shop_list(sort=${sort},size=${items.size}, page=${pagePresent -1})}">
+									« </a></li>
+							<li th:if="${items.totalPages > 0}"
+						th:each="pageNumber : ${pageNumbers}"
+						th:class="${pageNumber==items.number + 1} ? active">
+						<a
+						th:href="@{/product/shop_list(sort=${sort},size=${items.size}, page=${pageNumber-1})}"
+						th:text=${pageNumber}></a></li>
+							<li><a
+						th:href="@{/product/shop_list(sort=${sort},size=${items.size}, page=${pagePresent +1})}">
+						»</a></li>
 						</ul>
 					</div>
 				</div>
+
+				
+
 				<!--pagination style end-->
 			</div>
 		</div>

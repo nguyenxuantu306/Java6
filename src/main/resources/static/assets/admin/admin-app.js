@@ -26,7 +26,7 @@ app.config(function($routeProvider){
 		controller:"authority-ctrl"
 	})	
 	.when("/unauthorized",{
-		templateUrl:"/assets/admin/authority/404.html",
+		templateUrl:"/assets/admin/authority/index.html",
 		controller:"authority-ctrl"
 	})	
 	.when("/main",{

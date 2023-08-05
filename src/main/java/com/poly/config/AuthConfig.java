@@ -33,11 +33,10 @@ public class AuthConfig {
 				   .requestMatchers("/index/register").permitAll()
 				   .requestMatchers("/home/index").permitAll()
 				   .requestMatchers("/admin/home/index").hasRole("Administrator")
-				   .requestMatchers("/product/shop_list").hasRole("User")
+				   .requestMatchers("/product/shop_list").hasRole("Administrator")
 				   .anyRequest().authenticated()
 				   ).formLogin(form -> form
 							.loginPage("/index/login").loginProcessingUrl("/home/index")
-							.defaultSuccessUrl("/product/shop_list")
 							.permitAll()
 							.and()
 						).logout(

@@ -74,7 +74,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
         }else {
         	return User.builder().username(account.getUsername())
                     .password(account.getPassword())
-                    .roles(account.getAccountroles().stream().map(er -> er.getRole().getId()).collect(Collectors.toList()).toArray(new String [0])).build();
+                    .roles(account.getAccountroles().stream().map(er -> er.getRole().getName()).collect(Collectors.toList()).toArray(new String [0])).build();
         }
 		
 	}

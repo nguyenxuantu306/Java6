@@ -105,7 +105,7 @@ app.controller("account-ctrl", function($scope, $http) {
 		})
 	}
 
-	$scope.pager = {
+	/*$scope.pager = {
 		page: 0,
 		size: 10,
 		get items() {
@@ -133,28 +133,72 @@ app.controller("account-ctrl", function($scope, $http) {
 		last() {
 			this.page = this.count - 1;
 		}
-	}
+	}*/
 
-	$scope.propertyName = 'username';
-	$scope.reverse = true;
-	$scope.example1 = $scope.items;
+	/*	$scope.propertyName = 'username';
+		$scope.reverse = true;
+		$scope.example1 = $scope.items;
+	
+		$scope.sortBy = function(propertyName) {
+			$scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+			$scope.propertyName = propertyName;
+		};
+	*/
+	$(function() {
+		$("#example1").DataTable({
+			"ajax": {
+				"url": "/rest/accounts",
+				"dataSrc": ""
+			},
+			"columns": [
+				{ "data": "id" },
+				{ "data": "photo" },
+				{ "data": "username" },
+				{ "data": "password" },
+				{ "data": "fullname" },
+				{ "data": "email" },
+				{
+					"data": null,
+					"render": function(data, type, row) {
+						return '<button class="btn btn-success" ng-click="edit(' + row.id + ')">Xem chi tiết</button>';
+					}
+				}, 
 
-	$scope.sortBy = function(propertyName) {
-		$scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
-		$scope.propertyName = propertyName;
+				// Add more column configurations as needed
+			],
+			"responsive": true, "lengthChange": false, "autoWidth": false,
+		}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+	});
+
+	// Trong AngularJS controller hoặc service
+	$scope.exportExcel = function() {
+		$http.get('/print-to-excel', { responseType: 'arraybuffer' })
+			.then(function(response) {
+				var blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+				var link = document.createElement('a');
+				link.href = window.URL.createObjectURL(blob);
+				link.download = 'example.xlsx';
+				link.click();
+			})
+			.catch(function(error) {
+				console.error('Error exporting Excel:', error);
+			});
 	};
 
-	/*$(function() {
-	$("#example1").DataTable({
-		"responsive": true, "lengthChange": false, "autoWidth": false,
-		"paging": true,
-		"searching": false,
-		"ordering": true,
-		"info": true,
-		"autoWidth": false,
-		"responsive": true,
-		"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-	}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+	$scope.exportPdf = function() {
+		$http.get('/print-to-pdf', { responseType: 'arraybuffer' })
+			.then(function(response) {
+				var blob = new Blob([response.data], { type: 'application/pdf' });
+				var objectUrl = URL.createObjectURL(blob);
+				var a = document.createElement('a');
+				a.href = objectUrl;
+				a.download = 'exportAccount.pdf';
+				a.click();
+				URL.revokeObjectURL(objectUrl);
+			})
+			.catch(function(error) {
+				console.error('Error exporting PDF:', error);
+			});
+	};
 
-});*/
 });

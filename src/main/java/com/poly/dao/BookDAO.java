@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 
 
 import com.poly.bean.Book;
+import com.poly.bean.Report;
 
 public interface BookDAO extends JpaRepository<Book, String> {
 
@@ -22,9 +23,12 @@ public interface BookDAO extends JpaRepository<Book, String> {
 	Page<Book> findCategoryByKeyword(String keyword, Pageable pageable);
 
 	
-//	@Query("SELECT new Report(o.book, sum(o.Price * o.quantity), sum(o.quantity)) FROM OrderDetails o"
-//			+ " GROUP BY o.book" + " ORDER BY sum(o.Price * o.quantity) DESC")
-//	List<Report> reportTheoProduct();
+	@Query("SELECT new Report(o.book, sum(o.Price * o.Quantity),sum(o.Quantity)) FROM OrderDetails o "
+			+ " GROUP BY o.book"
+			+ " ORDER BY  sum(o.Price * o.Quantity)")
+	List<Report> reportTheoProduct();
+
+	
 	
 
 }

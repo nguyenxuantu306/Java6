@@ -22,7 +22,7 @@ public class OrderDetails implements Serializable {
 	@Id
 	String Id;
 	
-	Long quantity;
+	Integer Quantity;
 	@ManyToOne
 	@JoinColumn(name = "Order_id")
 	Order order;

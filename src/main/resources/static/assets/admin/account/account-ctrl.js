@@ -39,11 +39,11 @@ app.controller("account-ctrl", function($scope, $http) {
 
 		$('#btn-create').attr('disabled', 'disabled');
 		$('#btn-delete').removeAttr('disabled');
-		$('#btn-update').removeAttr('disabled');			
+		$('#btn-update').removeAttr('disabled');
 		$('html,body').animate({
 			scrollTop: $(".info").offset().top
 		},
-			'slow');	
+			'slow');
 	}
 
 
@@ -134,19 +134,7 @@ app.controller("account-ctrl", function($scope, $http) {
 			this.page = this.count - 1;
 		}
 	}
-	$(function() {
-		$("#example1").DataTable({
-			"responsive": true, "lengthChange": false, "autoWidth": false,
-			"paging": true,
-			"searching": false,
-			"ordering": true,
-			"info": true,
-			"autoWidth": false,
-			"responsive": true,
-			"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-		}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
-	});
 	$scope.propertyName = 'username';
 	$scope.reverse = true;
 	$scope.example1 = $scope.items;
@@ -155,4 +143,18 @@ app.controller("account-ctrl", function($scope, $http) {
 		$scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
 		$scope.propertyName = propertyName;
 	};
+
+	/*$(function() {
+	$("#example1").DataTable({
+		"responsive": true, "lengthChange": false, "autoWidth": false,
+		"paging": true,
+		"searching": false,
+		"ordering": true,
+		"info": true,
+		"autoWidth": false,
+		"responsive": true,
+		"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+	}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+});*/
 });

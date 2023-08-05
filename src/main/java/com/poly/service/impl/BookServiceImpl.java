@@ -66,17 +66,21 @@ public class BookServiceImpl implements BookService {
 		return dao.findCategoryByKeyword(keyword, pageable);
 	}
 
+	/*
+	 * @Override public List<Report> getTk_sp() { // TODO Auto-generated method stub
+	 * return null; }
+	 */
 	@Override
-	public List<Report> getTk_sp() {
+	public List<Report> getTk_loai() {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getInventoryByCategory();
 	}
 
 	
 
-//	@Override
-//	public List<Report> getTk_sp() {
-//		// TODO Auto-generated method stub
-//		return dao.reportTheoProduct();
-//	}
+	@Override
+	public List<Report> getTk_sp() {
+		// TODO Auto-generated method stub
+		return dao.reportTheoProduct();
+	}
 }

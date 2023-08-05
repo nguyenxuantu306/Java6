@@ -61,5 +61,11 @@ public class BookRestController {
 	public ResponseEntity<List<Report>> getTK_SP() {
 		return new ResponseEntity<>(bookService.getTk_sp(), HttpStatus.OK);
 	}
+	
+
+	@GetMapping("/thongke/loai")
+	public List<Report> getTK_Loai() {
+		return bookService.getTk_loai();
+	}
 
 }

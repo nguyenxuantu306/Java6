@@ -30,29 +30,24 @@
 						<a class="dropdown-item" href="/?lang=en" th:text="#{nav.en}">English</a>
 					</li> -->
 					
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="#" id="menu"
-								data-toggle="dropdown" th:text="#{nav.lang}">Language</a>
-								<ul class="dropdown-menu" aria-labelledby="menu">
-									<li><a href="/?lang=vi" th:text="#{nav.vi}">Vietnamese</a>
-									</li>
-									<li><a href="/?lang=en" th:text="#{nav.en}">English</a></li>
-								</ul></li>
-								
-								
-								<script>
-								$(function(){
-									$("a[href*=lang]").click(function(){
-										$.ajax({
-											url: "/home/index" + $(this).attr("href")
-										}).then(resp => {
-											location.reload();
-										});
-										return false;
-									});
-								})
-								</script>
-
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="menu" data-toggle="dropdown" th:text="#{nav.lang}">Language</a>
+						<ul class="dropdown-menu" aria-labelledby="menu">
+						  <li><a href="" onclick="changeLanguage('vi')" th:text="#{nav.vi}">Vietnamese</a></li>
+						  <li><a href="" onclick="changeLanguage('en')" th:text="#{nav.en}">English</a></li>
+						</ul>
+					  </li>
+					  
+					  <script>
+					  function changeLanguage(lang) {
+						$.ajax({
+						  url: "/home/index?lang=" + lang
+						}).then(resp => {
+						  location.reload();
+						});
+					  }
+					  </script>
+					  
 							<!-- <li class="currency"><a href="#"> Currency : $ <i
 									class="fa fa-angle-down"></i></a>
 								<ul class="dropdown_currency">

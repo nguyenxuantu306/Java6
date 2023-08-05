@@ -139,25 +139,25 @@ public class BookController {
 		return "product/detail";
 	}
 
-//	@RequestMapping("/product/blog")
-//	public String blog(Model model) {
-//		List<Book> list = bookService.findAll();
-//		model.addAttribute("items", list);
-//		return "product/blog";
-//	}
-//
-//	@RequestMapping("/product/portfolio")
-//	public String portfolio(Model model) {
-//		List<Book> list = bookService.findAll();
-//		model.addAttribute("items", list);
-//		return "product/portfolio";
-//	}
-//
-//	@RequestMapping("/product/contact")
-//	public String shop_list3(Model model) {
-//		List<Book> list = bookService.findAll();
-//		model.addAttribute("items", list);
-//		return "product/contact";
-//	}
+	@RequestMapping("/product/blog")
+	public String blog(Model model) {
+		List<Book> list = bookService.findAll();
+		model.addAttribute("items", list);
+		return "product/blog";
+	}
+
+	@RequestMapping("/product/portfolio")
+	public String portfolio(Model model) {
+		List<Book> list = bookService.findAll();
+		model.addAttribute("items", list);
+		return "product/portfolio";
+	}
+
+	@RequestMapping("/product/contact")
+	public String shop_list3(Model model) {
+		List<Book> list = bookService.findAll();
+		model.addAttribute("items", list);
+		return "product/contact";
+	}
 
 }

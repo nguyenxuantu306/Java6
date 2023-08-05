@@ -2,6 +2,8 @@ app.controller("product-ctrl", function($scope, $http) {
 	$scope.items = [];
 	$scope.cates = [];
 	$scope.form = {};
+	$scope.field = [];
+	$scope.error = ['err'];
 	
 	$scope.initialize = function(){
 		// Load products
@@ -25,32 +27,44 @@ app.controller("product-ctrl", function($scope, $http) {
 	
 	// Xóa form
 	$scope.reset = function(){
+		$scope.error = ['err'];
 		$scope.form = {
 			publication_date:new Date(),
 			image:'cloud-upload.jpg',
 			available:true,
 		};
+		$('#id').attr('readonly', false);
+		$('#btn-create').removeAttr('disabled');
+		$('#btn-update').attr('disabled', 'disabled');
+		$('#btn-delete').attr('disabled', 'disabled');
 	}
 	
 	// Hiện thị lên form
 	$scope.edit = function(item){
-		$scope.form = angular.copy(item);
-		$(".nav-tabs a:eq(0)").tab('show')
+		$scope.form = angular.copy(item);	
+		$('#btn-create').attr('disabled', 'disabled');
+		$('#btn-delete').removeAttr('disabled');
+		$('#btn-update').removeAttr('disabled');			
+		$('html,body').animate({
+			scrollTop: $(".info").offset().top
+		},
+			'slow');	
 	}
 	
 	// Thêm sản phẩm mới
-	$scope.create = function(){
+	$scope.create = function() {
 		var item = angular.copy($scope.form);
-		$http.post(`/rest/products`,item).then(resp =>{
+		$http.post(`/rest/products`, item).then(resp => {
 			resp.data.publication_date = new Date(resp.data.publication_date)
 			$scope.items.push(resp.data);
 			$scope.reset();
 			alert("Thêm sản phẩm thành công!");
-		}).catch(error =>{
+		}).catch(error => {
 			alert("Lỗi thêm mới sản phẩm");
-			console.log("Error",error);
+			console.log("Error", error);
 		});
 	}
+
 	
 	// cặp nhật sản phẩm
 	$scope.update = function(){
@@ -95,6 +109,12 @@ app.controller("product-ctrl", function($scope, $http) {
 		})
 	}
 	
+	$scope.$watch('searchText', function(term) {
+		$scope.filtered = filterFilter($scope.items, term);
+		$scope.size = $scope.filtered.length;
+		$scope.noOfPages = Math.ceil($scope.filtered.length / $scope.entryLimit);
+	}, true);
+	
 	$scope.pager = {
 		page:0,
 		size:10,
@@ -125,3 +145,5 @@ app.controller("product-ctrl", function($scope, $http) {
 		}		
 	}
 });
+
+	

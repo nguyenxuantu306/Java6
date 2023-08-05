@@ -10,4 +10,9 @@ public class ShoppingCartController {
 	public String view() {
 		return "cart/view";
 	}
+	
+	@RequestMapping("/cart/checkout")
+	public String checkout() {
+		return "cart/checkout";
+	}
 }

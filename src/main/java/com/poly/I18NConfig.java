@@ -19,24 +19,23 @@ public class I18NConfig implements WebMvcConfigurer {
 	public MessageSource getMessageSource() {
 		ReloadableResourceBundleMessageSource ms = new ReloadableResourceBundleMessageSource();
 		ms.setDefaultEncoding("utf-8");
-		ms.setBasenames("classpath:i18n/messages","classpath:i18n/global");
+		ms.setBasenames("classpath:i18n/messages", "classpath:i18n/global");
 		return ms;
 	}
-	
+
 	@Bean("localeResolver")
 	public LocaleResolver getLocaleResolver() {
 		CookieLocaleResolver cookie = new CookieLocaleResolver();
 		cookie.setDefaultLocale(new Locale("vi"));
 		cookie.setCookiePath("/");
-		cookie.setCookieMaxAge(10*24*60*60);
+		cookie.setCookieMaxAge(10 * 24 * 60 * 60);
 		return cookie;
 	}
+
 	@Override
-	public void addInterceptors(InterceptorRegistry registry){
-			LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-			lci.setParamName("lang");
-			registry.addInterceptor(lci)
-				.addPathPatterns("/**")
-				.excludePathPatterns("/img/**");
+	public void addInterceptors(InterceptorRegistry registry) {
+		LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+		lci.setParamName("lang");
+		registry.addInterceptor(lci).addPathPatterns("/**").excludePathPatterns("/img/**");
 	}
 }

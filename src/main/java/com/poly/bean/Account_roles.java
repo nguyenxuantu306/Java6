@@ -1,8 +1,5 @@
 package com.poly.bean;
 
-
-
-
 import java.io.Serializable;
 
 import jakarta.persistence.Entity;
@@ -17,17 +14,17 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="Accounts_roles", uniqueConstraints = {
-		@UniqueConstraint(columnNames = {"Account_id", "Roles_id"})
-	})
-public class Account_roles  implements Serializable {
-	
+@Table(name = "Accounts_roles", uniqueConstraints = { @UniqueConstraint(columnNames = { "Account_id", "Roles_id" }) })
+public class Account_roles implements Serializable {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@ManyToOne @JoinColumn(name="Account_id")
+
+	@ManyToOne
+	@JoinColumn(name = "Account_id")
 	private Account account;
-	@ManyToOne @JoinColumn(name="Roles_id")
+	@ManyToOne
+	@JoinColumn(name = "Roles_id")
 	private Role role;
 }

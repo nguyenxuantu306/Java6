@@ -2,11 +2,8 @@ package com.poly.bean;
 
 import java.io.Serializable;
 
-
 import java.util.Date;
 import java.util.List;
-
-
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,7 +14,7 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
+import com.poly.bean.Book;
 
 @Data
 @Entity
@@ -31,5 +28,5 @@ public class Genres implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy = "genres")
 	List<Book> books;
-	
+
 }

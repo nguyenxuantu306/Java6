@@ -30,7 +30,7 @@ public class Order implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "Account_id")
 	Account account;
-	
+
 	@Temporal(TemporalType.DATE)
 	Date date = new Date();
 
@@ -46,8 +46,8 @@ public class Order implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "State_id")
 	States state;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "order")
-	List<OrderDetails> orderDetails;	
+	List<OrderDetails> orderDetails;
 }

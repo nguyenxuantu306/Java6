@@ -22,7 +22,7 @@ import com.poly.service.DiscountService;
 import com.poly.service.OrderService;
 
 @Service
-public class DiscountServiceImpl implements DiscountService{
+public class DiscountServiceImpl implements DiscountService {
 	@Autowired
 	DiscountDAO dao;
 
@@ -31,5 +31,5 @@ public class DiscountServiceImpl implements DiscountService{
 		// TODO Auto-generated method stub
 		return dao.findAll();
 	}
-	
+
 }

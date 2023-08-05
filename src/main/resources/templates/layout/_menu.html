@@ -10,19 +10,15 @@
 						<h3>
 							<a href="#" th:text="#{nav.DomesticBooks}">Sách trong Nước</a>
 						</h3>
-						<div class="mega_top fix p-3">
-							<div class="mega_items p-3">
-								<h3>
-									<a href="#">Văn học</a>
-								</h3>
+						<div class="mega_top fix ">
+							<div class="mega_items" th:each="c:${cates}" >								
 								<ul>
-									<li><a th:href="@{/admin/index}">Tiểu Thuyết</a></li>
-									<li><a href="#">Truyện Ngắn - Tản Văn</a></li>
-									<li><a href="#">Light Novel</a></li>
-									<li><a href="#">Truyện Trinh Thám-Kiếm Hiệp</a></li>
+									<li> <a th:href="@{|/product/shop_list?cid=${c.id}|}">[[${c.genres}]]</a></li>									
 								</ul>
 							</div>
-							<div class="mega_items p-3">
+						
+													
+							<!-- <div class="mega_items p-3">
 								<h3>
 									<a href="#">Kinh Tế</a>
 								</h3>
@@ -99,7 +95,7 @@
 									<li><a href="#">Tiếng Hoa</a></li>
 									<li><a href="#">Tiếng Hàn</a></li>
 								</ul>
-							</div>
+							</div> -->
 						</div>
 
 					</div></li>

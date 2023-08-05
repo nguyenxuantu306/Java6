@@ -2,7 +2,6 @@ package com.poly.rest.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,8 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.poly.bean.Book;
 import com.poly.service.BookService;
 
-
-
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/rest/products")
@@ -26,32 +23,30 @@ public class BookRestController {
 
 	@Autowired
 	BookService bookService;
-	
+
 	@GetMapping()
 	public List<Book> getAll() {
 		return bookService.findAll();
 	}
-	
-	
+
 	@GetMapping("{id}")
 	public Book getOne(@PathVariable("id") String id) {
 		return bookService.findById(id);
 	}
-	
+
 	@PostMapping()
 	public Book create(@RequestBody Book book) {
 		return bookService.create(book);
 	}
-	
+
 	@PutMapping("{id}")
-	public Book update(@PathVariable("id")String id,@RequestBody Book book) {
+	public Book update(@PathVariable("id") String id, @RequestBody Book book) {
 		return bookService.update(book);
 	}
-	
+
 	@DeleteMapping("{id}")
-	public void delete(@PathVariable("id")String id) {
+	public void delete(@PathVariable("id") String id) {
 		bookService.delete(id);
 	}
-	
-	
+
 }

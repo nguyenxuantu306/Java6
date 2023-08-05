@@ -10,14 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.poly.bean.Discount;
 import com.poly.service.DiscountService;
 
-
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/rest/discounts")
 public class DiscountRestController {
 	@Autowired
 	DiscountService discountService;
-	
+
 	@GetMapping
 	public List<Discount> getAll() {
 		return discountService.findAll();

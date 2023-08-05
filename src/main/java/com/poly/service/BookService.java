@@ -16,6 +16,6 @@ public interface BookService {
 
 	void delete(String id);
 
-	
+	List<Book> findByCategoryId(String cid);
 
 }

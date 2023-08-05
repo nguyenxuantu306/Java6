@@ -28,6 +28,6 @@ public class OrderDetails implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "Book_id")
 	Book book;
-	
+
 	Float Price;
 }

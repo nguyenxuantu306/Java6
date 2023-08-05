@@ -27,9 +27,9 @@ public class Discount implements Serializable {
 	Integer Id;
 	String Name;
 	Float Value;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "discount")
-	List<Order> order;	
-	
+	List<Order> order;
+
 }

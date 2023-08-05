@@ -33,21 +33,25 @@ public class HomeController {
 		model.addAttribute("books", books);
 		return "user/index";
 	}
-	
+
 	@GetMapping("/index/profile")
 	public String profile(Model model) {
 		return "user/profile";
 	}
-	
 
 	@GetMapping("/index/product-detail/{productId}")
 	public String getProductDetail(@PathVariable String productId, Model model) {
+		// Fetch the specific product based on the given productId
 		Book books = booksdao.findById(productId).orElse(null);
 		if (books == null) {
-			return "redirect:/index";
+			// Handle the case when the product is not found (optional)
+			return "redirect:/index"; // Redirect to the home page or an error page
 		}
+
+		// Add the product to the model to be displayed in the modal box or product
+		// detail page
 		model.addAttribute("productDetails", books);
-		return "product/product_detail";
+		return "product/product_detail"; // Replace with the actual Thymeleaf template for the modal content
 	}
 
 //	@GetMapping("/index/login")
@@ -72,12 +76,9 @@ public class HomeController {
 		return "user/wishlist";
 	}
 
-
-	
-
-	@RequestMapping({"/admin","/admin/home/index"})
+	@RequestMapping({ "/admin", "/admin/home/index" })
 	public String admin() {
 		return "redirect:/assets/admin/index.html";
 	}
-	
+
 }

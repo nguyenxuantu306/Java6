@@ -10,20 +10,18 @@ import org.springframework.web.bind.annotation.RestController;
 import com.poly.bean.States;
 import com.poly.service.StateService;
 
-
-
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/rest/states")
 public class StateRestController {
 	@Autowired
 	StateService stateService;
-	
+
 	@GetMapping()
 	public List<States> getAll() {
 		return stateService.findAll();
 	}
-	
+
 	/*
 	 * @GetMapping("{id}") public States getOne(@PathVariable("id") String id) {
 	 * return stateService.findById(id); }

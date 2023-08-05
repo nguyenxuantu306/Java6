@@ -19,25 +19,26 @@ import com.poly.service.BookService;
 import com.poly.service.OrderService;
 
 @Service
-public class OrderServiceImpl implements OrderService{
+public class OrderServiceImpl implements OrderService {
 	@Autowired
 	OrderDAO dao;
-	
+
 	@Autowired
 	OrderDetailDAO ddao;
 
 	@Override
 	public Order create(JsonNode orderData) {
 		ObjectMapper mapper = new ObjectMapper();
-		
+
 		Order order = mapper.convertValue(orderData, Order.class);
 		dao.save(order);
-		
-		TypeReference<List<OrderDetails>> type = new TypeReference<List<OrderDetails>>() {};
-		List<OrderDetails> details = mapper.convertValue(orderData.get("orderDetails"), type)
-				.stream().peek(d -> d.setOrder(order)).collect(Collectors.toList());
+
+		TypeReference<List<OrderDetails>> type = new TypeReference<List<OrderDetails>>() {
+		};
+		List<OrderDetails> details = mapper.convertValue(orderData.get("orderDetails"), type).stream()
+				.peek(d -> d.setOrder(order)).collect(Collectors.toList());
 		ddao.saveAll(details);
-		
+
 		return order;
 	}
 
@@ -46,10 +47,9 @@ public class OrderServiceImpl implements OrderService{
 		return dao.findById(id).get();
 	}
 
-
 	@Override
 	public List<Order> findAll() {
 		return dao.findAll();
 	}
-	
+
 }

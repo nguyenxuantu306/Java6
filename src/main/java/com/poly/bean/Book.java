@@ -5,8 +5,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -22,37 +20,35 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Books")
 public class Book implements Serializable {
-	
+
 	@Id
-	@Column(name="Id")
+	@Column(name = "Id")
 	private String Id;
 
 	private String Name;
 
 	private String Image;
-	
+
 	private Float Price;
-	
+
 	private String Author;
 
 	private Integer pagecount;
-	
+
 	private String Description;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Publication_date")
 	private Date publication_date = new Date();
-	
+
 	@ManyToOne
-	@JoinColumn(name = "genres_id")
+	@JoinColumn(name = "Genres_id")
 	Genres genres;
 
 	private String Publisher;
@@ -60,9 +56,9 @@ public class Book implements Serializable {
 	private Integer Stock_quantity;
 
 	private Boolean Available;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "book")
-	List<OrderDetails> orderDetails;	
+	List<OrderDetails> orderDetails;
 
 }

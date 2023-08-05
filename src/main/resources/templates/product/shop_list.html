@@ -29,9 +29,8 @@
 						<h4>Categories</h4>
 					</div>
 					<div class="layere_categorie">
-						<ul>
-							<li>Accessories<span>(1)</span></li>
-						</ul>
+						<a th:each="c:${cates}" th:href="@{|/product/shop_list?cid=${c.id}|}" 
+            	class="list-group-item">[[${c.genres}]]</a>
 					</div>
 				</div>
 				<!--layere categorie end-->
@@ -171,7 +170,7 @@
 											</div>
 											<div class="product_action">
 												<a th:attr="ng-click=@{|cart.add(${p.id})|}" href=""> <i
-													class="fa fa-shopping-cart" th:text="#{list.Addtocart}"></i> Add to cart
+													class="fa fa-shopping-cart" th:text="#{list.Addtocart}"></i> 
 												</a>
 											</div>
 										</div>
@@ -194,13 +193,12 @@
 
 							</div>
 						</div>
-						<div class="tab-pane fade " id="large" role="tabpanel">
-							<div class="product_list_item mb-35">
+						<div  class="tab-pane fade " id="large" role="tabpanel">
+							<div th:each="p:${items}" class="product_list_item mb-35">
 								<div class="row align-items-center">
 									<div class="col-lg-4 col-md-6 col-sm-6">
 										<div class="product_thumb">
-											<a href="single-product.html"><img
-												src="assets\img\product\product2.jpg" alt=""></a>
+											<a href="single-product.html"><img th:src="@{|/assets/images/${p.image}|}" alt=""></a>
 											<div class="hot_img">
 												<img src="assets\img\cart\span-hot.png" alt="">
 											</div>

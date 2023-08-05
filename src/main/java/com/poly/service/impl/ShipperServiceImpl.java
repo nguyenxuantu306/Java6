@@ -2,9 +2,6 @@ package com.poly.service.impl;
 
 import java.util.List;
 
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +24,4 @@ public class ShipperServiceImpl implements ShipperService {
 		return dao.findAll();
 	}
 
-	
 }

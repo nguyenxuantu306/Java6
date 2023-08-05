@@ -2,12 +2,8 @@ package com.poly.bean;
 
 import java.io.Serializable;
 
-
-
 import java.util.Date;
 import java.util.List;
-
-
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -22,9 +18,6 @@ import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-
-
 
 @Data
 @Entity
@@ -46,11 +39,11 @@ public class Account implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Date")
 	Date date = new Date();
-	
+
 //	@JsonIgnore
 //	@OneToMany(mappedBy = "account")
 //	List<Orders> orders;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
 	List<Account_roles> accountroles;

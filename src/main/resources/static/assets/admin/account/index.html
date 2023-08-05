@@ -14,24 +14,40 @@
 							<div class="card-body">
 								<div class="row">
 									<div class="col-sm-3 .offset-sm-3 dataTables_filter">
-										<label>Search:<input type="search" class="form-control form-control-sm"
-												placeholder="" ng-model="keyword" aria-controls="example1"/></label>
+										<label>Search by username:<input type="search"
+												class="form-control form-control-sm" placeholder=""
+												ng-model="keyword.username" aria-controls="example1" /></label>
 									</div>
 								</div>
 								<table id="example1" class="table table-bordered table-striped">
-
 									<thead>
 										<tr>
-											<th>Photo</th>
-											<th>Username</th>
-											<th>Password</th>
-											<th>Fullname</th>
-											<th>Email</th>
+											<th ng-click="sortBy('photo')"> <a>Photo</a>
+												<span class="sortorder" ng-show="propertyName === 'photo'"
+													ng-class="{reverse: reverse}"></span>
+											</th>
+											<th ng-click="sortBy('username')"> <a>Username</a>
+												<span class="sortorder" ng-show="propertyName === 'username'"
+													ng-class="{reverse: reverse}"></span>
+											</th>
+											<th ng-click="sortBy('password')"> <a>Password</a>
+												<span class="sortorder" ng-show="propertyName === 'password'"
+													ng-class="{reverse: reverse}"></span>
+											</th>
+											<th ng-click="sortBy('fullname')"> <a>Fullname</a>
+												<span class="sortorder" ng-show="propertyName === 'fullname'"
+													ng-class="{reverse: reverse}"></span>
+											</th>
+											<th ng-click="sortBy('email')"> <a>Email</a>
+												<span class="sortorder" ng-show="propertyName === 'email'"
+													ng-class="{reverse: reverse}"></span>
+											</th>
 											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr ng-repeat="item in pager.items| filter:keyword">
+										<tr
+											ng-repeat="item in pager.items| filter:keyword | orderBy:propertyName:reverse">
 											<th>{{item.photo}}</th>
 											<th>{{item.username}}</th>
 											<th>{{item.password}}</th>

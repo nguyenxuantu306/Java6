@@ -28,8 +28,11 @@ app.controller("account-ctrl", function($scope, $http) {
 	// Hiện thị lên form
 	$scope.edit = function(item) {
 		$scope.form = angular.copy(item);
-		$(".nav-tabs a:eq(0)").tab('show')
+		window.scrollTo(0, document.body.scrollHeight);
+
 	}
+
+
 
 	// Thêm sản phẩm mới
 	$scope.create = function() {
@@ -130,4 +133,12 @@ app.controller("account-ctrl", function($scope, $http) {
 		}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
 	});
+	$scope.propertyName = 'username';
+	$scope.reverse = true;
+	$scope.example1 = $scope.items;
+
+	$scope.sortBy = function(propertyName) {
+		$scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+		$scope.propertyName = propertyName;
+	};
 });

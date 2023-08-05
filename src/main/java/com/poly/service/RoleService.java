@@ -7,5 +7,6 @@ import com.poly.bean.Role;
 public interface RoleService {
 
 	public List<Role> findAll();
+	
 
 }

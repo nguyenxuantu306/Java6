@@ -54,12 +54,12 @@ public class AccountRestController {
 	}
 
 	
-//	@GetMapping
-//	public List<Account> getAccounts(@RequestParam("admin") Optional<Boolean> admin){
-//		if(admin.orElse(false)){
-//			return accountService.getAdministrators();
-//		}
-//		return accountService.findAll();
-//	}
+	@GetMapping
+	public List<Account> getAccounts(@RequestParam("admin") Optional<Boolean> admin){
+		if(admin.orElse(false)){
+			return accountService.getAdministrators();
+		}
+		return accountService.findAll();
+	}
 
 }

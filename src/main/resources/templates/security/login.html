@@ -9,7 +9,7 @@
 			<div class="col-lg-12 col-md-12">
 				<div class="account_form">
 					<h2>login</h2>
-					<form th:action="@{/index/login}" method="post">
+					<form th:action="@{/home/index}" method="post">
 						<p>
 							<label>Username or email <span>*</span></label> <input
 								type="text" name="username">
@@ -25,6 +25,14 @@
 							</label> <a th:href="@{/index/register}">Register</a> <a
 								th:href="@{/index/forgotpassword}">Lost your password?</a>
 						</div>
+						<div>
+						<div 
+						class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout="" data-auto-logout-link="false" data-use-continue-as="false"></div>
+						</div>
+						<div>
+						<a href="/oauth2/authorization/google">GOOGLE</a>
+						<a href="/oauth2/authorization/facebook">FACEBOOK</a>
+						</div>
 						<p th:if="${loginError}" style="color: red;">${loginError}</p>
 					</form>
 				</div>
@@ -33,5 +41,7 @@
 		</div>
 	</div>
 	<!-- customer login end -->
+	<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v17.0&appId=1121506385248423&autoLogAppEvents=1" nonce="ovXGYysT"></script>
 </body>
 </html>

@@ -28,7 +28,7 @@ public class Account implements Serializable {
 
 	@Id
 	String Id;
-	String Username;
+	String username;
 	String Password;
 	String Fullname;
 	String Email;

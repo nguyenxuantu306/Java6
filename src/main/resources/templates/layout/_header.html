@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org">
+<html xmlns="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- Trong phần <head> của trang HTML -->
-<style>
-.mini_cart {
-	display: none; /* Ẩn modal mini ban đầu */
-}
-</style>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<!-- Trong phần <head> của trang HTML -->
+	<style>
+		.mini_cart {
+			display: none;
+			/* Ẩn modal mini ban đầu */
+		}
+	</style>
 
 </head>
+
 <body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
 	<div th:fragment="navbar" class="header_area">
 		<!--header top-->
@@ -19,40 +22,52 @@
 				<div class="col-lg-6 col-md-6">
 					<div class="switcher">
 						<ul>
-							<li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="" id="menu"
-								data-toggle="dropdown" th:text="#{nav.lang}">Language</a>
+							<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" id="menu"
+									data-toggle="dropdown" th:text="#{nav.lang}">Language</a>
 								<ul class="dropdown-menu" aria-labelledby="menu">
-									<li><a href="" onclick="changeLanguage('vi')"
-										th:text="#{nav.vi}">Vietnamese</a></li>
-									<li><a href="" onclick="changeLanguage('en')"
-										th:text="#{nav.en}">English</a></li>
-								</ul></li>
+									<li><a href="" onclick="changeLanguage('vi')" th:text="#{nav.vi}">Vietnamese</a>
+									</li>
+									<li><a href="" onclick="changeLanguage('en')" th:text="#{nav.en}">English</a></li>
+								</ul>
+							</li>
+							<li sec:authorize="isAuthenticated()">
+							<li><a th:href="@{/index/profile}" title="My account" th:text="#{nav.profile}">Profile</a>
+							</li>
+							<li><a th:href="@{/index/logoff}">Logoff</a></li>
+						
+							<li th:if="${#authorization.expression('hasRole(''Administrator'')')}"><a
+									th:href="@{/admin/home/index}">Administration</a></li>
+
+							<li>
+								<a href="" sec:authentication="name"></a>
+
+							</li>
+
+
+
 							<script>
-					  function changeLanguage(lang) {
-						$.ajax({
-						  url: "/home/index?lang=" + lang
-						}).then(resp => {
-						  location.reload();
-						});
-					  }
-					  </script>
+								function changeLanguage(lang) {
+									$.ajax({
+										url: "/home/index?lang=" + lang
+									}).then(resp => {
+										location.reload();
+									});
+								}
+							</script>
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="header_links">
-						<ul>
-							<li><a th:href="@{/product/contact}" title="Contact"
-								th:text="#{nav.contact}">Contact</a></li>
-							<li><a th:href="@{/index/wishlist}" title="wishlist"
-								th:text="#{nav.wishlist}">My wishlist</a></li>
-							<li><a th:href="@{/index/profile}" title="My account"
-								th:text="#{nav.profile}">Profile</a></li>
-							<li><a th:href="@{/cart/view}" title="My cart"
-								th:text="#{nav.cart}">My cart</a></li>
-							<li><a th:href="@{/index/login}" title="Login"
-								th:text="#{nav.login}">Login</a></li>
+						<ul sec:authorize="isAuthenticated()">
+							<li><a th:href="@{/product/contact}" title="Contact" th:text="#{nav.contact}">Contact</a>
+							</li>
+							<li><a th:href="@{/index/wishlist}" title="wishlist" th:text="#{nav.wishlist}">My
+									wishlist</a></li>
+							<li><a th:href="@{/order/list}" >Your Orders</a></li>
+							<li><a th:href="@{/cart/view}" title="My cart" th:text="#{nav.cart}">My cart</a></li>
+							<li><a th:href="@{/index/login}" title="Login" th:text="#{nav.login}">Login</a></li>
+
 						</ul>
 					</div>
 				</div>
@@ -66,8 +81,7 @@
 				<!--logo start-->
 				<div class="col-lg-3 col-md-3">
 					<div class="logo">
-						<a href="index.html"><img src="assets\img\logo\logo.jpg.png"
-							alt=""></a>
+						<a href="index.html"><img src="assets\img\logo\logo.jpg.png" alt=""></a>
 					</div>
 				</div>
 				<!--logo end-->
@@ -86,27 +100,24 @@
 						</div>
 						<div class="shopping_cart">
 							<a> <i class="fa fa-shopping-cart"></i> {{cart.count}} Items
-								- ${{cart.amount | number:2}} <i class="fa fa-angle-down"
-								ng-show="showMiniCart"></i>
+								- ${{cart.amount | number:2}} <i class="fa fa-angle-down" ng-show="showMiniCart"></i>
 							</a>
 							<!--mini cart-->
 							<div class="mini_cart" id="miniCart">
 								<div class="cart_item" ng-repeat="item in cart.items">
 									<div class="cart_img">
 										<a th:href="@{|/product/detail/${id}|}"><img
-											th:src="@{|/assets/images/${image}|}" ng-alt="${item.name}"></a>
+												th:src="@{|/assets/images/${image}|}" ng-alt="${item.name}"></a>
 									</div>
 									<div class="cart_info">
 										<a th:href="@{|/product/detail/${id}|}">{{item.name}}</a> <span
 											class="cart_price">${{item.price | number:2}}</span> <span
-											class="quantity">Qty: <input
-											ng-change="cart.saveToLocalStorage()" ng-model="item.qty"
-											type="number" min="1" style="width: 50px"></span>
+											class="quantity">Qty: <input ng-change="cart.saveToLocalStorage()"
+												ng-model="item.qty" type="number" min="1" style="width: 50px"></span>
 									</div>
 									<div class="cart_remove">
-										<a title="Remove this item"
-											th:attr="ng-click='cart.remove(item.id)'"> <i
-											class="fa fa-times-circle"></i>
+										<a title="Remove this item" th:attr="ng-click='cart.remove(item.id)'"> <i
+												class="fa fa-times-circle"></i>
 										</a>
 									</div>
 								</div>
@@ -139,4 +150,5 @@
 	<!--header end -->
 
 </body>
+
 </html>

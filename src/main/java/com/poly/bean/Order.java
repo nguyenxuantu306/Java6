@@ -34,6 +34,8 @@ public class Order implements Serializable {
 	@Temporal(TemporalType.DATE)
 	Date date = new Date();
 
+	String Address;
+	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "Discount_id")

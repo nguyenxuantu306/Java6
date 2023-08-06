@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/layout :: dynamic(~{::body})}">
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
@@ -21,7 +21,7 @@
 					<tr th:each="order, state:${orders}">
 						<td>[[${state.index}]]</td>
 						<td>[[${order.id}]]</td>
-						<td>[[${order.createDate}]]</td>
+						<td>[[${order.date}]]</td>
 						<td>[[${order.address}]]</td>
 						<td>
 							<a th:href="@{|/order/detail/${order.id}|}" class="btn btn-primary">Sreach</a>

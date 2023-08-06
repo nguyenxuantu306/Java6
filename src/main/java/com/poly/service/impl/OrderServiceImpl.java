@@ -42,14 +42,29 @@ public class OrderServiceImpl implements OrderService {
 		return order;
 	}
 
-	@Override
-	public Order findById(String id) {
-		return dao.findById(id).get();
-	}
+	
 
 	@Override
 	public List<Order> findAll() {
 		return dao.findAll();
 	}
+
+	@Override
+	public List<Order> findByIdAccount(String id) {
+		// TODO Auto-generated method stub
+		return dao.findByIdAccount(id);
+	}
+
+
+
+	@Override
+	public Order findById(String id) {
+		// TODO Auto-generated method stub
+		return dao.findById(id).get();
+	}
+
+
+
+	
 
 }

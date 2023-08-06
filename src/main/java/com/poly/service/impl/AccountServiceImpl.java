@@ -2,10 +2,7 @@ package com.poly.service.impl;
 
 import java.util.Collection;
 import java.util.List;
-<<<<<<< HEAD
-=======
 import java.util.stream.Collectors;
->>>>>>> Nghia_LOGIN
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
@@ -96,9 +93,6 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 //	public List<Account> getAdministrators() {
 //		return adao.getAdministrators();
 //	}
-<<<<<<< HEAD
-
-=======
 	 public void loginFormOAuth2(OAuth2AuthenticationToken oauth2) {
 			String email = oauth2.getPrincipal().getAttribute("email");
 			String password = Long.toHexString(System.currentTimeMillis());
@@ -111,5 +105,4 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 //			SecurityContextHolder.getContext().setAuthentication(auth);
 			
 		};
->>>>>>> Nghia_LOGIN
 }

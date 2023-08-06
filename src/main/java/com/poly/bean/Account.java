@@ -1,12 +1,7 @@
 package com.poly.bean;
 
 import java.io.Serializable;
-<<<<<<< HEAD
-
-=======
 import java.time.LocalDate;
->>>>>>> Nghia_LOGIN
-import java.util.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -43,13 +38,8 @@ public class Account implements Serializable {
 	String Phone;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Date")
-<<<<<<< HEAD
-	Date date = new Date();
-
-=======
 	LocalDate date;
 	
->>>>>>> Nghia_LOGIN
 //	@JsonIgnore
 //	@OneToMany(mappedBy = "account")
 //	List<Orders> orders;

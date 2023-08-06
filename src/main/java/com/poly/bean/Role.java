@@ -4,11 +4,8 @@ import java.io.Serializable;
 
 import java.util.List;
 
-<<<<<<< HEAD
-=======
 import org.hibernate.annotations.ManyToAny;
 
->>>>>>> Nghia_LOGIN
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;

@@ -22,11 +22,8 @@ public interface AccountService {
 
 
 
-<<<<<<< HEAD
-=======
 	
 
 //	public List<Account> getAdministrators();
 	
->>>>>>> Nghia_LOGIN
 }

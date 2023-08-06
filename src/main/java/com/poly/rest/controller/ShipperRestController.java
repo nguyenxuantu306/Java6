@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.poly.bean.Order;
 import com.poly.bean.Shipper;
-import com.poly.service.OrderService;
 import com.poly.service.ShipperService;
 
 @CrossOrigin("*")

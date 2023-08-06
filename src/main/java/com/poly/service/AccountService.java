@@ -1,9 +1,6 @@
 package com.poly.service;
 
 import java.util.List;
-
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
-
 import com.poly.bean.Account;
 
 public interface AccountService {

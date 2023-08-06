@@ -37,13 +37,26 @@
 						<a class="dropdown-item" href="/?lang=en" th:text="#{nav.en}">English</a>
 					</li> -->
 					
-					<li class="nav-item dropdown">
+					 <!-- <li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="" id="menu" data-toggle="dropdown" th:text="#{nav.lang}">Language</a>
 						<ul class="dropdown-menu" aria-labelledby="menu">
-						  <li><a href="" onclick="changeLanguage('vi')" th:text="#{nav.vi}">Vietnamese</a></li>
-						  <li><a href="" onclick="changeLanguage('en')" th:text="#{nav.en}">English</a></li>
+						  
 						</ul>
-					  </li>
+					  </li>  -->
+					  
+					  <li><a onclick="changeLanguage('vi')" th:text="#{nav.vi}"><img src="assets\img\logo\fontlogo3.jpg.png"> 
+					  Vietnamese</a></li>
+						  <li><a onclick="changeLanguage('en')" th:text="#{nav.en}"><img src="assets\img\logo\fontlogo.jpg"> 
+						  English</a></li>
+			<!-- 		  <a href="">Tiếng Việt</a>
+		<a href="?lang=en">English</a> -->
+							  <!-- <li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="" id="menu" data-toggle="dropdown" th:text="#{nav.lang}">Language</a>
+						<ul class="dropdown-menu" aria-labelledby="menu">
+						  <a href="?lang=vi">Tiếng Việt</a>
+		<a href="?lang=en">English</a>
+						</ul>
+					  </li> -->
 					  
 					  <script>
 					  function changeLanguage(lang) {
@@ -68,7 +81,7 @@
 					<div class="header_links">
 						<ul>
 							<li><a th:href="@{/product/contact}" title="Contact" th:text="#{nav.contact}">Contact</a></li>
-							<li><a th:href="@{/index/wishlist}" title="wishlist" th:text="#{nav.wishlist}">My wishlist</a></li>
+							<li><a th:href="@{/user/wishlist}" title="wishlist" th:text="#{nav.wishlist}">My wishlist</a></li>
 							<li><a th:href="@{/index/profile}" title="My account" th:text="#{nav.profile}">Profile</a></li>
 							<li><a th:href="@{/cart/view}" title="My cart" th:text="#{nav.cart}">My cart</a></li>
 							<li><a th:href="@{/index/login}" title="Login" th:text="#{nav.login}">Login</a></li>
@@ -85,7 +98,7 @@
 				<!--logo start-->
 				<div class="col-lg-3 col-md-3">
 					<div class="logo">
-						<a href="index.html"><img src="assets\img\logo\logo.jpg.png"
+						<a th:href="@{home/index}"><img src="assets\img\logo\logo.jpg.png"
 							alt=""></a>
 					</div>
 				</div>
@@ -101,9 +114,10 @@
 							</form>
 						</div>
 						<div class="shopping_cart">
-								<a > <i
-									class="fa fa-shopping-cart"></i> {{cart.count}} Items -
-									${{cart.amount | number:2}} <i class="fa fa-angle-down"  ng-show="showMiniCart"></i>
+								<a>
+								<i class="fa fa-shopping-cart">
+									</i> {{cart.count}} Sản phẩm -	${{cart.amount | number:2}} 
+									 <i class="fa fa-angle-down"  ng-show="showMiniCart"></i>
 								</a>
 							<!--mini cart-->
 							<div class="mini_cart" id="miniCart">
@@ -126,14 +140,14 @@
 									</div>
 								</div>
 								<div class="shipping_price">
-									<span> Shipping </span> <span> $7.00 </span>
+									<span th:text="#{Calculateshipping}"> Shipping </span> <span> $7.00 </span>
 								</div>
 								<div class="total_price">
-									<span> Total </span> <span class="prices">${{cart.amount
+									<span th:text="#{cart.Total}"> Total </span> <span class="prices">${{cart.amount
 										| number:2}} </span>
 								</div>
 								<div class="cart_button">
-									<a th:href="@{/cart/view}"> Check out</a>
+									<a th:href="@{/cart/view}" th:text="#{Checkout}"> Check out</a>
 								</div>
 							</div>
 							<!--mini cart end-->

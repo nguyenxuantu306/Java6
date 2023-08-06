@@ -38,6 +38,10 @@ public class HomeController {
 	public String profile(Model model) {
 		return "user/profile";
 	}
+//	@GetMapping("/index/wishlist")
+//	public String wishlist(Model model) {
+//		return "user/wishlist";
+//	}
 
 	@GetMapping("/index/product-detail/{productId}")
 	public String getProductDetail(@PathVariable String productId, Model model) {
@@ -71,8 +75,8 @@ public class HomeController {
 
 	@GetMapping("/index/wishlist")
 	public String getAllWishlist(Model model) {
-		List<Wishlist> wishlists = wishlistsdao.findAll();
-		model.addAttribute("wishlists", wishlists);
+		List<Wishlist> wishlist = wishlistsdao.findAll();
+		model.addAttribute("wishlist", wishlist);
 		return "user/wishlist";
 	}
 

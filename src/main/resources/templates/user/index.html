@@ -31,10 +31,9 @@
 							style="background-image: url(assets/img/slider/slider_1.jpg)">
 							<div class="slider_content">
 								<div class="slider_content_inner">
-									<h1>Women's Fashion</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit.</p>
-									<a href="#">shop now</a>
+									
+									<p></p>
+									<a th:href="@{product/shop_list}" th:text="#{bn.shopnow}">shop now</a>
 								</div>
 							</div>
 						</div>
@@ -42,10 +41,9 @@
 							style="background-image: url(assets/img/slider/slider_2.jpg)">
 							<div class="slider_content">
 								<div class="slider_content_inner">
-									<h1>New Collection</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit.</p>
-									<a href="#">shop now</a>
+									<h1>\</h1>
+									<p>\</p>
+									<a th:href="@{product/shop_list}" th:text="#{bn.shopnow}">shop now</a>
 								</div>
 							</div>
 						</div>
@@ -53,10 +51,9 @@
 							style="background-image: url(assets/img/slider/slider_3.jpg)">
 							<div class="slider_content">
 								<div class="slider_content_inner">
-									<h1>Best Collection</h1>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit.</p>
-									<a href="#">shop now</a>
+									<h1></h1>
+									<p></p>
+									<a th:href="@{product/shop_list}" th:text="#{bn.shopnow}">shop now</a>
 								</div>
 							</div>
 						</div>
@@ -160,7 +157,7 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="block_title">
-						<h3>featured Products</h3>
+						<h3 th:text="#{bn.featuredProducts}">featured Products</h3>
 					</div>
 				</div>
 			</div>
@@ -175,7 +172,7 @@
 									<img src="assets\img\cart\span-new.png" alt="">
 								</div>
 								<div class="product_action">
-									<a href="#"> <i class="fa fa-shopping-cart"></i> Add to
+									<a href="#" th:text="#{user.Addtocart}"> <i class="fa fa-shopping-cart"></i> Add to
 										cart
 									</a>
 								</div>
@@ -188,10 +185,10 @@
 							</div>
 							<div class="product_info">
 								<ul>
-									<li><a href="#" title=" Add to Wishlist ">Add to
+									<li><a href="#" th:text="#{user.Addtocart}" >Add to
 											Wishlist</a></li>
 									<li><a href="#" data-toggle="modal"
-										data-target="#modal_box" title="Quick view">View Detail</a></li>
+										data-target="#modal_box" th:text="#{user.ViewsDetail}">View Detail</a></li>
 								</ul>
 							</div>
 						</div>
@@ -214,11 +211,11 @@
 								src="assets\img\blog\blog3.jpg" alt=""></a>
 						</div>
 						<div class="blog_content">
-							<div class="blog_post">
+							<!-- <div class="blog_post">
 								<ul>
 									<li><a href="#">Tech</a></li>
 								</ul>
-							</div>
+							</div> -->
 							<h3>
 								<a href="blog-details.html">When an unknown took a galley of
 									type.</a>
@@ -234,7 +231,7 @@
 									</ul>
 								</div>
 								<div class="Read_more">
-									<a href="blog-details.html">Read more <i
+									<a href="blog-details.html" th:text="#{blog.readmore}">Read more <i
 										class="fa fa-angle-double-right"></i></a>
 								</div>
 							</div>
@@ -248,11 +245,11 @@
 								src="assets\img\blog\blog4.jpg" alt=""></a>
 						</div>
 						<div class="blog_content">
-							<div class="blog_post">
+							<!-- <div class="blog_post">
 								<ul>
 									<li><a href="#">Men</a></li>
 								</ul>
-							</div>
+							</div> -->
 							<h3>
 								<a href="blog-details.html">When an unknown took a galley of
 									type.</a>
@@ -268,7 +265,7 @@
 									</ul>
 								</div>
 								<div class="Read_more">
-									<a href="blog-details.html">Read more <i
+									<a href="blog-details.html" th:text="#{blog.readmore}">Read more <i
 										class="fa fa-angle-double-right"></i></a>
 								</div>
 							</div>
@@ -282,11 +279,11 @@
 								src="assets\img\blog\blog1.jpg" alt=""></a>
 						</div>
 						<div class="blog_content">
-							<div class="blog_post">
+							<!-- <div class="blog_post">
 								<ul>
 									<li><a href="#">Women</a></li>
 								</ul>
-							</div>
+							</div> -->
 							<h3>
 								<a href="blog-details.html">When an unknown took a galley of
 									type.</a>
@@ -302,7 +299,7 @@
 									</ul>
 								</div>
 								<div class="Read_more">
-									<a href="blog-details.html">Read more <i
+									<a href="blog-details.html" th:text="#{blog.readmore}">Read more <i
 										class="fa fa-angle-double-right"></i></a>
 								</div>
 							</div>
@@ -317,7 +314,7 @@
 		<!--brand logo strat-->
 		<div class="brand_logo brand_two">
 			<div class="block_title">
-				<h3>Brands</h3>
+				<h3  th:text="#{footer.Brands}">Brands</h3>
 			</div>
 			<div class="row">
 				<div class="brand_active owl-carousel">

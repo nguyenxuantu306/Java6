@@ -25,7 +25,7 @@
                             <div class="row">
                                    <div class="col-12">
                                         <div class="user-actions mb-20">
-                                            <h3> 
+                                            <h3 > 
                                                 <i class="fa fa-file-o" aria-hidden="true"></i>
                                                 Returning customer?
                                                 <a class="Returning" href="#" data-toggle="collapse" data-target="#checkout_login" aria-expanded="true">Click here to login</a>     
@@ -77,25 +77,25 @@
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6">
                                             <form action="#">
-                                                <h3>Billing Details</h3>
+                                                <h3  th:text="#{chk.BillingDetails}">Billing Details</h3>
                                                 <div class="row">
 
                                                     <div class="col-lg-6 mb-30">
-                                                        <label>First Name <span>*</span></label>
+                                                        <label th:text="#{chk.FirstName}">First Name <span>*</span></label>
                                                         <input type="text">    
                                                     </div>
                                                     <div class="col-lg-6 mb-30">
-                                                        <label>Last Name  <span>*</span></label>
+                                                        <label th:text="#{chk.LastName}">Last Name  <span>*</span></label>
                                                         <input type="text"> 
                                                     </div>
                                                     <div class="col-12 mb-30">
-                                                        <label>Company Name</label>
+                                                        <label th:text="#{chk.CompanyName}">Company Name</label>
                                                         <input type="text">     
                                                     </div>
                                                     <div class="col-12 mb-30">
-                                                        <label for="country">country <span>*</span></label>
+                                                        <label for="country" th:text="#{chk.country}">Country <span>*</span></label>
                                                         <select name="cuntry" id="country"> 
-                                                            <option value="2">bangladesh</option>      
+                                                            <option value="2">Việt Nam</option>      
                                                             <option value="3">Algeria</option> 
                                                             <option value="4">Afghanistan</option>    
                                                             <option value="5">Ghana</option>    
@@ -108,33 +108,33 @@
                                                     </div>
 
                                                     <div class="col-12 mb-30">
-                                                        <label>Street address  <span>*</span></label>
-                                                        <input placeholder="House number and street name" type="text">     
+                                                        <label th:text="#{chk.Streetaddress}">Street address  <span>*</span></label>
+                                                        <input placeholder="" type="text">     
                                                     </div>
                                                     <div class="col-12 mb-30">
-                                                        <input placeholder="Apartment, suite, unit etc. (optional)" type="text">     
+                                                        <input placeholder="" type="text">     
                                                     </div>
                                                     <div class="col-12 mb-30">
-                                                        <label>Town / City <span>*</span></label>
+                                                        <label th:text="#{chk.Town/City}">Town / City <span>*</span></label>
                                                         <input type="text">    
                                                     </div> 
                                                      <div class="col-12 mb-30">
-                                                        <label>State / County <span>*</span></label>
+                                                        <label th:text="#{chk.State/County}">State / County <span>*</span></label>
                                                         <input type="text">    
                                                     </div> 
                                                     <div class="col-lg-6 mb-30">
-                                                        <label>Phone<span>*</span></label>
+                                                        <label th:text="#{chk.Phone}">Phone<span>*</span></label>
                                                         <input type="text"> 
 
                                                     </div> 
                                                      <div class="col-lg-6 mb-30">
-                                                        <label> Email Address   <span>*</span></label>
+                                                        <label th:text="#{chk.EmailAddress}"> Email Address   <span>*</span></label>
                                                           <input type="text"> 
 
                                                     </div> 
                                                     <div class="col-12 mb-30">
                                                         <input id="account" type="checkbox" data-target="createp_account">
-                                                        <label for="account" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">Create an account?</label>
+                                                        <label for="account" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne" th:text="#{chk.Createanaccount?}">Create an account?</label>
 
                                                         <div id="collapseOne" class="collapse one" data-parent="#accordion">
                                                             <div class="card-body1">
@@ -145,7 +145,7 @@
                                                     </div>
                                                     <div class="col-12 mb-30">
                                                         <input id="address" type="checkbox" data-target="createp_account">
-                                                        <label class="righ_0" for="address" data-toggle="collapse" data-target="#collapsetwo" aria-controls="collapseOne">Ship to a different address?</label>
+                                                        <label class="righ_0" for="address" data-toggle="collapse" data-target="#collapsetwo" aria-controls="collapseOne" th:text="#{chk.Shiptoadifferentaddress?}">Ship to a different address?</label>
 
                                                         <div id="collapsetwo" class="collapse one" data-parent="#accordion">
                                                            <div class="row">
@@ -208,8 +208,8 @@
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="order-notes">
-                                                             <label for="order_note">Order Notes</label>
-                                                            <textarea id="order_note" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                                                             <label for="order_note" th:text="#{chk.OrderNotes}">Order Notes</label>
+                                                            <textarea id="order_note"></textarea>
                                                         </div>    
                                                     </div>     	    	    	    	    	    	    
                                                 </div>
@@ -217,13 +217,13 @@
                                         </div>
                                         <div class="col-lg-6 col-md-6">
                                             <form action="#">    
-                                                <h3>Your order</h3> 
+                                                <h3  th:text="#{chk.Yourorder}">Your order</h3> 
                                                 <div class="order_table table-responsive mb-30">
                                                     <table>
                                                         <thead>
                                                             <tr>
-                                                                <th>Product</th>
-                                                                <th>Total</th>
+                                                                <th th:text="#{cart.Product}">Product</th>
+                                                                <th th:text="#{cart.Total}">Total</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -246,24 +246,24 @@
                                                         </tbody>
                                                         <tfoot>
                                                             <tr>
-                                                                <th>Cart Subtotal</th>
+                                                                <th th:text="#{chk.CartSubtotal}">Cart Subtotal</th>
                                                                 <td>$215.00</td>
                                                             </tr>
                                                             <tr>
-                                                                <th>Shipping</th>
+                                                                <th th:text="#{chk.Shipping}">Shipping</th>
                                                                 <td><strong>$5.00</strong></td>
                                                             </tr>
                                                             <tr class="order_total">
-                                                                <th>Order Total</th>
+                                                                <th th:text="#{chk.OrderTotal}">Order Total</th>
                                                                 <td><strong>$220.00</strong></td>
                                                             </tr>
                                                         </tfoot>
                                                     </table>     
                                                 </div>
                                                 <div class="payment_method">
-                                                   <div class="panel-default">
+                                                   <div class="panel-default" >
                                                         <input id="payment" name="check_method" type="radio" data-target="createp_account">
-                                                        <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method">Create an account?</label>
+                                                        <label for="payment" data-toggle="collapse" data-target="#method" aria-controls="method" th:text="#{chk.Createanaccount?}">Create an account?</label>
 
                                                         <div id="method" class="collapse one" data-parent="#accordion">
                                                             <div class="card-body1">
@@ -282,7 +282,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="order_button">
-                                                        <button type="submit">Proceed to PayPal</button> 
+                                                        <button type="submit"  th:text="#{chk.ProceedtoPayPal}">Proceed to PayPal</button> 
                                                     </div>    
                                                 </div> 
                                             </form>         

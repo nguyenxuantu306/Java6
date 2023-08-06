@@ -20,10 +20,11 @@
 						</p>
 						<div class="login_submit">
 							<button type="submit" th:text="#{login.login}">login</button>
-							<label for="remember" th:text="#{login.remember}"> <input id="remember"
-								type="checkbox" > Remember me
-							</label> <a th:href="@{/index/register}" th:text="#{login.register}"> Register </a> <a
-								th:href="@{/index/forgotpassword}" th:text="#{login.lostyourpassword}"> Lost your password? </a>
+							<label for="remember" >
+							 <input id="remember" type="checkbox" th:text="#{login.remember}">
+							</label> 
+							<a th:href="@{/index/register}" th:text="#{login.register}"> Register?</a>
+							<a th:href="@{/index/forgotpassword}" th:text="#{login.lostyourpassword}"> Lost your password? </a>
 						</div>
 						<p th:if="${loginError}" style="color: red;">${loginError}</p>
 					</form>

@@ -14,7 +14,7 @@ public interface OrderService {
 
 
 
-	Order findById(String id);
+	Order findById(Integer id);
 	
 	
 

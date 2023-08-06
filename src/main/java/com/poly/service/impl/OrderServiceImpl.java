@@ -58,13 +58,8 @@ public class OrderServiceImpl implements OrderService {
 
 
 	@Override
-	public Order findById(String id) {
+	public Order findById(Integer id) {
 		// TODO Auto-generated method stub
 		return dao.findById(id).get();
 	}
-
-
-
-	
-
 }

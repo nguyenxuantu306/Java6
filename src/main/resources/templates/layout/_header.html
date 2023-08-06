@@ -19,17 +19,17 @@
 				<div class="col-lg-6 col-md-6">
 					<div class="switcher">
 						<ul>
-							<!-- <li class="languages"> 
+							 <li class="languages"> 
 							
-							<a href="#"><img src="assets\img\logo\fontlogo.jpg" alt=""> English <i class="fa fa-angle-down"></i></a>
+							<a><img src="assets\img\logo\fontlogo4.jpg" alt="" th:text=" #{nav.lang}"> <i class="fa fa-angle-down"></i></a>
 							
 								<ul class="dropdown_languages">
-									<li><a href="#" ><img
-											src="assets\img\logo\fontlogo.jpg" alt=""> English</a></li>
-									<li><a href="/?lang=vi" th:text="#{nav.vi}"><img
-											src="assets\img\logo\fontlogo3.jpg" alt=""> Tiếng Việt </a></li>
+									<li><a onclick="changeLanguage('vi')">
+										<img src="assets\img\logo\fontlogo3.jpg.png" th:text="#{nav.vi}" ></a></li>
+									<li><a onclick="changeLanguage('en')">
+										<img src="assets\img\logo\fontlogo.jpg"  th:text="#{nav.en}"></a></li>
 								</ul>
-								</li> -->
+							</li>
 								<!-- <li>
 						<a class="dropdown-item" href="/?lang=vi" th:text="#{nav.vi}">Vietnamese</a>
 					</li>
@@ -43,11 +43,13 @@
 						  
 						</ul>
 					  </li>  -->
-					  
-					  <li><a onclick="changeLanguage('vi')" th:text="#{nav.vi}"><img src="assets\img\logo\fontlogo3.jpg.png"> 
-					  Vietnamese</a></li>
-						  <li><a onclick="changeLanguage('en')" th:text="#{nav.en}"><img src="assets\img\logo\fontlogo.jpg"> 
-						  English</a></li>
+							
+							 <!-- <li>
+								<a onclick="changeLanguage('vi')" th:text="#{nav.vi}"><img src="assets\img\logo\fontlogo3.jpg.png">Vietnamese</a>
+					  		</li>
+							  <li>
+							  	<a onclick="changeLanguage('en')" th:text="#{nav.en}"><img src="assets\img\logo\fontlogo.jpg">English</a>
+							  </li> -->
 			<!-- 		  <a href="">Tiếng Việt</a>
 		<a href="?lang=en">English</a> -->
 							  <!-- <li class="nav-item dropdown">

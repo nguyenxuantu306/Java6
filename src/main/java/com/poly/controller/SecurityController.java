@@ -171,6 +171,7 @@ public class SecurityController {
     System.out.println("//////////////////");
   System.out.println(role.getName());
 
+  model.addAttribute("ac", ac);
 
 	return "/user/profile";
 	}

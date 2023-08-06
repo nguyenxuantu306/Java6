@@ -219,7 +219,7 @@ ADD CONSTRAINT FK_Books_wishlist FOREIGN KEY(Books_id) REFERENCES Books(Id);
 INSERT [dbo].[Accounts](Id, Username, Password, Fullname, Email, Photo, Gender,Address,Phone,Date)  values 
 	('AC0001','phongvto','$2a$12$ASJuQxMVb57BWynjTa2pruGj1jAkb/Ii9bneelqVuQYuGLbm9EGwW',N'Võ Thanh Phong','vothanhphong2000bt@gmail.com','phong.png',1,N'Tân Chánh Hiệp, Hồ Chí Minh','0969023190','2004-09-09'),
 <<<<<<< HEAD
-	('AC0002','huyento','$2a$12$ASJuQxMVb57BWynjTa2pruGj1jAkb/Ii9bneelqVuQYuGLbm9EGw',N'Nguyễn Tiến Anh','anhntps10770@fpt.edu.vn','anh.png',1,N'Đường Giải Phóng, Phường Tân Lợi, Thành phố Buôn Ma Thuật, Đắk LắK','0909331232','2003-08-28'),
+	('AC0002','huyento','$2a$12$ASJuQxMVb57BWynjTa2pruGj1jAkb/Ii9bneelqVuQYuGLbm9EGwW',N'Nguyễn Tiến Anh','anhntps10770@fpt.edu.vn','anh.png',1,N'Đường Giải Phóng, Phường Tân Lợi, Thành phố Buôn Ma Thuật, Đắk LắK','0909331232','2003-08-28'),
 =======
 	('AC0002','huyento','$2a$12$ASJuQxMVb57BWynjTa2pruGj1jAkb/Ii9bneelqVuQYuGLbm9EGwW',N'Nguyễn Tiến Anh','anhntps10770@fpt.edu.vn','anh.png',1,N'Đường Giải Phóng, Phường Tân Lợi, Thành phố Buôn Ma Thuật, Đắk LắK','0909331232','2003-08-28'),
 >>>>>>> Nghia_LOGIN

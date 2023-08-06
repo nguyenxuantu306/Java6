@@ -29,7 +29,7 @@ public class AuthConfig {
 		  
 		   http.authorizeRequests(authorize -> authorize
 				  // .requestMatchers("/static/css/**", "/static/font/**", "/static/images/**", "/static/img/**", "/static/js/**").permitAll()
-				   .requestMatchers("/static/**").permitAll()
+				   .requestMatchers("/assets/**").permitAll()
 				   .requestMatchers("/index/register").permitAll()
 				   .requestMatchers("/index/register/save").permitAll()
 				   .requestMatchers("/home/index").permitAll()

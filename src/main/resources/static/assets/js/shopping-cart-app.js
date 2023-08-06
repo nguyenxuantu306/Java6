@@ -126,5 +126,12 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			});
 		}
 	};
+
+	//  ---------Active menu------------ 
+  
+      // Hàm kiểm tra li có được active hay không
+      $scope.isActive = function (viewLocation) {
+          return viewLocation === $location.path();
+      };
 });
 

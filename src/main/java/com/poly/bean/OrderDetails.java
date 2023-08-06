@@ -21,7 +21,7 @@ import lombok.NoArgsConstructor;
 public class OrderDetails implements Serializable {
 	@Id
 	String Id;
-	
+
 	Long quantity;
 	@ManyToOne
 	@JoinColumn(name = "Order_id")
@@ -32,5 +32,5 @@ public class OrderDetails implements Serializable {
 	Book book;
 
 	Float Price;
-	
+
 }

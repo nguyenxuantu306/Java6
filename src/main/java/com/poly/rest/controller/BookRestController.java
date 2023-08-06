@@ -2,8 +2,6 @@ package com.poly.rest.controller;
 
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,11 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.poly.bean.Book;
 import com.poly.bean.Report;
 import com.poly.service.BookService;
-
 
 @CrossOrigin("*")
 @RestController
@@ -55,8 +51,7 @@ public class BookRestController {
 	public void delete(@PathVariable("id") String id) {
 		bookService.delete(id);
 	}
-	
-	
+
 //	@GetMapping("/thongke/sp")
 //	public ResponseEntity<List<Report>> getTK_SP() {
 //		return new ResponseEntity<>(bookService.getTk_sp(), HttpStatus.OK);

@@ -18,6 +18,4 @@ public interface AccountService {
 
 //	public List<Account> getAdministrators();
 
-
-
 }

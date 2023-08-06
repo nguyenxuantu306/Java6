@@ -18,10 +18,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import com.poly.bean.Book;
 import com.poly.service.BookService;
-
 
 @Controller
 public class BookController {
@@ -29,13 +27,13 @@ public class BookController {
 	BookService bookService;
 
 	@RequestMapping("/product/shop_list")
-	public String shop_list(Model model, @RequestParam("cid") Optional<String> cid ,
+	public String shop_list(Model model, @RequestParam("cid") Optional<String> cid,
 			@RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size,
 			@RequestParam("sort") Optional<String> sort) {
 		String valueFieldString;
 		String[] split;
 		Sort tempSort;
-		
+
 //		if (sort.isPresent()) {
 //			valueFieldString = sort.get();
 //			if (sort.get().contains("DESC")) {
@@ -82,8 +80,7 @@ public class BookController {
 		return "product/shop_list";
 
 	}
-	
-	
+
 	@RequestMapping("/product/search")
 	public String search(@RequestParam("key") Optional<String> keySearch,
 			@RequestParam("keyword") Optional<String> valueSearch, @RequestParam("page") Optional<Integer> page,
@@ -114,8 +111,7 @@ public class BookController {
 		if (keySearch.get().equals("nameProduct")) {
 			Pageable pageable = PageRequest.of(currentPage, pageSize);
 			productPage = bookService.findProductByKeyword("%" + valueSearch.get() + "%", pageable);
-		} 
-		else {
+		} else {
 			Pageable pageable = PageRequest.of(currentPage, pageSize);
 			productPage = bookService.findCategoryByKeyword("%" + valueSearch.get() + "%", pageable);
 		}
@@ -130,7 +126,6 @@ public class BookController {
 		model.addAttribute("items", productPage);
 		return "product/shop_list";
 	}
-	
 
 	@RequestMapping("/product/detail/{id}")
 	public String detail(Model model, @PathVariable("id") String id) {

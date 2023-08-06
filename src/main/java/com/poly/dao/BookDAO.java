@@ -7,7 +7,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-
 import com.poly.bean.Book;
 
 public interface BookDAO extends JpaRepository<Book, String> {
@@ -21,10 +20,8 @@ public interface BookDAO extends JpaRepository<Book, String> {
 	@Query("SELECT o FROM Book o WHERE o.genres.Genres like ?1")
 	Page<Book> findCategoryByKeyword(String keyword, Pageable pageable);
 
-	
 //	@Query("SELECT new Report(o.book, sum(o.Price * o.quantity), sum(o.quantity)) FROM OrderDetails o"
 //			+ " GROUP BY o.book" + " ORDER BY sum(o.Price * o.quantity) DESC")
 //	List<Report> reportTheoProduct();
-	
 
 }

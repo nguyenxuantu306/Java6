@@ -31,7 +31,7 @@ public class Book implements Serializable {
 	@Column(name = "Id")
 	private String Id;
 
-	 String Name;
+	String Name;
 
 	private String Image;
 

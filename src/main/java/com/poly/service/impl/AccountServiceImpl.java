@@ -41,8 +41,6 @@ public class AccountServiceImpl implements AccountService {
 
 	}
 
-
-
 //	@Override
 //	public List<Account> getAdministrators() {
 //		return adao.getAdministrators();

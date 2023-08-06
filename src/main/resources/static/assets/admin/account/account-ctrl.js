@@ -37,11 +37,11 @@ app.controller("account-ctrl", function($scope, $http) {
 		$scope.form = angular.copy(item);
 		$('#btn-create').attr('disabled', 'disabled');
 		$('#btn-delete').removeAttr('disabled');
-		$('#btn-update').removeAttr('disabled');			
+		$('#btn-update').removeAttr('disabled');
 		$('html,body').animate({
 			scrollTop: $(".info").offset().top
 		},
-			'slow');	
+			'slow');
 	}
 
 	// Thêm sản phẩm mới
@@ -130,17 +130,16 @@ app.controller("account-ctrl", function($scope, $http) {
 			this.page = this.count - 1;
 		}
 	}
-	$(function() {
+	$(document).ready(function() {
 		$("#example1").DataTable({
-			"responsive": true, "lengthChange": false, "autoWidth": false,
+			"responsive": true,
+			"lengthChange": false,
+			"autoWidth": false,
 			"paging": true,
 			"searching": false,
 			"ordering": true,
 			"info": true,
-			"autoWidth": false,
-			"responsive": true,
 			"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
 		}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-
 	});
 });

@@ -22,12 +22,13 @@
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" href="" id="menu"
 								data-toggle="dropdown" th:text="#{nav.lang}">Language</a>
-								<ul class="dropdown-menu" aria-labelledby="menu">
-									<li><a href="" onclick="changeLanguage('vi')"
+								<!-- <ul class="dropdown-menu" aria-labelledby="menu">
+								</ul> -->
+								<li><a href="" onclick="changeLanguage('vi')"
 										th:text="#{nav.vi}">Vietnamese</a></li>
 									<li><a href="" onclick="changeLanguage('en')"
 										th:text="#{nav.en}">English</a></li>
-								</ul></li>
+								</li>
 							<script>
 					  function changeLanguage(lang) {
 						$.ajax({

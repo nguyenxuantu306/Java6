@@ -2,13 +2,10 @@ package com.poly.service.impl;
 
 import java.util.List;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 
 import com.poly.bean.Book;
 import com.poly.bean.Report;
@@ -32,7 +29,7 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public Page<Book> findByCategoryId(String cid, Pageable pageable) {
-		return dao.findByCategoryId(cid,pageable);
+		return dao.findByCategoryId(cid, pageable);
 	}
 
 	@Override
@@ -71,8 +68,6 @@ public class BookServiceImpl implements BookService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
 
 //	@Override
 //	public List<Report> getTk_sp() {

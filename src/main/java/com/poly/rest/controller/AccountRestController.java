@@ -53,7 +53,6 @@ public class AccountRestController {
 		accountService.delete(id);
 	}
 
-	
 //	@GetMapping
 //	public List<Account> getAccounts(@RequestParam("admin") Optional<Boolean> admin){
 //		if(admin.orElse(false)){

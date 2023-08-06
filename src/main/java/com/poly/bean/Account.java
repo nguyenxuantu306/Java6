@@ -1,7 +1,11 @@
 package com.poly.bean;
 
 import java.io.Serializable;
+<<<<<<< HEAD
 
+=======
+import java.time.LocalDate;
+>>>>>>> Nghia_LOGIN
 import java.util.Date;
 import java.util.List;
 
@@ -27,8 +31,9 @@ import lombok.NoArgsConstructor;
 public class Account implements Serializable {
 
 	@Id
+	
 	String Id;
-	String Username;
+	String username;
 	String Password;
 	String Fullname;
 	String Email;
@@ -38,8 +43,13 @@ public class Account implements Serializable {
 	String Phone;
 	@Temporal(TemporalType.DATE)
 	@Column(name = "Date")
+<<<<<<< HEAD
 	Date date = new Date();
 
+=======
+	LocalDate date;
+	
+>>>>>>> Nghia_LOGIN
 //	@JsonIgnore
 //	@OneToMany(mappedBy = "account")
 //	List<Orders> orders;

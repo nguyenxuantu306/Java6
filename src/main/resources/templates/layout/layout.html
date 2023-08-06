@@ -13,8 +13,14 @@
         <link type="text/css" rel="stylesheet" href="..\assets\css\bundle.css">
         <link type="text/css" rel="stylesheet" href="..\assets\css\style.css">
         <link type="text/css" rel="stylesheet" href="..\assets\css\responsive.css">
+<<<<<<< HEAD
         <script type="application/javascript" src="..\assets\js\vendor\modernizr-2.8.3.min.js"></script>
         <script type="application/javascript" src="..\assets\js\angular.min.js"></script>
+=======
+        <script type="text/javascript" src="..\assets\js\vendor\modernizr-2.8.3.min.js"></script>
+        
+          <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+>>>>>>> Nghia_LOGIN
         
 <title>Homepage</title>
 </head>
@@ -30,6 +36,7 @@
 	
 	<div th:insert="~{/layout/_footer.html::footer}"></div>
 	
+<<<<<<< HEAD
     <script type="application/javascript" src="..\assets\js\vendor\jquery-1.12.0.min.js"></script>
     <script type="application/javascript" src="..\assets\js\popper.js"></script>
     <script type="application/javascript" src="..\assets\js\bootstrap.min.js"></script>
@@ -37,5 +44,37 @@
     <script type="application/javascript" src="..\assets\js\plugins.js"></script>
     <script type="application/javascript" src="..\assets\js\main.js"></script>
     <script type="application/javascript" src="..\assets\js\shopping-cart-app.js"></script> 
+=======
+	 <script type="text/javascript" src="/assets/js/shopping-cart-app.js"></script>
+	
+    <script type="text/javascript" src="..\assets\js\vendor\jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="..\assets\js\popper.js"></script>
+    <script type="text/javascript" src="..\assets\js\bootstrap.min.js"></script>
+    <script type="text/javascript" src="..\assets\js\ajax-mail.js"></script>
+    <script type="text/javascript" src="..\assets\js\plugins.js"></script>
+    <script type="text/javascript" src="..\assets\js\main.js"></script>
+    
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '{your-app-id}',
+      cookie     : true,
+      xfbml      : true,
+      version    : '{api-version}'
+    });
+      
+    FB.AppEvents.logPageView();   
+      
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+>>>>>>> Nghia_LOGIN
 </body>
 </html>

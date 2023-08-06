@@ -2,6 +2,8 @@ package com.poly.service;
 
 import java.util.List;
 
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+
 import com.poly.bean.Account;
 
 public interface AccountService {
@@ -15,7 +17,16 @@ public interface AccountService {
 	public Account update(Account account);
 
 	public void delete(String id);
+	
+	public Account  findByUsername(String username);
+
+
+
+<<<<<<< HEAD
+=======
+	
 
 //	public List<Account> getAdministrators();
-
+	
+>>>>>>> Nghia_LOGIN
 }

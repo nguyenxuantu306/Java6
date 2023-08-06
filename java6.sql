@@ -218,7 +218,11 @@ ADD CONSTRAINT FK_Books_wishlist FOREIGN KEY(Books_id) REFERENCES Books(Id);
 /************************ INSETY TABLE ACCOUNTS *********************************************/
 INSERT [dbo].[Accounts](Id, Username, Password, Fullname, Email, Photo, Gender,Address,Phone,Date)  values 
 	('AC0001','phongvto','$2a$12$ASJuQxMVb57BWynjTa2pruGj1jAkb/Ii9bneelqVuQYuGLbm9EGwW',N'Võ Thanh Phong','vothanhphong2000bt@gmail.com','phong.png',1,N'Tân Chánh Hiệp, Hồ Chí Minh','0969023190','2004-09-09'),
+<<<<<<< HEAD
 	('AC0002','huyento','$2a$12$ASJuQxMVb57BWynjTa2pruGj1jAkb/Ii9bneelqVuQYuGLbm9EGw',N'Nguyễn Tiến Anh','anhntps10770@fpt.edu.vn','anh.png',1,N'Đường Giải Phóng, Phường Tân Lợi, Thành phố Buôn Ma Thuật, Đắk LắK','0909331232','2003-08-28'),
+=======
+	('AC0002','huyento','$2a$12$ASJuQxMVb57BWynjTa2pruGj1jAkb/Ii9bneelqVuQYuGLbm9EGwW',N'Nguyễn Tiến Anh','anhntps10770@fpt.edu.vn','anh.png',1,N'Đường Giải Phóng, Phường Tân Lợi, Thành phố Buôn Ma Thuật, Đắk LắK','0909331232','2003-08-28'),
+>>>>>>> Nghia_LOGIN
 	('AC0003','chaulnn','KBTHDO',N'Lê Nguyễn Ngọc Châu','chaulnnps10835@fpt.edu.vn','chau.png',0,N'Xuân Phong, Xã Hợp Phong, Huyện Cao Phong, Hòa Bình','0904071234','2003-10-28'),
 	('AC0004','cuonglc','UDEKRE',N'Lý Chí Cường','cuonglcps10817@fpt.edu.vn','cuong.png',1,N'Văn Nhuệ, Ân Thi - Hưng Yên','0908765437','2003-09-18'),
 	('AC0005','datnv','KRMGZY',N'Nguyễn Vũ Đạt','datnvps10930@fpt.edu.vn','dat.png',1,N'Phường 24, Quận Bình Thạnh, TP.HCM','0355204677','2003-01-01'),
@@ -671,6 +675,12 @@ JOIN wishlist w ON b.Id = w.Books_id
 WHERE w.Account_id = 'AC0001';
 
 
+<<<<<<< HEAD
 Select g.Genres From Books b Join Genres g on b.genres_id = g.Id group by g.Genres
 
 select * from Genres
+=======
+select Distinct * from Accounts Join Accounts_roles ON Accounts.Id = Accounts_roles.Account_id where Accounts_roles.Roles_id In (1) 
+
+select Distinct * from Accounts_roles Where Accounts_roles.Roles_id In (1)
+>>>>>>> Nghia_LOGIN

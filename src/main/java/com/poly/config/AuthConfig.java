@@ -31,10 +31,32 @@ public class AuthConfig {
 		  
 	   
 		   http.authorizeRequests(authorize -> authorize
+				   .requestMatchers("/assets/css/bootstrap.min.css").permitAll()
+				   .requestMatchers("/assets/css/responsive.css").permitAll()
+				   .requestMatchers("/assets/css/style.css").permitAll()
+				   .requestMatchers("/assets/css/bundle.css").permitAll()
+				   .requestMatchers("/assets/css/plugin.css").permitAll()
+				   .requestMatchers("/assets/css/bootstrap.min.css.map").permitAll()
+				   
+				   .requestMatchers("/assets/js/vendor/modernizr-2.8.3.min.js").permitAll()
+				   .requestMatchers("https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js").permitAll()
+				   .requestMatchers("/assets/js/vendor/jquery-1.12.0.min.js").permitAll()
+				   .requestMatchers("/assets/js/popper.js").permitAll()
+				   .requestMatchers("/assets/js/bootstrap.min.js").permitAll()
+				   .requestMatchers("/assets/js/ajax-mail.js").permitAll()
+				   .requestMatchers("/assets/js/main.js").permitAll()
+				   .requestMatchers("/assets/js/plugins.js").permitAll()
+				   .requestMatchers("/assets/js/bootstrap.min.js.map").permitAll()
+				   
+				   .requestMatchers("/assets/fonts/*").permitAll()
+				   .requestMatchers("/assets/images/*").permitAll()
+				   .requestMatchers("/assets/img/*").permitAll()
+				   .requestMatchers("/assets/js/*").permitAll()
+				   .requestMatchers("/home/index","/index/login","/index/register").permitAll()
 				    .requestMatchers("/order/**").authenticated()
 					.requestMatchers("/admin/**").hasRole("Administrator")
 					.requestMatchers("/rest/authorities").permitAll()
-					.anyRequest().permitAll()				   
+					.anyRequest().authenticated()				   
 				   );
 			
 		
@@ -50,7 +72,7 @@ public class AuthConfig {
 		   
 		   http.formLogin(form -> form
 							.loginPage("/index/login")
-							.loginProcessingUrl("/home/index")
+							.loginProcessingUrl("//home/index")
 							.defaultSuccessUrl("/index/login/success",false) // đăng nhập thành công
 							.failureUrl("/index/login/error") // đăng nhập sai thông tin user , pass
 		   

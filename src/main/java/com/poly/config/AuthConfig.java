@@ -50,7 +50,7 @@ public class AuthConfig {
 		   
 		   http.formLogin(form -> form
 							.loginPage("/index/login")
-							.loginProcessingUrl("/index/login")
+							.loginProcessingUrl("/home/index")
 							.defaultSuccessUrl("/index/login/success",false) // đăng nhập thành công
 							.failureUrl("/index/login/error") // đăng nhập sai thông tin user , pass
 		   

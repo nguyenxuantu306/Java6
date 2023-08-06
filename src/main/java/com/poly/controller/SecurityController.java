@@ -140,36 +140,36 @@ public class SecurityController {
 	@GetMapping("/index/profile")
 	public String profile(Model model) {
 		
-// 		 // Lấy thông tin người dùng đã xác thực từ SecurityContextHolder
-//         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		 // Lấy thông tin người dùng đã xác thực từ SecurityContextHolder
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-//         // Kiểm tra nếu người dùng đã xác thực
-//         if (authentication.isAuthenticated()) {
-//             // Lấy tên người dùng
-//             String username = authentication.getName();
+        // Kiểm tra nếu người dùng đã xác thực
+        if (authentication.isAuthenticated()) {
+            // Lấy tên người dùng
+            String username = authentication.getName();
 
-//             // Lấy các quyền (roles) của người dùng
-//             String roles = authentication.getAuthorities().toString();
+            // Lấy các quyền (roles) của người dùng
+            String roles = authentication.getAuthorities().toString();
 
-//             // Trả về thông tin tài khoản trong phản hồi
-//             System.out.println("Xin chào, " + username + "! Bạn có các quyền: " + roles);
-//         } else {
-//         	System.out.println("Xin chào! Bạn chưa đăng nhập.");
-//         }
-//         String username = authentication.getName();
-//         Account ac = acdao.findByUsername(username);
-//         System.out.println(ac.getUsername());
-//         System.out.println(ac.getAddress());
-//         System.out.println(ac.getFullname());
-//         System.out.println(ac.getPassword());
-//         System.out.println(ac.getPhone());
-//         System.out.println(ac.getPhoto());
-//         System.out.println("*************************************************************************?///////////////////////");
-//     System.out.println(ac.getAccountroles().stream().map(er -> er.getRole().getName()).collect(Collectors.toList())); 
-//     Role role = new Role();
-//     role.setId(1);
-//     System.out.println("//////////////////");
-//   System.out.println(role.getName());
+            // Trả về thông tin tài khoản trong phản hồi
+            System.out.println("Xin chào, " + username + "! Bạn có các quyền: " + roles);
+        } else {
+        	System.out.println("Xin chào! Bạn chưa đăng nhập.");
+        }
+        String username = authentication.getName();
+        Account ac = acdao.findByUsername(username);
+        System.out.println(ac.getUsername());
+        System.out.println(ac.getAddress());
+        System.out.println(ac.getFullname());
+        System.out.println(ac.getPassword());
+        System.out.println(ac.getPhone());
+        System.out.println(ac.getPhoto());
+        System.out.println("*************************************************************************?///////////////////////");
+    System.out.println(ac.getAccountroles().stream().map(er -> er.getRole().getName()).collect(Collectors.toList())); 
+    Role role = new Role();
+    role.setId(1);
+    System.out.println("//////////////////");
+  System.out.println(role.getName());
 
 
 	return "/user/profile";

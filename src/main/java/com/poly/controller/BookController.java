@@ -2,6 +2,7 @@ package com.poly.controller;
 
 import java.util.List;
 
+
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -32,23 +33,23 @@ public class BookController {
 		String valueFieldString;
 		String[] split;
 		Sort tempSort;
-
-//		if (sort.isPresent()) {
-//			valueFieldString = sort.get();
-//			if (sort.get().contains("DESC")) {
-//				split = valueFieldString.split("DESC");
-//				System.out.println(split[0]);
-//				tempSort = Sort.by(Direction.DESC, split[0]);
-//			} else {
-//				split = valueFieldString.split("ASC");
-//				tempSort = Sort.by(Direction.ASC, split[0]);
-//			}
-//		} 
-//		else {
-//			valueFieldString = "Price";
-//			tempSort = Sort.by(Direction.DESC, valueFieldString);
-//		}
-//		model.addAttribute("sort", valueFieldString);
+		
+		if (sort.isPresent()) {
+			valueFieldString = sort.get();
+			if (sort.get().contains("DESC")) {
+				split = valueFieldString.split("DESC");
+				System.out.println(split[0]);
+				tempSort = Sort.by(Direction.DESC, split[0]);
+			} else {
+				split = valueFieldString.split("ASC");
+				tempSort = Sort.by(Direction.ASC, split[0]);
+			}
+		} 
+		else {
+			valueFieldString = "Price";
+			tempSort = Sort.by(Direction.DESC, valueFieldString);
+		}
+		model.addAttribute("sort", valueFieldString);
 		int currentPage = page.orElse(0);
 		int pageSize = size.orElse(12);
 		if (pageSize > 15) {

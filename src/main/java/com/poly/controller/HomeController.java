@@ -2,7 +2,14 @@ package com.poly.controller;
 
 import java.util.List;
 
+
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,13 +17,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.poly.bean.Book;
+import com.poly.bean.Top10;
 import com.poly.bean.Wishlist;
 import com.poly.dao.AccountDAO;
 import com.poly.dao.BookDAO;
+import com.poly.dao.OrderDetailDAO;
 import com.poly.dao.WishlistDAO;
+
+
 
 @Controller
 public class HomeController {
+
+ 
+//	@RequestMapping({"/","/home/index"})
+//	public String Home(Model model) {
+//		return "user/index";
+//	}
+	
 	@Autowired
 	private final BookDAO booksdao;
 	
@@ -31,7 +49,9 @@ public class HomeController {
 		this.wishlistsdao = wishlistsdao;
 	}
 
-	@GetMapping("/home/index")
+	
+	
+	@RequestMapping({"/","/home/index"})
 	public String Home(Model model) {
 		List<Book> books = booksdao.findAll();
 		
@@ -85,12 +105,6 @@ public class HomeController {
 
 
 
-	@GetMapping("/index/wishlist")
-	public String getAllWishlist(Model model) {
-		List<Wishlist> wishlists = wishlistsdao.findAll();
-		model.addAttribute("wishlists", wishlists);
-		return "user/wishlist";
-	}
 
 	@RequestMapping({ "/admin", "/admin/home/index" })
 	public String admin() {

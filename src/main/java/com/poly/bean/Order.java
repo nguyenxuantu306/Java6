@@ -61,5 +61,5 @@ public class Order implements Serializable {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "order")
-	List<OrderDetails> orderDetails;
+	List<OrderDetail> orderDetail;
 }

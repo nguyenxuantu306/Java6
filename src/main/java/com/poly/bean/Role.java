@@ -18,8 +18,8 @@ import lombok.Data;
 @Table(name = "roles")
 public class Role implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer Id;
+	private String Name;
 	@JsonIgnore
 	@OneToMany(mappedBy = "role")
 	List<Account_roles> accountroles;

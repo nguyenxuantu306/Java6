@@ -2,6 +2,7 @@ package com.poly.bean;
 
 import java.io.Serializable;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -18,11 +19,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Orders_details")
-public class OrderDetails implements Serializable {
+public class OrderDetail implements Serializable {
 	@Id
 	String Id;
+	
+	Integer Quantity;
 
-	Long quantity;
 	@ManyToOne
 	@JoinColumn(name = "Order_id")
 	Order order;

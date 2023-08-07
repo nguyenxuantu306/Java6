@@ -35,6 +35,8 @@ app.controller("account-ctrl", function($scope, $http) {
 	// Hiện thị lên form
 	$scope.edit = function(item) {
 		$scope.form = angular.copy(item);
+		/*window.scrollTo(0, document.body.scrollHeight);*/
+
 		$('#btn-create').attr('disabled', 'disabled');
 		$('#btn-delete').removeAttr('disabled');
 		$('#btn-update').removeAttr('disabled');
@@ -43,6 +45,8 @@ app.controller("account-ctrl", function($scope, $http) {
 		},
 			'slow');
 	}
+
+
 
 	// Thêm sản phẩm mới
 	$scope.create = function() {
@@ -101,7 +105,7 @@ app.controller("account-ctrl", function($scope, $http) {
 		})
 	}
 
-	$scope.pager = {
+	/*$scope.pager = {
 		page: 0,
 		size: 10,
 		get items() {
@@ -140,6 +144,72 @@ app.controller("account-ctrl", function($scope, $http) {
 			"ordering": true,
 			"info": true,
 			"buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+	}*/
+
+	/*	$scope.propertyName = 'username';
+		$scope.reverse = true;
+		$scope.example1 = $scope.items;
+	
+		$scope.sortBy = function(propertyName) {
+			$scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+			$scope.propertyName = propertyName;
+		};
+	*/
+	$(function() {
+		$("#example1").DataTable({
+			"ajax": {
+				"url": "/rest/accounts",
+				"dataSrc": ""
+			},
+			"columns": [
+				{ "data": "id" },
+				{ "data": "photo" },
+				{ "data": "username" },
+				{ "data": "password" },
+				{ "data": "fullname" },
+				{ "data": "email" },
+				{
+					"data": null,
+					"render": function(data, type, row) {
+						return '<button  class="btn btn-success" ng-click="edit(' + row.id + ')">Xem chi tiết</button>';
+					}
+				}, 
+
+				// Add more column configurations as needed
+			],
+			"responsive": true, "lengthChange": false, "autoWidth": false,
 		}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 	});
+
+	// Trong AngularJS controller hoặc service
+	$scope.exportExcel = function() {
+		$http.get('/print-to-excel', { responseType: 'arraybuffer' })
+			.then(function(response) {
+				var blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+				var link = document.createElement('a');
+				link.href = window.URL.createObjectURL(blob);
+				link.download = 'example.xlsx';
+				link.click();
+			})
+			.catch(function(error) {
+				console.error('Error exporting Excel:', error);
+			});
+	};
+
+	$scope.exportPdf = function() {
+		$http.get('/print-to-pdf', { responseType: 'arraybuffer' })
+			.then(function(response) {
+				var blob = new Blob([response.data], { type: 'application/pdf' });
+				var objectUrl = URL.createObjectURL(blob);
+				var a = document.createElement('a');
+				a.href = objectUrl;
+				a.download = 'exportAccount.pdf';
+				a.click();
+				URL.revokeObjectURL(objectUrl);
+			})
+			.catch(function(error) {
+				console.error('Error exporting PDF:', error);
+			});
+	};
+
 });

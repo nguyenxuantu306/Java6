@@ -10,7 +10,8 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poly.bean.Order;
-import com.poly.bean.OrderDetails;
+import com.poly.bean.OrderDetail;
+import com.poly.dao.BookDAO;
 import com.poly.dao.OrderDAO;
 import com.poly.dao.OrderDetailDAO;
 import com.poly.service.OrderService;
@@ -30,9 +31,9 @@ public class OrderServiceImpl implements OrderService {
 		Order order = mapper.convertValue(orderData, Order.class);
 		dao.save(order);
 
-		TypeReference<List<OrderDetails>> type = new TypeReference<List<OrderDetails>>() {
+		TypeReference<List<OrderDetail>> type = new TypeReference<List<OrderDetail>>() {
 		};
-		List<OrderDetails> details = mapper.convertValue(orderData.get("orderDetails"), type).stream()
+		List<OrderDetail> details = mapper.convertValue(orderData.get("orderDetail"), type).stream()
 				.peek(d -> d.setOrder(order)).collect(Collectors.toList());
 		ddao.saveAll(details);
 

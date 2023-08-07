@@ -21,6 +21,16 @@ public class OrderController {
 	public String checkout() {
 		return "order/checkout";
 	}
+	
+	@RequestMapping("/order/list")
+	public String orlist() {
+		return "order/list";
+	}
+	
+	@RequestMapping("/order/detail/{id}")
+	public String ordetail() {
+		return "order/detail";
+	}
 
 	@RequestMapping("/order/list")
 	public String list(Model model, HttpServletRequest request) {

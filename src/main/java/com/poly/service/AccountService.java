@@ -22,5 +22,7 @@ public interface AccountService {
 	
 
 //	public List<Account> getAdministrators();
-	
+
+	public Account  findByUsername(String username);
+
 }

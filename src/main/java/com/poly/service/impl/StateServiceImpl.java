@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.poly.bean.Genres;
 import com.poly.bean.States;
 import com.poly.dao.StateDAO;
 import com.poly.service.StateService;

@@ -671,6 +671,12 @@ JOIN wishlist w ON b.Id = w.Books_id
 WHERE w.Account_id = 'AC0001';
 
 
+
+Select g.Genres From Books b Join Genres g on b.genres_id = g.Id group by g.Genres
+
+select * from Genres
+
 select Distinct * from Accounts Join Accounts_roles ON Accounts.Id = Accounts_roles.Account_id where Accounts_roles.Roles_id In (1) 
 
 select Distinct * from Accounts_roles Where Accounts_roles.Roles_id In (1)
+

@@ -4,12 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.poly.bean.Genres;
 import com.poly.bean.OrderDetails;
-import com.poly.dao.GenresDAO;
 import com.poly.dao.OrderDetailDAO;
-import com.poly.service.GenresService;
 import com.poly.service.OrderDetailService;
 
 @Service

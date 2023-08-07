@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.poly.bean.Book;
-import com.poly.bean.Genres;
 import com.poly.dao.BookDAO;
 import com.poly.dao.GenresDAO;
 

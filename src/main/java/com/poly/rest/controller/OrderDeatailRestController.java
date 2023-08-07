@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.poly.bean.OrderDetails;
+import com.poly.bean.OrderDetail;
 import com.poly.bean.Role;
+import com.poly.bean.Top10;
+import com.poly.dao.OrderDetailDAO;
 import com.poly.service.OrderDetailService;
 import com.poly.service.RoleService;
 
@@ -22,8 +24,15 @@ public class OrderDeatailRestController {
 	OrderDetailService orderDetailService;
 
 	@GetMapping
-	public List<OrderDetails> getAll() {
+	public List<OrderDetail> getAll() {
 		return orderDetailService.findAll();
 	}
+	
+	@GetMapping("/top10")
+	public List<Top10> getTop10() {
+		return orderDetailService.getTop10();
+	}
+	
+
 
 }

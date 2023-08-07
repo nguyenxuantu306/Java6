@@ -2,10 +2,13 @@ package com.poly.service;
 
 import java.util.List;
 
-import com.poly.bean.OrderDetails;
+import com.poly.bean.OrderDetail;
+import com.poly.bean.Top10;
 
 public interface OrderDetailService {
 
-	List<OrderDetails> findAll();
+	List<OrderDetail> findAll();
+
+	List<Top10> getTop10();
 
 }

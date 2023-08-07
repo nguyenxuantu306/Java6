@@ -4,6 +4,7 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.poly.bean.Book;
 import com.poly.bean.Report;
+
+import com.poly.dao.OrderDetailDAO;
 import com.poly.service.BookService;
+
 
 
 @CrossOrigin("*")
@@ -67,5 +71,7 @@ public class BookRestController {
 	public List<Report> getTK_Loai() {
 		return bookService.getTk_loai();
 	}
+	
+	
 
 }

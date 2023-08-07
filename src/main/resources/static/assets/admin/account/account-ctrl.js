@@ -160,7 +160,7 @@ app.controller("account-ctrl", function($scope, $http) {
 				{
 					"data": null,
 					"render": function(data, type, row) {
-						return '<button class="btn btn-success" ng-click="edit(' + row.id + ')">Xem chi tiết</button>';
+						return '<button  class="btn btn-success" ng-click="edit(' + row.id + ')">Xem chi tiết</button>';
 					}
 				}, 
 

@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poly.bean.Book;
 import com.poly.bean.Discount;
 import com.poly.bean.Order;
-import com.poly.bean.OrderDetails;
+import com.poly.bean.OrderDetail;
 import com.poly.dao.BookDAO;
 import com.poly.dao.DiscountDAO;
 import com.poly.dao.OrderDAO;

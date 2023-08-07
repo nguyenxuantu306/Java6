@@ -1,9 +1,21 @@
 package com.poly.dao;
 
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-import com.poly.bean.OrderDetails;
+import com.poly.bean.OrderDetail;
+import com.poly.bean.Top10;
 
-public interface OrderDetailDAO extends JpaRepository<OrderDetails, Long> {
+public interface OrderDetailDAO extends JpaRepository<OrderDetail, Long> {
+
+	
+	@Query("SELECT new Top10(o.book, sum(o.Quantity)) FROM OrderDetail o GROUP BY o.book ORDER BY sum(o.Quantity) DESC")
+	List<Top10> getTop10(); 
+		
+	
 
 }

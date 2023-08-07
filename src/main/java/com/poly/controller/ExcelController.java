@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.poly.bean.Account;
+import com.poly.bean.Book;
 import com.poly.service.AccountService;
+import com.poly.service.BookService;
 
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -26,6 +28,9 @@ public class ExcelController {
 	@Autowired
 	AccountService accountService;
 
+	@Autowired
+	BookService bookService;
+	
 	@GetMapping("/print-to-excel")
 	public ResponseEntity<byte[]> printToExcel() throws IOException {
 		List<Account> dataList = getAll(); // Hàm này tạo dữ liệu mẫu
@@ -58,5 +63,40 @@ public class ExcelController {
 	public final List<Account> getAll() {
 		return accountService.findAll();
 	}
+	
+	@GetMapping("/print-to-excelsp")
+	public ResponseEntity<byte[]> printToExcelsp() throws IOException {
+		List<Book> dataList = getAllsp(); // Hàm này tạo dữ liệu mẫu
 
+		Workbook workbook = new XSSFWorkbook();
+		Sheet sheet = workbook.createSheet("Data");
+
+		int rowIdx = 0;
+		for (Book data : dataList) {
+			Row row = sheet.createRow(rowIdx++);
+			row.createCell(0).setCellValue(data.getId());
+			row.createCell(1).setCellValue(data.getName());
+			row.createCell(2).setCellValue(data.getPrice());
+			row.createCell(3).setCellValue(data.getPublication_date());
+			row.createCell(4).setCellValue(data.getImage());
+			row.createCell(4).setCellValue(data.getAuthor());
+			row.createCell(4).setCellValue(data.getAvailable());
+			
+			// Thêm cột khác tùy ý
+		}
+
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		workbook.write(outputStream);
+		workbook.close();
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+		headers.setContentDispositionFormData("attachment", "data.xlsx");
+
+		return ResponseEntity.ok().headers(headers).body(outputStream.toByteArray());
+	}
+
+	 public final List<Book> getAllsp() {
+			return bookService.findAll();
+		}
 }

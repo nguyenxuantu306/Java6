@@ -43,11 +43,8 @@ public class AuthConfig {
 //				.loginPage("/security/login/form") // địa chỉ đường dẫn
 //				.loginProcessingUrl("/home/index") // [[/login]]
 //				.defaultSuccessUrl("/security/login/success",false) // đăng nhập thành công
-//				.failureUrl("/security/login/error") // đăng nhập sai thông tin user , pass
-//				
-//				
-//				);
-			
+//				.failureUrl("/security/login/error") // đăng nhập sai thông tin user , pass				
+//				);			
 		   
 		   http.formLogin(form -> form
 							.loginPage("/index/login")
@@ -60,13 +57,16 @@ public class AuthConfig {
 			                    logout -> logout
 			                    .logoutRequestMatcher(new AntPathRequestMatcher("/index/logoff"))
 			                    .permitAll());
-//		   
-//		   
-//		   
-//		   		.oauth2Login().loginPage("/oauth2/login/form")
-//		   		.defaultSuccessUrl("/oauth2/login/success",true)
-//		   		.failureUrl("/oauth2/login/error")
-//		   		.authorizationEndpoint().baseUri("/oauth2/authorization")  ;
+		   
+		   
+		// OAuth2 - Đăng nhập từ mạng xã hội
+//			http.oauth2Login()
+//				.loginPage("/auth/login/form")
+//				.defaultSuccessUrl("/oauth2/login/success",true)
+//				.failureUrl("/auth/login/error")
+//				.authorizationEndpoint()
+//					.baseUri("/oauth2/authorization");
+		   
 						   
 //		    .authorizeHttpRequests((authorize) -> 
 //		    authorize  .requestMatchers("static/css/**","static/font/**","/static/images/**","/static/img/**","/static/js/**").permitAll()	  

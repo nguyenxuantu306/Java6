@@ -35,7 +35,8 @@ public class Book implements Serializable {
 
 	private String Image;
 
-	public Float Price;
+	
+	private Float Price;
 
 	private String Author;
 
@@ -59,7 +60,7 @@ public class Book implements Serializable {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "book")
-	List<OrderDetails> orderDetails;
+	List<OrderDetail> orderDetail;
 
 	@Override
 	public String toString() {

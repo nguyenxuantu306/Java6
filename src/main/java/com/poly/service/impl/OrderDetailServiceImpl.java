@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.poly.bean.Genres;
-import com.poly.bean.OrderDetails;
+import com.poly.bean.OrderDetail;
+import com.poly.bean.Top10;
 import com.poly.dao.GenresDAO;
 import com.poly.dao.OrderDetailDAO;
 import com.poly.service.GenresService;
@@ -18,9 +19,14 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	OrderDetailDAO dao;
 
 	@Override
-	public List<OrderDetails> findAll() {
+	public List<OrderDetail> findAll() {
 		// TODO Auto-generated method stub
 		return dao.findAll();
+	}
+
+	@Override
+	public List<Top10> getTop10() {
+		return dao.getTop10();
 	}
 
 }

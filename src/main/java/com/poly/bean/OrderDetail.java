@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Orders_details")
-public class OrderDetails implements Serializable {
+public class OrderDetail implements Serializable {
 	@Id
 	String Id;
 	

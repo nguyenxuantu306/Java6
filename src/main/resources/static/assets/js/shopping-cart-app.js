@@ -79,9 +79,9 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 
 
 	$scope.order = {
-		createDate: new Date(),
+		date: new Date(),
 		address: "",
-		account: { username: $("#username").text() },
+		account: { id: $("#Account_id").text() },
 		get orderDetails() {
 			return $scope.cart.items.map(item => {
 				return {
@@ -97,7 +97,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			$http.post("/rest/orders", order).then(resp => {
 				alert("Đặt hàng thành công!");
 				$scope.cart.clear();
-				location.href = "/order/detail/" + resp.data.id;
+//				location.href = "/order/detail/" + resp.data.id;
 			}).catch(error => {
 				alert("Đặt hàng lỗi!");
 				console.log(error)

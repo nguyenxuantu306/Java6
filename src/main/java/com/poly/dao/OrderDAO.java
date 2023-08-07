@@ -8,11 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.poly.bean.Order;
 
-public interface OrderDAO extends JpaRepository<Order, String> {
-
-	/*
-	 * @Query("SELECT o FROM Order o WHERE o.account.username =?1") List<Order>
-	 * findByUsername(String username);
-	 */
+public interface OrderDAO extends JpaRepository<Order, Integer> {
+	
+	@Query("SELECT o FROM Order o WHERE o.account.id =?1")
+	List<Order> findByIdAccount(String id);
 
 }

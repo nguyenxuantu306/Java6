@@ -70,8 +70,14 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 
 		// Đọc giỏ hàng từ local storage
 		loadFromLocalStorage() {
-			var json = localStorage.getItem("cart");
-			this.items = json ? JSON.parse(json) : [];
+			try {
+				var json = localStorage.getItem("cart");
+				this.items = json ? JSON.parse(json) : [];
+			}catch(error){
+				console.error("Error loading cart from localStorage:", error);
+				this.items = [];
+			}
+
 		}
 	}
 
@@ -97,7 +103,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			$http.post("/rest/orders", order).then(resp => {
 				alert("Đặt hàng thành công!");
 				$scope.cart.clear();
-//				location.href = "/order/detail/" + resp.data.id;
+				//				location.href = "/order/detail/" + resp.data.id;
 			}).catch(error => {
 				alert("Đặt hàng lỗi!");
 				console.log(error)
@@ -128,10 +134,10 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	};
 
 	//  ---------Active menu------------ 
-  
-      // Hàm kiểm tra li có được active hay không
-      $scope.isActive = function (viewLocation) {
-          return viewLocation === $location.path();
-      };
+
+	// Hàm kiểm tra li có được active hay không
+	/*$scope.isActive = function(viewLocation) {
+		return viewLocation === $location.path();
+	};*/
 });
 

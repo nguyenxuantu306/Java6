@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org">
+<html xmlns="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+	<!-- Trong phần <head> của trang HTML -->
 	<style>
 		.mini_cart {
 			display: none;
+			/* Ẩn modal mini ban đầu */
 		}
 	</style>
 
 </head>
 
-<body>
+<body ng-app="shopping-cart-app" ng-controller="shopping-cart-ctrl">
 	<div th:fragment="navbar" class="header_area">
 		<!--header top-->
 		<div class="header_top">
@@ -19,15 +22,29 @@
 				<div class="col-lg-6 col-md-6">
 					<div class="switcher">
 						<ul>
-							<!-- <li class="nav-item dropdown"><a
-								class="nav-link dropdown-toggle" href="" id="menu"
-								data-toggle="dropdown" th:text="#{nav.lang}">Language</a>
+							<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" id="menu"
+									data-toggle="dropdown" th:text="#{nav.lang}">Language</a>
 								<ul class="dropdown-menu" aria-labelledby="menu">
+									<li><a href="" onclick="changeLanguage('vi')" th:text="#{nav.vi}">Vietnamese</a>
+									</li>
+									<li><a href="" onclick="changeLanguage('en')" th:text="#{nav.en}">English</a></li>
 								</ul>
-								
-								</li> -->
-							<li><a href="" onclick="changeLanguage('vi')" th:text="#{nav.vi}">Vietnamese</a></li>
-							<li><a href="" onclick="changeLanguage('en')" th:text="#{nav.en}">English</a></li>
+							</li>
+							<li sec:authorize="isAuthenticated()">
+							<li><a th:href="@{/index/profile}" title="My account" th:text="#{nav.profile}">Profile</a>
+							</li>
+							<li><a th:href="@{/index/logoff}">Logoff</a></li>
+						
+							<li th:if="${#authorization.expression('hasRole(''Administrator'')')}"><a
+									th:href="@{/admin/home/index}">Administration</a></li>
+
+							<li>
+								<a href="" sec:authentication="name"></a>
+
+							</li>
+
+
+
 							<script>
 								function changeLanguage(lang) {
 									$.ajax({

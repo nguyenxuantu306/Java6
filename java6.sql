@@ -11,7 +11,7 @@ GO
 CREATE TABLE [dbo].[Accounts](
 	[Id][nvarchar](50) not null primary key,
 	[Username] [nvarchar](50) NOT NULL,
-	[Password] [nvarchar](50) NOT NULL,
+	[Password] [nvarchar](max) NOT NULL,
 	[Fullname] [nvarchar](50) NOT NULL,
 	[Email] [nvarchar](50) NOT NULL,
 	[Photo] [nvarchar](50) NOT NULL,
@@ -217,8 +217,8 @@ ADD CONSTRAINT FK_Books_wishlist FOREIGN KEY(Books_id) REFERENCES Books(Id);
 
 /************************ INSETY TABLE ACCOUNTS *********************************************/
 INSERT [dbo].[Accounts](Id, Username, Password, Fullname, Email, Photo, Gender,Address,Phone,Date)  values 
-	('AC0001','phongvto','123123',N'Võ Thanh Phong','vothanhphong2000bt@gmail.com','phong.png',1,N'Tân Chánh Hiệp, Hồ Chí Minh','0969023190','2004-09-09'),
-	('AC0002','huyento','RRRRAW',N'Nguyễn Tiến Anh','anhntps10770@fpt.edu.vn','anh.png',1,N'Đường Giải Phóng, Phường Tân Lợi, Thành phố Buôn Ma Thuật, Đắk LắK','0909331232','2003-08-28'),
+	('AC0001','phongvto','$2a$12$ASJuQxMVb57BWynjTa2pruGj1jAkb/Ii9bneelqVuQYuGLbm9EGwW',N'Võ Thanh Phong','vothanhphong2000bt@gmail.com','phong.png',1,N'Tân Chánh Hiệp, Hồ Chí Minh','0969023190','2004-09-09'),
+	('AC0002','huyento','$2a$12$ASJuQxMVb57BWynjTa2pruGj1jAkb/Ii9bneelqVuQYuGLbm9EGwW',N'Nguyễn Tiến Anh','anhntps10770@fpt.edu.vn','anh.png',1,N'Đường Giải Phóng, Phường Tân Lợi, Thành phố Buôn Ma Thuật, Đắk LắK','0909331232','2003-08-28'),
 	('AC0003','chaulnn','KBTHDO',N'Lê Nguyễn Ngọc Châu','chaulnnps10835@fpt.edu.vn','chau.png',0,N'Xuân Phong, Xã Hợp Phong, Huyện Cao Phong, Hòa Bình','0904071234','2003-10-28'),
 	('AC0004','cuonglc','UDEKRE',N'Lý Chí Cường','cuonglcps10817@fpt.edu.vn','cuong.png',1,N'Văn Nhuệ, Ân Thi - Hưng Yên','0908765437','2003-09-18'),
 	('AC0005','datnv','KRMGZY',N'Nguyễn Vũ Đạt','datnvps10930@fpt.edu.vn','dat.png',1,N'Phường 24, Quận Bình Thạnh, TP.HCM','0355204677','2003-01-01'),

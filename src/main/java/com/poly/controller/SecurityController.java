@@ -109,56 +109,7 @@ public class SecurityController {
 		return "security/login";
 	}
 	
-	@GetMapping("/index/login/success")
-	public String login_success(Model model) {
-		return "/security/login";
-	}
 	
-	@GetMapping("/index/login/error")
-	public String login_error(Model model) {
-		return "/security/login";
-	}
-
-	@GetMapping("/index/login/unauthoried")
-	public String login_unauthored(Model model) {
-		return "/security/login";
-	}
-	
-	@GetMapping("/index/register")
-	public String register(Model model) {
-		return "/security/register";
-	}
-	
-	@GetMapping("/index/register/save")
-	public String registersave(Model model,@ModelAttribute Account account,HttpSession session) {
-		Account newacc = account;
-		 newacc.setPassword(passwordE.encode(account.getPassword()));
-		Account accountcreate = accountService.create(newacc);
-		
-		if (accountcreate != null) {
-			session.setAttribute("msg", "Register successfully");
-
-		}else {
-			// System.out.println("error in server");
-			session.setAttribute("msg", "Something wrong server");
-		}
-		return "/security/register";
-	}
-
-	@RequestMapping("/oauth2/login/form")
-	public String fbform() {
-		return "security/login";
-	}
-
-	@GetMapping("/index/logoff")
-	public String logoff(Model model) {
-		return "/security/login";
-	}
-	
-	@GetMapping("/index/logoff/success")
-	public String logoff_success(Model model) {
-		return "/security/login";
-	}
 	@GetMapping("/index/profile")
 	public String profile(Model model) {
 		

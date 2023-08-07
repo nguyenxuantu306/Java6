@@ -89,46 +89,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 	                .collect(Collectors.toList());
 	        return mapRoles;
 	    }
-//	@Override
-//	public List<Account> getAdministrators() {
-//		return adao.getAdministrators();
-//	}
-	
-	@Override
-	public Account findByUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	//find by usser
-	public AccountServiceImpl(AccountDAO accountdao) {
-		this.adao = accountdao;
-	}
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
-		Account account = adao.findByUsername(username);
-		if (account == null) {
-            throw new UsernameNotFoundException("Invalid username or password.");
-        }else {
-        	return User.builder().username(account.getUsername())
-                    .password(account.getPassword())
-                    .roles(account.getAccountroles().stream().map(er -> er.getRole().getName()).collect(Collectors.toList()).toArray(new String [0])).build();
-        }
-		
-	}
-
-	
-	 private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles) {
-	        Collection<? extends GrantedAuthority> mapRoles = roles.stream()
-	                .map(role -> new SimpleGrantedAuthority(role.getName()))
-	                .collect(Collectors.toList());
-	        return mapRoles;
-	    }
-//	@Override
-//	public List<Account> getAdministrators() {
-//		return adao.getAdministrators();
-//	}
 	 public void loginFormOAuth2(OAuth2AuthenticationToken oauth2) {
 			String email = oauth2.getPrincipal().getAttribute("email");
 			String password = Long.toHexString(System.currentTimeMillis());

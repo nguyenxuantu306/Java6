@@ -31,11 +31,11 @@ public class AuthConfig {
 		  
 	   
 		   http.authorizeRequests(authorize -> authorize
-				   .requestMatchers("/assets/css/bootstrap.min.css").permitAll()
-				   .requestMatchers("/assets/css/responsive.css").permitAll()
-				   .requestMatchers("/assets/css/style.css").permitAll()
-				   .requestMatchers("/assets/css/bundle.css").permitAll()
-				   .requestMatchers("/assets/css/plugin.css").permitAll()
+				   .requestMatchers("/assets/css/**").permitAll()
+//				   .requestMatchers("/assets/css/responsive.css").permitAll()
+//				   .requestMatchers("/assets/css/style.css").permitAll()
+//				   .requestMatchers("/assets/css/bundle.css").permitAll()
+//				   .requestMatchers("/assets/css/plugin.css").permitAll()
 				   .requestMatchers("/assets/css/bootstrap.min.css.map").permitAll()
 				   
 //				   .requestMatchers("/assets/js/vendor/modernizr-2.8.3.min.js").permitAll()
@@ -58,59 +58,57 @@ public class AuthConfig {
 					.requestMatchers("/rest/authorities").permitAll()
 					.anyRequest().authenticated()				   
 				   );
-			
+//			http.formLogin(form -> form
+//			.loginPage("/security/login/form") // địa chỉ đường dẫn
+//			.loginProcessingUrl("/home/index") // [[/login]]
+//			.defaultSuccessUrl("/security/login/success",false) // đăng nhập thành công
+//			.failureUrl("/security/login/error") // đăng nhập sai thông tin user , pass
+//			
+//			
+//			);
 		
-//		http.formLogin(form -> form
-//				.loginPage("/security/login/form") // địa chỉ đường dẫn
-//				.loginProcessingUrl("/home/index") // [[/login]]
-//				.defaultSuccessUrl("/security/login/success",false) // đăng nhập thành công
-//				.failureUrl("/security/login/error") // đăng nhập sai thông tin user , pass
-//				
-//				
-//				);
-			
-		   
-		   http.formLogin(form -> form
-							.loginPage("/index/login")
-							.loginProcessingUrl("/index/login")
-							.defaultSuccessUrl("/index/login/success",false) // đăng nhập thành công
-							.failureUrl("/index/login/error") // đăng nhập sai thông tin user , pass
-		   
-						)
-		   .logout(
-			                    logout -> logout
-			                    .logoutRequestMatcher(new AntPathRequestMatcher("/index/logoff"))
-			                    .permitAll())
-		   		.oauth2Login().loginPage("/oauth2/login/form")
-		   		.defaultSuccessUrl("/oauth2/login/success",true)
-		   		.failureUrl("/oauth2/login/error")
-		   		.authorizationEndpoint().baseUri("/oauth2/authorization")  ;
-						   
-//		    .authorizeHttpRequests((authorize) -> 
-//		    authorize  .requestMatchers("static/css/**","static/font/**","/static/images/**","/static/img/**","/static/js/**").permitAll()	  
-//		    		.requestMatchers("/index/register").permitAll()
-//		    		.requestMatchers("/home/index").permitAll()
-//		    		.requestMatchers("/admin/home/index").hasRole("Administrator")
-//		    		.requestMatchers("/product/shop_list").hasRole("User")
-//		           .anyRequest().authenticated()
-//		    );
-//		   http
-//			.formLogin(form -> form
-//				.loginPage("/index/login").loginProcessingUrl("/home/index")
-//				.defaultSuccessUrl("/product/shop_list")
-//				.permitAll()
-//			).logout(
-//                    logout -> logout
-//                    .logoutRequestMatcher(new AntPathRequestMatcher("/index/logoff"))
-//                    .permitAll());
-		   return http.build();
-	   }
 	   
-	
+	   http.formLogin(form -> form
+						.loginPage("/index/login")
+						.loginProcessingUrl("/home/index")
+						.defaultSuccessUrl("/index/login/success",false) // đăng nhập thành công
+						.failureUrl("/index/login/error") // đăng nhập sai thông tin user , pass
 	   
-	   @Autowired
-	   public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		   auth.userDetailsService(userDetailsService)
-		   		.passwordEncoder(passwordEncoder());
-	   }
+					)
+	   .logout(
+		                    logout -> logout
+		                    .logoutRequestMatcher(new AntPathRequestMatcher("/index/logoff"))
+		                    .permitAll())
+	   		.oauth2Login().loginPage("/oauth2/login/form")
+	   		.defaultSuccessUrl("/oauth2/login/success",true)
+	   		.failureUrl("/oauth2/login/error")
+	   		.authorizationEndpoint().baseUri("/oauth2/authorization")  ;
+					   
+//	    .authorizeHttpRequests((authorize) -> 
+//	    authorize  .requestMatchers("static/css/**","static/font/**","/static/images/**","/static/img/**","/static/js/**").permitAll()	  
+//	    		.requestMatchers("/index/register").permitAll()
+//	    		.requestMatchers("/home/index").permitAll()
+//	    		.requestMatchers("/admin/home/index").hasRole("Administrator")
+//	    		.requestMatchers("/product/shop_list").hasRole("User")
+//	           .anyRequest().authenticated()
+//	    );
+//	   http
+//		.formLogin(form -> form
+//			.loginPage("/index/login").loginProcessingUrl("/home/index")
+//			.defaultSuccessUrl("/product/shop_list")
+//			.permitAll()
+//		).logout(
+//               logout -> logout
+//               .logoutRequestMatcher(new AntPathRequestMatcher("/index/logoff"))
+//               .permitAll());
+	   return http.build();
+  }
+  
+
+  
+  @Autowired
+  public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+	   auth.userDetailsService(userDetailsService)
+	   		.passwordEncoder(passwordEncoder());
+  }
 }

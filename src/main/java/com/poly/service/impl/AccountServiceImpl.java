@@ -16,12 +16,15 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.security.oauth2.client.endpoint.DefaultPasswordTokenResponseClient;
 import org.springframework.stereotype.Service;
 
 import com.poly.bean.Account;
 import com.poly.bean.Role;
 import com.poly.dao.AccountDAO;
 import com.poly.service.AccountService;
+
+import ch.qos.logback.core.subst.Token;
 
 
 
@@ -36,7 +39,6 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 	@Autowired
 	AccountDAO adao;
 
-	
 	@Override
 	public List<Account> findAll() {		
 		return adao.findAll();
@@ -101,13 +103,31 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 	 public void loginFormOAuth2(OAuth2AuthenticationToken oauth2) {
 			String email = oauth2.getPrincipal().getAttribute("email");
 			String password = Long.toHexString(System.currentTimeMillis());
+			System.out.println(email);
+			System.out.println(oauth2.getName());
+			System.out.println(oauth2.getDetails());
+			
+			System.out.println(oauth2.getCredentials());
 			
 			UserDetails user = User.withUsername(email)
-					.password(pe.encode(password)).roles("1","2").build();
+					.password(pe.encode(password)).roles("User").build();
 			org.springframework.security.core.Authentication auth = new UsernamePasswordAuthenticationToken(password, null,user.getAuthorities());
 			SecurityContextHolder.getContext().setAuthentication(auth);
 //			Authentication auth = new UsernamePasswordAuthenticationToken(user , null, user.getAuthorities());
 //			SecurityContextHolder.getContext().setAuthentication(auth);
 			
-		};
+		}
+
+	public Account findByEmail(String Email) {
+		// TODO Auto-generated method stub
+		return  adao.findByEmail(Email);
+	}
+
+	@Override
+	public void createPasswordResetTokenForUser(Account user, String token) {
+		// TODO Auto-generated method stub
+		
+	};
+	
+	
 }

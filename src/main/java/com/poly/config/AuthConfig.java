@@ -46,11 +46,11 @@ public class AuthConfig {
 				   .requestMatchers("/assets/js/plugins.js").permitAll()
 				   .requestMatchers("/assets/js/bootstrap.min.js.map").permitAll()
 				   
-				   .requestMatchers("/assets/fonts/*").permitAll()
-				   .requestMatchers("/assets/images/*").permitAll()
-				   .requestMatchers("/assets/img/*").permitAll()
-				   .requestMatchers("/assets/js/*").permitAll()
+				   .requestMatchers("/assets/fonts/**").permitAll()
+				   .requestMatchers("/assets/images/**").permitAll()
+				   .requestMatchers("/assets/img/**").permitAll()
 				   .requestMatchers("/home/index","/index/login","/index/register").permitAll()
+				   .requestMatchers("/index/login/success","/index/login/error").permitAll()
 				    .requestMatchers("/order/**").authenticated()
 					.requestMatchers("/admin/**").hasRole("Administrator")
 					.requestMatchers("/rest/authorities").permitAll()
@@ -68,7 +68,8 @@ public class AuthConfig {
 //				);
 			
 		   
-		   http.formLogin(form -> form
+		   http
+		   .formLogin(form -> form
 							.loginPage("/index/login")
 							.loginProcessingUrl("/home/index")
 							.defaultSuccessUrl("/index/login/success",false) // đăng nhập thành công

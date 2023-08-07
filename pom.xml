@@ -64,6 +64,25 @@
 	<groupId>org.springframework.boot</groupId>
 	<artifactId>spring-boot-starter-oauth2-client</artifactId>
 </dependency>
+
+  <!-- JavaMail API -->
+    <dependency>
+        <groupId>javax.mail</groupId>
+        <artifactId>javax.mail-api</artifactId>
+        <version>1.6.2</version>
+    </dependency>
+    
+    <!-- JavaMail sender implementation -->
+    <dependency>
+        <groupId>com.sun.mail</groupId>
+        <artifactId>javax.mail</artifactId>
+        <version>1.6.2</version>
+    </dependency>
+    <dependency>
+    	<groupId>com.asm_java6_pc00725</groupId>
+    	<artifactId>asm_java6_pc00725</artifactId>
+    	<version>0.0.1-SNAPSHOT</version>
+    </dependency>
 	</dependencies>
 	<build>
 		<plugins>

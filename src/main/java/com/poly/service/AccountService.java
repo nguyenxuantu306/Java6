@@ -31,9 +31,9 @@ public interface AccountService {
 	
 	public Account  findByUsername(String username);
 
+	public Account findByEmail(String Email);
 
-
-	
+	public void createPasswordResetTokenForUser(Account user, String token);
 
 //	public List<Account> getAdministrators();
 	

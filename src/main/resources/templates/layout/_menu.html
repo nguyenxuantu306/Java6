@@ -1,5 +1,5 @@
 
-<html xmlns="http://www.thymeleaf.org">
+<html xmlns="http://www.thymeleaf.org"  xmlns:sec="http://www.springframework.org/security/tags">
 <div class="main_menu_inner" th:fragment="menu">
 	<div class="main_menu d-none d-lg-block">
 		<nav>
@@ -116,8 +116,7 @@
 						</div>
 					</div>
 				</li>
-
-
+					
 				<li><a th:href="@{/product/blog}">blog</a>
 					
 					</li>
@@ -126,7 +125,11 @@
 				<li><a th:href="@{/product/contact}">contact us</a>
 
 				</li>
-
+					<li  sec:authorize="hasRole('Administrator')">
+					
+					<a th:href="@{/admin}">ADMIN</a>
+					
+					</li>
 			</ul>
 		</nav>
 	</div>

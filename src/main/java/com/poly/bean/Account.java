@@ -37,7 +37,7 @@ public class Account implements Serializable {
 	String username;
 	String Password;
 	String Fullname;
-	String Email;
+	String email;
 	String Photo;
 	Boolean Gender;
 	String Address;

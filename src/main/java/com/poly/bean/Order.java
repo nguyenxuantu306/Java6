@@ -36,8 +36,8 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="Id")
 	Integer id;
-	@ManyToOne
 	
+	@ManyToOne
 	@JoinColumn(name = "Account_id")
 	Account account;
 

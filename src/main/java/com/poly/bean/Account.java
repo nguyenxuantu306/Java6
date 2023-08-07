@@ -41,9 +41,9 @@ public class Account implements Serializable {
 	@Column(name = "Date")
 	LocalDate date;
 	
-//	@JsonIgnore
-//	@OneToMany(mappedBy = "account")
-//	List<Orders> orders;
+	@JsonIgnore
+	@OneToMany(mappedBy = "account")
+	List<Order> orders;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "account", fetch = FetchType.EAGER)

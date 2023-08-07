@@ -81,7 +81,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	$scope.order = {
 		date: new Date(),
 		address: "",
-		account: { id: $("#Account_id").text() },
+		account: { Account_id: $("#Account_id").text() },
 		get orderDetails() {
 			return $scope.cart.items.map(item => {
 				return {
@@ -91,13 +91,14 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 				}
 			});
 		},
+		
 		purchase() {
 			var order = angular.copy(this);
 			// Thực hiện đặt hàng
 			$http.post("/rest/orders", order).then(resp => {
 				alert("Đặt hàng thành công!");
 				$scope.cart.clear();
-//				location.href = "/order/detail/" + resp.data.id;
+				location.href = "/order/detail/" + resp.data.id;
 			}).catch(error => {
 				alert("Đặt hàng lỗi!");
 				console.log(error)

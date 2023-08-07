@@ -16,5 +16,5 @@ public class Top10 implements Serializable{
 	@Id
 	Book book;
 	long sum;
-	long xoadi;
+	
 }

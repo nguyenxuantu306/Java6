@@ -70,7 +70,7 @@ public class AuthConfig {
 		   
 		   http.formLogin(form -> form
 							.loginPage("/index/login")
-							.loginProcessingUrl("//home/index")
+							.loginProcessingUrl("/home/index")
 							.defaultSuccessUrl("/index/login/success",false) // đăng nhập thành công
 							.failureUrl("/index/login/error") // đăng nhập sai thông tin user , pass
 		   
@@ -78,14 +78,11 @@ public class AuthConfig {
 		   .logout(
 			                    logout -> logout
 			                    .logoutRequestMatcher(new AntPathRequestMatcher("/index/logoff"))
-			                    .permitAll());
-//		   
-//		   
-//		   
-//		   		.oauth2Login().loginPage("/oauth2/login/form")
-//		   		.defaultSuccessUrl("/oauth2/login/success",true)
-//		   		.failureUrl("/oauth2/login/error")
-//		   		.authorizationEndpoint().baseUri("/oauth2/authorization")  ;
+			                    .permitAll())
+		   		.oauth2Login().loginPage("/oauth2/login/form")
+		   		.defaultSuccessUrl("/oauth2/login/success",true)
+		   		.failureUrl("/oauth2/login/error")
+		   		.authorizationEndpoint().baseUri("/oauth2/authorization")  ;
 						   
 //		    .authorizeHttpRequests((authorize) -> 
 //		    authorize  .requestMatchers("static/css/**","static/font/**","/static/images/**","/static/img/**","/static/js/**").permitAll()	  

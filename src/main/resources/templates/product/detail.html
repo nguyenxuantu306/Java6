@@ -30,7 +30,7 @@
                 <!--breadcrumbs area end-->
 
 
-                   <!--product wrapper start-->
+                     <!--product wrapper start-->
                 <div class="product_details" th:object="${item}">
                     <div class="row">
                         <div class="col-lg-5 col-md-6">
@@ -38,20 +38,20 @@
                                 <div class="product_tab_button">
                                     <ul class="nav" role="tablist">
                                         <li>
-                                            <a class="active" data-toggle="tab" href="#p_tab1" role="tab" aria-controls="p_tab1" aria-selected="false"><img th:src="@{|/assets/images/*{image}|}" alt=""></a>
+                                            <a class="active" data-toggle="tab" href="#p_tab1" role="tab" aria-controls="p_tab1" aria-selected="false"><img  th:src="@{|*{Image1}|}" alt=""></a>
                                         </li>
                                         <li>
-                                            <a data-toggle="tab" href="#p_tab2" role="tab" aria-controls="p_tab2" aria-selected="false"><img th:src="@{|*{Image2}|}" alt=""></a>
-                                   	     </li>
+                                            <a data-toggle="tab" href="#p_tab2" role="tab" aria-controls="p_tab2" aria-selected="false"><img th:src="@{|*{image2}|}" alt=""></a>
+                                        </li>
                                         <li>
-                                            <a data-toggle="tab" href="#p_tab3" role="tab" aria-controls="p_tab3" aria-selected="false"><img th:src="@{|*{Image3}|}" alt=""></a>
+                                            <a data-toggle="tab" href="#p_tab3" role="tab" aria-controls="p_tab3" aria-selected="false"><img th:src="@{|*{image3}|}" alt=""></a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="tab-content produc_tab_c">
                                     <div class="tab-pane fade show active" id="p_tab1" role="tabpanel">
                                         <div class="modal_img">
-                                            <a href="#"><img th:src="@{|/assets/images/*{image}|}" alt=""></a>
+                                            <a href=""><img th:src="@{|/assets/images/*{image}|}" alt=""></a>
                                             <div class="img_icone">
                                                 <img src="assets\img\cart\span-new.png" alt="">
                                             </div>
@@ -62,28 +62,27 @@
                                     </div>
                                     <div class="tab-pane fade" id="p_tab2" role="tabpanel">
                                         <div class="modal_img">
-                                            <a href="#"><img th:href="@{|/assets/images/*{image2}|}" alt=""></a>
+                                            <a href="#"><img th:src="@{|*{image2}|}" alt=""></a>
                                             <div class="img_icone">
                                                 <img src="assets\img\cart\span-new.png" alt="">
                                             </div>
                                             <div class="view_img">
-                                                <a class="large_view" th:href="@{|/assets/images/*{image}|}"><i class="fa fa-search-plus"></i></a>
+                                                <a class="large_view" href="assets\img\product\product14.jpg"><i class="fa fa-search-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="p_tab3" role="tabpanel">
                                         <div class="modal_img">
-                                            <a href="#"><img th:href="@{|/assets/images/*{image3}|}" alt=""></a>
+                                            <a href="#"><img th:src="@{|*{image3}|}" alt=""></a>
                                             <div class="img_icone">
-                                                <img th:href="@{|/assets/images/*{image}|}" alt="">
+                                                <img src="assets\img\cart\span-new.png" alt="">
                                             </div>
                                             <div class="view_img">
-                                                <a class="large_view" th:href="@{|/assets/images/*{image}|}"> <i class="fa fa-search-plus"></i></a>
+                                                <a class="large_view" href="assets\img\product\product15.jpg"> <i class="fa fa-search-plus"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div class="col-lg-7 col-md-6">
@@ -100,7 +99,7 @@
                                         
                                         
                                     </ul>
-                                    <p>Thể loại : <span th:text="*{genres.genres}"></span></p>
+                                    
                                     <p>Tác giả : <span th:text="*{author}"></span></p> 
                                     <p>Số trang : <span th:text="*{pagecount}"></span></p> 
                                     <p>Năm xuất bản : <span th:text="*{Publication_date}"></span></p> 
@@ -111,7 +110,7 @@
                                 </div>
 
                                 <div class="content_price mb-15">
-                                    <span th:text="*{price}"></span>
+                                    <span th:text="*{price}+' '+'đ'"></span>
                                     <span class="old-price">$130.00</span>
                                 </div>
                                 <div class="box_quantity mb-20">
@@ -122,9 +121,6 @@
                                     <button th:attr="ng-click='cart.add(\'' + ${item.Id} + '\')'"  type="submit"><i class="fa fa-shopping-cart"></i> add to cart</button>
                                     <a href="#" title="add to wishlist"><i class="fa fa-heart" aria-hidden="true"></i></a>
                                 </div>
-                               
-
-                         
                                 <div class="product_stock mb-20">
                                     <p th:text="*{stock_quantity}"></p>
                                     <span> In stock </span>
@@ -139,7 +135,6 @@
                                         <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                                     </ul>
                                 </div>
-
                             </div>
                         </div>
                     </div>

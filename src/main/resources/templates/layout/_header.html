@@ -120,12 +120,12 @@
 										</a>
 									</div>
 								</div>
-								<div class="shipping_price">
+								<!--<div class="shipping_price">
 									<span> Shipping </span> <span> $7.00 </span>
-								</div>
+								</div>-->
 								<div class="total_price">
-									<span> Total </span> <span class="prices">${{cart.amount
-										| number:2}} </span>
+									<span> Total </span> <span class="prices">{{cart.amount
+										| number:0}} đ </span>
 								</div>
 								<div class="cart_button">
 									<a th:href="@{/cart/view}"> Check out</a>

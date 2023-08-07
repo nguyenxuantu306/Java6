@@ -73,7 +73,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			try {
 				var json = localStorage.getItem("cart");
 				this.items = json ? JSON.parse(json) : [];
-			}catch(error){
+			} catch (error) {
 				console.error("Error loading cart from localStorage:", error);
 				this.items = [];
 			}
@@ -87,13 +87,13 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	$scope.order = {
 		date: new Date(),
 		address: "",
-		account: { id: $("#Account_id").text() },
+		account: { username: $("#username").text() },
 		get orderDetails() {
 			return $scope.cart.items.map(item => {
 				return {
-					product: { id: item.id },
-					price: item.price,
-					quantity: item.qty
+					book: { id: item.id },
+					Price: item.price,
+					Quantity: item.qty
 				}
 			});
 		},
@@ -103,7 +103,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			$http.post("/rest/orders", order).then(resp => {
 				alert("Đặt hàng thành công!");
 				$scope.cart.clear();
-				//				location.href = "/order/detail/" + resp.data.id;
+				location.href = "/order/detail/" + resp.data.id;
 			}).catch(error => {
 				alert("Đặt hàng lỗi!");
 				console.log(error)

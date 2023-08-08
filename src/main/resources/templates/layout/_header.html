@@ -109,8 +109,8 @@
 							<div class="mini_cart" id="miniCart">
 								<div class="cart_item" ng-repeat="item in cart.items">
 									<div class="cart_img">
-										<a th:href="@{|/product/detail/${id}|}">
-											<img th:scr="@{|/assets/images/{{item.image}}|}">
+										<a th:href="@{|/product/detail/${id}|}"><img
+												th:src="@{|/assets/images/{{item.image}}|}">
 										</a>
 									</div>
 									<div class="cart_info">
@@ -126,11 +126,11 @@
 									</div>
 								</div>
 								<div class="shipping_price">
-									<span th:text="#{Calculateshipping}"> Shipping </span> <span> $7.00 </span>
+									<span th:text="#{Calculateshipping}"> Shipping </span> <span> 0.00 </span>
 								</div>
 								<div class="total_price">
 									<span th:text="#{cart.Total}"> Total </span> <span class="prices">{{cart.amount
-										| number:0}} đ </span>
+										| number:0}}đ </span>
 								</div>
 								<div class="cart_button">
 									<a th:href="@{/cart/view}" th:text="#{Checkout}"> Check out</a>

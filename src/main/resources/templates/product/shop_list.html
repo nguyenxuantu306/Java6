@@ -26,7 +26,7 @@
 				<!--layere categorie"-->
 				<div class="sidebar_widget shop_c">
 					<div class="categorie__titile">
-						<h4>Categories</h4>
+						<h4 th:text=" #{nav.catelogi}">Categories</h4>
 					</div>
 					<div class="layere_categorie">
 						<a th:each="c:${cates}" th:href="@{|/product/shop_list?cid=${c.id}|}" 
@@ -134,11 +134,11 @@
 						</ul>
 					</div>
 					<div class="page_amount">
-						<p>Showing 1–9 of 21 results</p>
+						<p th:text=" #{nav.equals}">Showing 1–9 of 21 results</p>
 					</div>
 					<div class="select_option">
 						<form action="#">
-							<label>Sort By</label> <select name="orderby" id="short">
+							<label th:text=" #{nav.SortBy}">Sort By</label> <select name="orderby" id="short">
 								<option selected="" value="1">Position</option>
 								<option value="1">Price: Lowest</option>
 								<option value="1">Price: Highest</option>

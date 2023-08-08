@@ -29,11 +29,11 @@
                             </div>
                             <div class="blog_content">
                                 <div class="blog_post">
-                                    <ul>
+                                    <!-- <ul>
                                         <li>
-                                            <a  href="#">Tech</a>
+                                            <a  href="#" >Tech</a>
                                         </li>
-                                    </ul>
+                                    </ul> -->
                                 </div>
                                 <h3><a th:utext="${p.name}" href="blog-details.html"></a></h3>
                                 <p th:utext="*{p.Description}"></p>
@@ -41,11 +41,11 @@
                                     <div class="post_meta">
                                         <ul>
                                             <li th:utext="*{p.Publication_date}"></li>
-                                            <li>3 Comments</li>
+                                            <li th:text="#{blog.Comments}">3 Comments</li>
                                         </ul>
                                     </div>
                                     <div class="Read_more">
-                                        <a th:href="@{|/product/detail/${p.id}|}">Read more  <i class="fa fa-angle-double-right"></i></a>
+                                        <a th:href="@{|/product/detail/${p.id}|}" th:text="#{blog.readmore}">Read more  <i class="fa fa-angle-double-right"></i></a>
                                     </div> 
                                 </div>
                             </div>

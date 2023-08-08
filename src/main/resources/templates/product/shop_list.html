@@ -26,7 +26,7 @@
 				<!--layere categorie"-->
 				<div class="sidebar_widget shop_c">
 					<div class="categorie__titile">
-						<h4>Categories</h4>
+						<h4 th:text=" #{nav.catelogi}">Categories</h4>
 					</div>
 					<div class="layere_categorie">
 						<a th:each="c:${cates}"
@@ -98,14 +98,20 @@
 						</ul>
 					</div>
 					<div class="page_amount">
-						<p>Showing 1–9 of 21 results</p>
+						<p th:text=" #{nav.equals}">Showing 1–9 of 21 results</p>
 					</div>
 					<div class="select_option">
 						<form action="#">
-							<label>Sort By</label> <select name="sort" id="order">
-							<option selected="" value="All">ALL Products</option>
-							<option value="priceDESC">Price: Lowest</option>
-							<option value="priceASC">Price: Highest</option>				
+							<label th:text=" #{nav.SortBy}">Sort By</label> <select name="orderby" id="short">
+								<option selected="" value="1">Position</option>
+								<option value="1">Price: Lowest</option>
+								<option value="1">Price: Highest</option>
+								<option value="1">Product Name:Z</option>
+								<option value="1">Sort by price:low</option>
+								<option value="1">Product Name: Z</option>
+								<option value="1">In stock</option>
+								<option value="1">Product Name: A</option>
+								<option value="1">In stock</option>
 							</select>
 							
 						</form>
@@ -144,9 +150,9 @@
 										</div>
 										<div class="product_info">
 											<ul>
-												<li><a href="#" title=" Add to Wishlist ">Add to
+												<li><a href="#" title=" Add to Wishlist" th:text="#{list.AddtoWishlist}">Add to
 														Wishlist</a></li>
-												<li><a th:href="@{|/product/detail/${p.id}|}">View
+												<li><a th:href="@{|/product/detail/${p.id}|}" th:text="#{list.ViewsDetail}">View
 														Detail</a></li>
 											</ul>
 										</div>

@@ -57,12 +57,12 @@
 							<table>
 								<thead>
 									<tr>
-										<th class="product_remove">Delete</th>
-										<th class="product_thumb">Image</th>
-										<th class="product_name">Product</th>
-										<th class="product-price">Price(VNĐ)</th>
-										<th class="product_quantity">Quantity</th>
-										<th class="product_total">Total</th>
+										<th class="product_remove" th:text="#{cart.Delete}">Delete</th>
+										<th class="product_thumb" th:text="#{cart.Image}">Image</th>
+										<th class="product_name" th:text="#{cart.Product}">Product</th>
+										<th class="product-price" th:text="#{cart.Price}">Price</th>
+										<th class="product_quantity" th:text="#{cart.Quantity}">Quantity</th>
+										<th class="product_total" th:text="#{cart.Total}">Total</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -86,7 +86,7 @@
 						</div>
 					</div>
 					<div class="checkout_btn">
-						<a th:href="@{product/shop_list}">Update cart</a>
+						<a th:href="@{product/shop_list}" th:text="#{updatecart}">Update cart</a>
 					</div>
 				</div>
 			</div>
@@ -95,36 +95,37 @@
 				<div class="row">
 					<div class="col-lg-6 col-md-6">
 						<div class="coupon_code">
-							<h3>Coupon</h3>
+							<h3 th:text="#{Coupon}">Coupon</h3>
 							<div class="coupon_inner">
-								<p>Enter your coupon code if you have one.</p>
+								<p th:text="#{Enteryourcouponcodeifyouhaveone}">Enter your coupon code if you have one.</p>
 								<input placeholder="Coupon code" type="text">
-								<button type="submit">Apply coupon</button>
+								<button type="submit" th:text="#{Applycoupon}">Apply coupon</button>
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-6">
 						<div class="coupon_code">
-							<h3>Cart Totals</h3>
+							<h3 th:text="#{CartTotals }">Cart Totals</h3>
 							<div class="coupon_inner">
 								<div class="cart_subtotal">
-									<p>Subtotal</p>
-									<p class="cart_amount">{{cart.amount | number: 0 }} đồng</p>
+									<p th:text="#{Subtotal}">Subtotal</p>
+									<p class="cart_amount">{{cart.amount | number:2}}</p>
 								</div>
-								<div class="cart_subtotal ">
-									<p>Shipping</p>
-									<p class="cart_amount">
-										<span>Flat Rate:</span> 0
-									</p>
-								</div>
-								<a href="#">Calculate shipping</a>
-
+								
 								<div class="cart_subtotal">
-									<p>Total</p>
-									<p class="cart_amount">{{cart.amount | number: 0}} đồng</p>
+									<p th:text="#{FlatRate }"> Flat Rate </p>
+									<p class="cart_amount">{{cart.amount | number:2}}</p>
+								</div>
+								<div class="cart_subtotal">
+									<p th:text="#{chk.Shipping}"> Calculate shipping </p>
+									<p class="cart_amount">{{cart.amount | number:2}}</p>
+								</div>
+								<div class="cart_subtotal">
+									<p th:text="#{cart.Total}" >Total</p>
+									<p class="cart_amount">{{cart.amount | number:2}}</p>
 								</div>
 								<div class="checkout_btn">
-									<a th:href="@{/order/checkout}">Proceed to Checkout</a>
+									<a th:href="@{/cart/checkout}" href="#" th:text="#{ProceedtoCheckout}">Proceed to Checkout</a>
 								</div>
 							</div>
 						</div>
@@ -135,6 +136,6 @@
 		</form>
 	</div>
 	<!--shopping cart area end -->
-	f
+	
 </body>
 </html>

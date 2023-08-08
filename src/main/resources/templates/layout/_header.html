@@ -21,16 +21,16 @@
 			<div class="row align-items-center">
 				<div class="col-lg-6 col-md-6">
 					<div class="switcher float-left d-inline-flex">
-						<ul>
-							<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="" id="menu"
-									data-toggle="dropdown" th:text="#{nav.lang}">Language</a>
-								<ul class="dropdown-menu" aria-labelledby="menu">
-									<li><a href="" onclick="changeLanguage('vi')" th:text="#{nav.vi}">Vietnamese</a>
-									</li>
-									<li><a href="" onclick="changeLanguage('en')" th:text="#{nav.en}">English</a></li>
+						<li class="languages"> 
+							<a><img src="assets\img\logo\fontlogo4.jpg" alt="" th:text=" #{nav.lang}"> <i class="fa fa-angle-down"></i></a>
+							
+								<ul class="dropdown_languages">
+									<li><a onclick="changeLanguage('vi')">
+										<img src="assets\img\logo\fontlogo3.jpg.png" th:text="#{nav.vi}" ></a></li>
+									<li><a onclick="changeLanguage('en')">
+										<img src="assets\img\logo\fontlogo.jpg"  th:text="#{nav.en}"></a></li>
 								</ul>
 							</li>
-						</ul>
 						<ul sec:authorize="isAuthenticated()">
 							<li>
 							<li><a th:href="@{/index/profile}" title="My account" th:text="#{nav.profile}">Profile</a>
@@ -44,22 +44,25 @@
 								<a href="" sec:authentication="name"></a>
 
 							</li>
-							<script>
-								function changeLanguage(lang) {
-									$.ajax({
-										url: "/home/index?lang=" + lang
-									}).then(resp => {
-										location.reload();
-									});
-								}
-							</script>
+							 
+					  <script>
+					  function changeLanguage(lang) {
+						$.ajax({
+						  url: "/home/index?lang=" + lang
+						}).then(resp => {
+						  location.reload();
+						});
+					  }
+					  </script>
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6">
 					<div class="header_links float-right d-inline-flex">
 						<ul>
-							<li><a th:href="@{/product/contact}" title="Contact" th:text="#{nav.contact}">Contact</a>
+							<li><a th:href="@{/product/contact}" title="Contact" th:text="#{nav.contact}">Contact</a></li>
+							<li><a th:href="@{/user/wishlist}" title="wishlist" th:text="#{nav.wishlist}">My wishlist</a></li>
+							<li><a th:href="@{/index/profile}" title="My account" th:text="#{nav.profile}">Profile</a></li>
 							<li><a th:href="@{/cart/view}" title="My cart" th:text="#{nav.cart}">My cart</a></li>
 						</ul>
 						<ul sec:authorize="isAnonymous()">
@@ -97,9 +100,11 @@
 							</form>
 						</div>
 						<div class="shopping_cart">
-							<a> <i class="fa fa-shopping-cart"></i> {{cart.count}} Items
-								- {{cart.amount | number:0}}đ <i class="fa fa-angle-down" ng-show="showMiniCart"></i>
-							</a>
+								<a>
+								<i class="fa fa-shopping-cart">
+									</i> {{cart.count}} Sản phẩm -	${{cart.amount | number:2}} 
+									 <i class="fa fa-angle-down"  ng-show="showMiniCart"></i>
+								</a>
 							<!--mini cart-->
 							<div class="mini_cart" id="miniCart">
 								<div class="cart_item" ng-repeat="item in cart.items">
@@ -120,15 +125,15 @@
 										</a>
 									</div>
 								</div>
-								<!--<div class="shipping_price">
-									<span> Shipping </span> <span> $7.00 </span>
-								</div>-->
+								<div class="shipping_price">
+									<span th:text="#{Calculateshipping}"> Shipping </span> <span> $7.00 </span>
+								</div>
 								<div class="total_price">
-									<span> Total </span> <span class="prices">{{cart.amount
-										| number:0}} đ </span>
+									<span th:text="#{cart.Total}"> Total </span> <span class="prices">${{cart.amount
+										| number:2}} </span>
 								</div>
 								<div class="cart_button">
-									<a th:href="@{/cart/view}"> Check out</a>
+									<a th:href="@{/cart/view}" th:text="#{Checkout}"> Check out</a>
 								</div>
 							</div>
 							<!--mini cart end-->

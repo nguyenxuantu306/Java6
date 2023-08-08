@@ -9,12 +9,12 @@ GO
 
 /****** Object:  Table [dbo].[Accounts]    Script Date: 18/7/2023 ******/
 CREATE TABLE [dbo].[Accounts](
-	[Id][nvarchar](50) not null primary key,
-	[Username] [nvarchar](50) NOT NULL,
-	[Password] [nvarchar](max) NOT NULL,
-	[Fullname] [nvarchar](50) NOT NULL,
-	[Email] [nvarchar](50) NOT NULL,
-	[Photo] [nvarchar](50) NOT NULL,
+	[Id][nvarchar](50)  primary key,
+	[Username] [nvarchar](50) not null ,
+	[Password] [nvarchar](max) not null,
+	[Fullname] [nvarchar](50) not null,
+	[Email] [nvarchar](50) null,
+	[Photo] [nvarchar](50) null,
 	[Gender] [bit],
 	[Address] [nvarchar](255),
 	[Phone] [varchar](10),

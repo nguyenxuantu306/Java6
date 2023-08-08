@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 	<meta charset="UTF-8">
@@ -102,15 +102,15 @@
 						<div class="shopping_cart">
 								<a>
 								<i class="fa fa-shopping-cart">
-									</i> {{cart.count}} Sản phẩm -	${{cart.amount | number:2}} 
+									</i> {{cart.count}} Sản phẩm -	{{cart.amount | number:0}} đ 
 									 <i class="fa fa-angle-down"  ng-show="showMiniCart"></i>
 								</a>
 							<!--mini cart-->
 							<div class="mini_cart" id="miniCart">
 								<div class="cart_item" ng-repeat="item in cart.items">
 									<div class="cart_img">
-										<a th:href="@{|/product/detail/${id}|}"><img
-												th:src="@{|/assets/images/{{item.image}}|}">
+										<a th:href="@{|/product/detail/${id}|}">
+											<img th:scr="@{|/assets/images/{{item.image}}|}">
 										</a>
 									</div>
 									<div class="cart_info">
@@ -129,8 +129,8 @@
 									<span th:text="#{Calculateshipping}"> Shipping </span> <span> $7.00 </span>
 								</div>
 								<div class="total_price">
-									<span th:text="#{cart.Total}"> Total </span> <span class="prices">${{cart.amount
-										| number:2}} </span>
+									<span th:text="#{cart.Total}"> Total </span> <span class="prices">{{cart.amount
+										| number:0}} đ </span>
 								</div>
 								<div class="cart_button">
 									<a th:href="@{/cart/view}" th:text="#{Checkout}"> Check out</a>

@@ -11,6 +11,7 @@ import org.hibernate.annotations.Columns;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,8 +37,8 @@ public class Order implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="Id")
 	Integer id;
-	@ManyToOne
 	
+	@ManyToOne
 	@JoinColumn(name = "Account_id")
 	Account account;
 

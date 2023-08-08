@@ -25,39 +25,16 @@ public class AuthConfig {
 	        return new BCryptPasswordEncoder();
 	    }
 	   
-	   @Bean
+	   @SuppressWarnings("deprecation")
+	@Bean
 	   public SecurityFilterChain fillterchain(HttpSecurity http) throws Exception{
 		   http.csrf().disable().cors().disable();
 		  
-	   
 		   http.authorizeRequests(authorize -> authorize
-				   .requestMatchers("/assets/css/**").permitAll()
-//				   .requestMatchers("/assets/css/responsive.css").permitAll()
-//				   .requestMatchers("/assets/css/style.css").permitAll()
-//				   .requestMatchers("/assets/css/bundle.css").permitAll()
-//				   .requestMatchers("/assets/css/plugin.css").permitAll()
-				   .requestMatchers("/assets/css/bootstrap.min.css.map").permitAll()
-				   
-//				   .requestMatchers("/assets/js/vendor/modernizr-2.8.3.min.js").permitAll()
-				   .requestMatchers("https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js").permitAll()
-//				   .requestMatchers("/assets/js/vendor/jquery-1.12.0.min.js").permitAll()
-//				   .requestMatchers("/assets/js/popper.js").permitAll()
-//				   .requestMatchers("/assets/js/bootstrap.min.js").permitAll()
-//				   .requestMatchers("/assets/js/ajax-mail.js").permitAll()
-//				   .requestMatchers("/assets/js/main.js").permitAll()
-//				   .requestMatchers("/assets/js/plugins.js").permitAll()
-//				   .requestMatchers("/assets/js/bootstrap.min.js.map").permitAll()
-				   
-				   .requestMatchers("/assets/fonts/**").permitAll()
-				   .requestMatchers("/assets/images/**").permitAll()
-				   .requestMatchers("/assets/img/**").permitAll()
-				   .requestMatchers("/assets/js/**").permitAll()
-				   .requestMatchers("/home/index","/index/login","/index/register").permitAll()
-				    .requestMatchers("/order/**").permitAll()
+					.requestMatchers("/order/**").authenticated()
 					.requestMatchers("/admin/**").hasRole("Administrator")
-					.requestMatchers("/rest/authorities").permitAll()
-					.anyRequest().authenticated()				   
-				   );
+					/* .requestMatchers("/rest/authorities").hasRole("DIRE") */
+					.anyRequest().permitAll());
 //			http.formLogin(form -> form
 //			.loginPage("/security/login/form") // địa chỉ đường dẫn
 //			.loginProcessingUrl("/home/index") // [[/login]]

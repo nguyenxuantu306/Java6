@@ -87,20 +87,21 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 	$scope.order = {
 		date: new Date(),
 		address: "",
-		account: { username: $("#username").text() },
-		get orderDetails() {
+		account: { id: $("#account_id").text() },
+		get orderDetail() {
 			return $scope.cart.items.map(item => {
 				return {
+					id: item.id,
 					book: { id: item.id },
-					Price: item.price,
-					Quantity: item.qty
+					price: item.price,
+					quantity: item.qty
 				}
 			});
 		},
 		purchase() {
 			var order = angular.copy(this);
 			// Thực hiện đặt hàng
-			$http.post("/rest/orders", order).then(resp => {
+			$http.post("/rest/orders/add", order).then(resp => {
 				alert("Đặt hàng thành công!");
 				$scope.cart.clear();
 				location.href = "/order/detail/" + resp.data.id;

@@ -45,7 +45,6 @@ public class SecurityController {
 	@Autowired
 	private AccountService accountService;
 
-	
 	@GetMapping("/index/login")
 	public String login(Model model) {
 		model.addAttribute("message", "Vui lòng đăng nhập!");
@@ -93,7 +92,7 @@ public class SecurityController {
 	}
 
 	@GetMapping("/index/forgot")
-	public String forgot(Model model) {		
+	public String forgot(Model model) {
 		return "security/forgotpassword";
 	}
 
@@ -108,56 +107,63 @@ public class SecurityController {
 		model.addAttribute("message", "Bạn đã đăng xuất!");
 		return "security/login";
 	}
-	
-	
+
 	@GetMapping("/index/profile")
 	public String profile(Model model) {
+
+		// Lấy thông tin người dùng đã xác thực từ SecurityContextHolder
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+		// Kiểm tra nếu người dùng đã xác thực
+		if (authentication.isAuthenticated()) {
+			// Lấy tên người dùng
+			String username = authentication.getName();
+			
+			// Lấy các quyền (roles) của người dùng
+			String roles = authentication.getAuthorities().toString();
+
+			// Trả về thông tin tài khoản trong phản hồi
+			System.out.println("Xin chào, " + username + "! Bạn có các quyền: " + roles);
+		} else {
+			System.out.println("Xin chào! Bạn chưa đăng nhập.");
+		}
+		String username = authentication.getName();
+		Account ac = acdao.findByUsername(username);
 		
-		 // Lấy thông tin người dùng đã xác thực từ SecurityContextHolder
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		/* Account acc = acdao.findById(); */	
+		
+		
+		System.out.println(ac.getId());
+		System.out.println(ac.getUsername());
+		System.out.println(ac.getAddress());
+		System.out.println(ac.getFullname());
+		System.out.println(ac.getPassword());
+		System.out.println(ac.getPhone());
+		System.out.println(ac.getPhoto());
+		System.out.println(
+				"*************************************************************************?///////////////////////");
+		System.out
+				.println(ac.getAccountroles().stream().map(er -> er.getRole().getName()).collect(Collectors.toList()));
+		Role role = new Role();
+		role.setId(1);
+		System.out.println("//////////////////");
+		System.out.println(role.getName());
 
-        // Kiểm tra nếu người dùng đã xác thực
-        if (authentication.isAuthenticated()) {
-            // Lấy tên người dùng
-            String username = authentication.getName();
+		model.addAttribute("ac", ac);
 
-            // Lấy các quyền (roles) của người dùng
-            String roles = authentication.getAuthorities().toString();
-
-            // Trả về thông tin tài khoản trong phản hồi
-            System.out.println("Xin chào, " + username + "! Bạn có các quyền: " + roles);
-        } else {
-        	System.out.println("Xin chào! Bạn chưa đăng nhập.");
-        }
-        String username = authentication.getName();
-        Account ac = acdao.findByUsername(username);
-        System.out.println(ac.getUsername());
-        System.out.println(ac.getAddress());
-        System.out.println(ac.getFullname());
-        System.out.println(ac.getPassword());
-        System.out.println(ac.getPhone());
-        System.out.println(ac.getPhoto());
-        System.out.println("*************************************************************************?///////////////////////");
-    System.out.println(ac.getAccountroles().stream().map(er -> er.getRole().getName()).collect(Collectors.toList())); 
-    Role role = new Role();
-    role.setId(1);
-    System.out.println("//////////////////");
-  System.out.println(role.getName());
-
-  model.addAttribute("ac", ac);
-
-	return "/user/profile";
+		return "/user/profile";
 	}
-	
+
 	@RequestMapping("/oauth2/login/form")
 	public String fbform() {
 		return "/security/login";
 	}
+
 	@RequestMapping("/oauth2/login/error")
 	public String fber() {
 		return "/security/login";
 	}
-	
+
 	@RequestMapping("/oauth2/login/success")
 	public String fbsuccess(OAuth2AuthenticationToken oauth2) {
 		acipl.loginFormOAuth2(oauth2);
@@ -168,6 +174,5 @@ public class SecurityController {
 	public String ggform() {
 		return "security/login";
 	}
-	
-	
+
 }

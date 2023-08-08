@@ -25,7 +25,7 @@ public class OrderRestController {
 		return orderService.findAll();
 	}
 
-	@PostMapping()
+	@PostMapping("/add")
 	public Order create(@RequestBody JsonNode orderData) {
 		return orderService.create(orderData);
 	}

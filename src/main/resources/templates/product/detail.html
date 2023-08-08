@@ -110,8 +110,8 @@
                                 </div>
 
                                 <div class="content_price mb-15">
-                                    <span th:text="*{price}+' '+'đ'"></span>
-                                    <span class="old-price">$130.00</span>
+                                    <span th:text="*{#numbers.formatDecimal(price,0,'COMMA',0,'POINT')}+ 'đ'"></span>
+                                    <span class="old-price">130.000đ</span>
                                 </div>
                                 <div class="box_quantity mb-20">
                                     <form action="#">

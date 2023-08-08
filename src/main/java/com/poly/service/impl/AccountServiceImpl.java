@@ -61,7 +61,7 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 	@Override
 	public Account findByUsername(String username) {
 		// TODO Auto-generated method stub
-		return null;
+		return adao.findByUsername(username);
 	}
 
 	//find by usser

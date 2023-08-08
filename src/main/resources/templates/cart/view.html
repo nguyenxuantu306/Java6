@@ -74,12 +74,12 @@
 											<img th:src="@{|/assets/images/{{item.image}}|}" style="width: 100px;">
 											</a></td>
 										<td class="product_name"><a href="#">{{item.name}}</a></td>
-										<td class="product-price">{{item.price | number :0}}</td>
+										<td class="product-price">{{item.price | number :0}} đ</td>
 										<td class="product_quantity"><input
 											ng-change="cart.saveToLocalStorage()" ng-model="item.qty"
 											type="number" min="1" style="width: 50px"></td>
-										<td class="product_total">${{item.qty*item.price |
-											number:2}}</td>
+										<td class="product_total">{{item.qty*item.price |
+											number:0}} đ</td>
 									</tr>
 								</tbody>
 							</table>
@@ -109,20 +109,20 @@
 							<div class="coupon_inner">
 								<div class="cart_subtotal">
 									<p th:text="#{Subtotal}">Subtotal</p>
-									<p class="cart_amount">{{cart.amount | number:2}}</p>
+									<p class="cart_amount">{{cart.amount | number:0}} đ</p>
 								</div>
 								
 								<div class="cart_subtotal">
 									<p th:text="#{FlatRate }"> Flat Rate </p>
-									<p class="cart_amount">{{cart.amount | number:2}}</p>
+									<p class="cart_amount">{{cart.amount | number:0}} đ</p>
 								</div>
 								<div class="cart_subtotal">
 									<p th:text="#{chk.Shipping}"> Calculate shipping </p>
-									<p class="cart_amount">{{cart.amount | number:2}}</p>
+									<p class="cart_amount"></p>
 								</div>
 								<div class="cart_subtotal">
 									<p th:text="#{cart.Total}" >Total</p>
-									<p class="cart_amount">{{cart.amount | number:2}}</p>
+									<p class="cart_amount">{{cart.amount | number:0}} đ</p>
 								</div>
 								<div class="checkout_btn">
 									<a th:href="@{/order/checkout}" href="#" th:text="#{ProceedtoCheckout}">Proceed to Checkout</a>

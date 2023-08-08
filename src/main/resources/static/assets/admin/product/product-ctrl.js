@@ -20,6 +20,17 @@ app.controller("product-ctrl", function($scope, $http) {
 			
 		});
 		
+		/*// Load Athor
+		$http.get("/rest/categories").then(resp =>{
+			$scope.cates = resp.data;
+			
+		});*/
+		
+	}
+	
+	$scope.sort = function(keyname) {
+		$scope.sortKey = keyname;
+		$scope.reverse = !$scope.reverse;
 	}
 	
 	// Khởi đầu

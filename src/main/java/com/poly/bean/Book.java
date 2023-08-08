@@ -36,7 +36,7 @@ public class Book implements Serializable {
 	private String Image;
 
 	
-	private Float Price;
+	private Float price;
 
 	private String Author;
 

@@ -23,6 +23,9 @@ app.config(function($routeProvider) {
 		}).when('/thongke_loai', {
 			templateUrl: "/assets/admin/thongke/_thongke_loai.html",
 			controller: 'thongke-loai-ctrl'
+		}).when('/thongke_order', {
+			templateUrl: "/assets/admin/thongke/_thongke_order.html",
+			controller: 'thongke-order-ctrl'
 		}).when("/authorize", {
 			templateUrl: "/assets/admin/authority/index.html",
 			controller: "authority-ctrl"

@@ -3,9 +3,7 @@
 	th:replace="~{/layout/layout :: dynamic(~{::body})}">
 
 <body>
-	<!-- Add your site or application content here -->
-	x
-	<!--pos page start-->
+
 
 
 	<!--breadcrumbs area start-->
@@ -109,17 +107,17 @@
 							<div class="coupon_inner">
 								<div class="cart_subtotal">
 									<p th:text="#{Subtotal}">Subtotal</p>
-									<p class="cart_amount">{{cart.amount | number:0}} đ</p>
+									<p class="cart_amount">{{cart.amount}} đ</p>
 								</div>
 								
 								<div class="cart_subtotal">
 									<p th:text="#{FlatRate }"> Flat Rate </p>
 									<p class="cart_amount">{{cart.amount | number:0}} đ</p>
 								</div>
-								<div class="cart_subtotal">
+								<!-- <div class="cart_subtotal">
 									<p th:text="#{chk.Shipping}"> Calculate shipping </p>
 									<p class="cart_amount"></p>
-								</div>
+								</div> -->
 								<div class="cart_subtotal">
 									<p th:text="#{cart.Total}" >Total</p>
 									<p class="cart_amount">{{cart.amount | number:0}} đ</p>

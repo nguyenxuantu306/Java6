@@ -93,7 +93,7 @@
 								</div>
 							</div>
 							<div class="product_content">
-								<span class="product_price" th:text="${book.Price}"></span>
+								<span class="product_price" th:text="*{#numbers.formatDecimal(book.price,0,'COMMA',0,'POINT')}+ 'đ'"></span>
 								<h3 class="product_title">
 									<a th:href="@{|/product/detail/${book.id}|}"
 										th:text="${book.Name}"></a>
@@ -145,7 +145,7 @@
 								</div>
 							</div>
 							<div class="product_content">
-								<span class="product_price" th:text="${book.Price}"></span>
+								<span class="product_price" th:text="*{#numbers.formatDecimal(book.price,0,'COMMA',0,'POINT')}+ 'đ'"></span>
 								<h3 class="product_title">
 									<a th:href="@{|/product/detail/${book.id}|}"
 										th:text="${book.Name}"></a>

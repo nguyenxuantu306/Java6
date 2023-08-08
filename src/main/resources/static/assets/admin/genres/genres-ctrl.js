@@ -12,7 +12,11 @@ app.controller("genres-ctrl", function($scope, $http) {
 			
 		});
 		
-		
+		// Load categories
+		$http.get("/rest/categories").then(resp =>{
+			$scope.cates = resp.data;
+			
+		});
 			
 	}
 	
@@ -84,7 +88,10 @@ app.controller("genres-ctrl", function($scope, $http) {
 	}
 	
 	
-	
+	$scope.sort = function(keyname) {
+		$scope.sortKey = keyname;
+		$scope.reverse = !$scope.reverse;
+	}
 	$scope.pager = {
 		page:0,
 		size:10,

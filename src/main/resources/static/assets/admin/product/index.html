@@ -23,7 +23,7 @@
 					<label>Tìm Kiếm</label> 
 							<input ng-model="searchText.name" type="text"
 								class="form-control bg-light "
-								placeholder="Search for..." aria-label="Search"
+								placeholder="Search for name..." aria-label="Search"
 								aria-describedby="basic-addon2">
 							
 						</div>
@@ -40,19 +40,34 @@
 				<table  class="table table-bordered">
 					<thead>
 						<tr>
-							<th>Id</th>
-							<th>Name</th>
-							<th>Price</th>
-							<th>Date</th>
+							<th scope="col" ng-click="sort('id')">Id <span
+								class="glyphicon sort-icon" ng-show="sortKey =='id'"
+								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
+							</th>
+							<th scope="col" ng-click="sort('name')">Name <span
+								class="glyphicon sort-icon" ng-show="sortKey =='name'"
+								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
+							</th>
+							<th scope="col" ng-click="sort('price')">Price<span
+								class="glyphicon sort-icon" ng-show="sortKey =='price'"
+								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
+							</th>
+							<th scope="col" ng-click="sort('publication_date')">Date <span
+								class="glyphicon sort-icon" ng-show="sortKey =='publication_date'"
+								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
+							</th>							
 							<th>Image</th>
-							<th>Category</th>
+							<th scope="col" ng-click="sort('genres.genres')">Genres<span
+								class="glyphicon sort-icon" ng-show="sortKey =='genres.genres'"
+								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
+							</th>
 							<th>Available</th>
 							<th></th>
 						</tr>
 					</thead>
 
 					<tbody>
-						<tr ng-repeat="item in pager.items| filter:searchText">
+						<tr ng-repeat="item in pager.items| filter:searchText| orderBy:sortKey:reverse">
 							<th>{{item.id}}</th>
 							<th style="width: 400px">{{item.name}}</th>
 							<th>{{item.price | number:0}}</th>
@@ -121,23 +136,27 @@
 						</div>
 						<div class="form-group col-sm-6">
 							<div>Author:</div>
-							<input ng-model="form.author" class="form-control">
+							<select ng-model="form.author" class="form-control">
+								<option ng-repeat="c in items" ng-value="c.author">{{c.author}}</option>
+							</select>
 						</div>
 						<div class="form-group col-sm-6">
 							<div>PageCount:</div>
 							<input ng-model="form.pagecount" class="form-control">
 						</div>
-						<div class="form-group col-sm-6">
+						<div class="form-group col-sm-6">							
 							<div>Publisher:</div>
-							<input ng-model="form.publisher" class="form-control">
+							<select ng-model="form.publisher" class="form-control">
+								<option ng-repeat="c in items" ng-value="c.publisher">{{c.publisher}}</option>
+							</select>
 						</div>
 						<div class="form-group col-sm-6">
 							<div>Stock_quantity:</div>
-							<input ng-model="form.stock_quantity" class="form-control">
+							<input  ng-model="form.stock_quantity" class="form-control">
 						</div>
 						<div class="form-group col-sm-6">
 							<div>Description:</div>
-							<textarea ng-model="form.description" rows="2" cols="41"></textarea>
+							<textarea ng-model="form.description" rows="2" cols="54"></textarea>
 						</div>
 					</div>
 					<div class="row">

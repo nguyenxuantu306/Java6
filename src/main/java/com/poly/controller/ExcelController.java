@@ -79,8 +79,8 @@ public class ExcelController {
 			row.createCell(2).setCellValue(data.getPrice());
 			row.createCell(3).setCellValue(data.getPublication_date());
 			row.createCell(4).setCellValue(data.getImage());
-			row.createCell(4).setCellValue(data.getAuthor());
-			row.createCell(4).setCellValue(data.getAvailable());
+			row.createCell(5).setCellValue(data.getAuthor());
+			row.createCell(6).setCellValue(data.getAvailable());
 			
 			// Thêm cột khác tùy ý
 		}

@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.poly.bean.OrderDetail;
 import com.poly.bean.Top10;
 
-public interface OrderDetailDAO extends JpaRepository<OrderDetail, Long> {
+public interface OrderDetailDAO extends JpaRepository<OrderDetail, String> {
 
 	
 	@Query("SELECT new Top10(o.book, sum(o.Quantity)) FROM OrderDetail o GROUP BY o.book ORDER BY sum(o.Quantity) DESC")

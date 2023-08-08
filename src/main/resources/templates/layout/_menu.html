@@ -21,16 +21,16 @@
 
 					</div>
 				</li>
-				<li ng-class="{ 'active': isActive('/index/login')}"><a th:href="@{/index/login}"
+				<li ng-class="{ 'active': isActive('/index/profile')}"><a th:href="@{/index/profile}"
 						th:text="#{nav.MyAccount}">My Account</a>
 					<div class="mega_menu jewelry">
 						<div class="mega_items jewelry">
 							<ul>
 								<li ng-class="{ 'active': isActive('/index/login')}"><a th:href="@{/index/login}"
 										th:text="#{nav.signin}">Sign in</a></li>
-								<li ng-class="{ 'active': isActive('/index/register')}"><a th:href="@{/index/register}"
+								<li ng-class="{ 'active': isActive('/index/logoff')}"><a th:href="@{/index/logoff}"
 										th:text="#{nav.signout}">Sign out</a></li>
-								<li ng-class="{ 'active': isActive('/index/forgot')}"><a th:href="@{/index/forgot}"
+								<li ng-class="{ 'active': isActive('/index/forgot')}"><a th:href="@{/index/register}"
 										th:text="#{nav.register}" v>Register</a></li>
 							</ul>
 						</div>

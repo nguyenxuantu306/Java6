@@ -14,5 +14,7 @@ public interface OrderDetailService {
 
 	OrderDetail findById(String id);
 
+	List<OrderDetail> findByIdOrder(Integer id);
+
 
 }

@@ -3,31 +3,26 @@ app.controller("order-ctrl", function($scope, $http) {
 	$scope.cates = [];
 	$scope.items2 = [];
 	$scope.form = {};
-	
-	$scope.initialize = function(){
+
+	$scope.initialize = function() {
 		// Load products
-		$http.get("/rest/orders").then(resp =>{
+		$http.get("/rest/orders").then(resp => {
 			$scope.items = resp.data;
-			$scope.items.forEach(item =>{
+			$scope.items.forEach(item => {
 				item.date = new Date(item.date)
 			})
 		});
-		
+
 		// Load states
-		$http.get("/rest/states").then(resp =>{
+		$http.get("/rest/states").then(resp => {
 			$scope.cates = resp.data;
 		});
-		
-		// Load orderdetails
-		$http.get("/rest/orderdetails").then(resp =>{
-			$scope.items2 = resp.data;
-		});
-		
+
 	}
-	
+
 	// Khởi đầu
 	$scope.initialize();
-	
+
 	// Xóa form
 	/*$scope.reset = function(){
 		$scope.form = {
@@ -38,11 +33,19 @@ app.controller("order-ctrl", function($scope, $http) {
 	}
 	*/
 	// Hiện thị lên form
-	$scope.edit = function(item){
+	$scope.edit = function(item) {
+		$http.get("/rest/orderdetails/" + item.id).then(resp => {
+			$scope.items2 = resp.data;
+		});
+
 		$scope.form = angular.copy(item);
-		$(".nav-tabs a:eq(0)").tab('show');
+		$('html,body').animate({
+			scrollTop: $(".info").offset().top
+		},
+			'slow');
+
 	}
-	
+
 	// Thêm sản phẩm mới
 	/*$scope.create = function(){
 		var item = angular.copy($scope.form);
@@ -56,7 +59,7 @@ app.controller("order-ctrl", function($scope, $http) {
 			console.log("Error",error);
 		});
 	}*/
-	
+
 	// cặp nhật sản phẩm
 	/*$scope.update = function(){
 		var item = angular.copy($scope.form);
@@ -70,21 +73,21 @@ app.controller("order-ctrl", function($scope, $http) {
 			console.log("Error",error);
 		});
 	}*/
-	
+
 	// Xóa sản phẩm 
-	$scope.delete = function(item){
-		$http.delete(`/rest/orders/${item.id}`).then(resp =>{
+	$scope.delete = function(item) {
+		$http.delete(`/rest/orders/${item.id}`).then(resp => {
 			var index = $scope.items.findIndex(p => p.id == item.id);
-			$scope.items.splice(index,1);
-			$scope.reset();				
+			$scope.items.splice(index, 1);
+			$scope.reset();
 			alert("Xóa thành công!");
 		})
-		.catch(error =>{
-			alert("Lỗi xóa");
-			console.log("Error",error);
-		});
+			.catch(error => {
+				alert("Lỗi xóa");
+				console.log("Error", error);
+			});
 	}
-	
+
 	// Upload hình
 	/*$scope.imageChanged = function(files){
 		var data = new FormData();
@@ -99,34 +102,34 @@ app.controller("order-ctrl", function($scope, $http) {
 			console.log("Error",error);
 		})
 	}*/
-	
+
 	$scope.pager = {
-		page:0,
-		size:10,
-		get items(){
-			var start = this.page*this.size;
-			 return $scope.items.slice(start,start + this.size);
+		page: 0,
+		size: 10,
+		get items() {
+			var start = this.page * this.size;
+			return $scope.items.slice(start, start + this.size);
 		},
-		get count(){
+		get count() {
 			return Math.ceil(1.0 * $scope.items.length / this.size);
 		},
-		first(){
+		first() {
 			this.page = 0;
 		},
-		prev(){
+		prev() {
 			this.page--;
-			if(this.page < 0){
+			if (this.page < 0) {
 				this.last();
 			}
 		},
-		next(){
+		next() {
 			this.page++;
-			if(this.page > this.count){
+			if (this.page > this.count) {
 				this.first();
 			}
 		},
-		last(){
-			this.page = this.count-1;
-		}		
+		last() {
+			this.page = this.count - 1;
+		}
 	}
 });

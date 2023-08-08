@@ -34,4 +34,10 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		return dao.findById(id).get();
 	}
 
+	@Override
+	public List<OrderDetail> findByIdOrder(Integer id) {
+		// TODO Auto-generated method stub
+		return dao.findByIdOrder(id);
+	}
+
 }

@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
@@ -54,6 +55,8 @@ public class AuthConfig {
 				    .requestMatchers("/order/**").authenticated()
 					.requestMatchers("/admin/**").hasRole("Administrator")
 					.requestMatchers("/rest/authorities").permitAll()
+					
+//					.exceptionHandling().accessDeniedPage("/security/unauthoried")
 					.anyRequest().authenticated()				   
 				   );
 			
@@ -76,6 +79,8 @@ public class AuthConfig {
 							.failureUrl("/index/login/error") // đăng nhập sai thông tin user , pass
 		   
 						)
+		      .exceptionHandling().accessDeniedPage("/index/unauthoried")
+		      .and()
 		   .logout(
 			                    logout -> logout
 			                    .logoutRequestMatcher(new AntPathRequestMatcher("/index/logoff"))

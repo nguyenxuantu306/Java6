@@ -11,7 +11,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.poly.bean.Order;
 import com.poly.bean.OrderDetail;
-import com.poly.dao.BookDAO;
 import com.poly.dao.OrderDAO;
 import com.poly.dao.OrderDetailDAO;
 import com.poly.service.OrderService;
@@ -31,8 +30,7 @@ public class OrderServiceImpl implements OrderService {
 		Order order = mapper.convertValue(orderData, Order.class);
 		dao.save(order);
 
-		TypeReference<List<OrderDetail>> type = new TypeReference<List<OrderDetail>>() {
-		};
+		TypeReference<List<OrderDetail>> type = new TypeReference<List<OrderDetail>>() {};
 		List<OrderDetail> details = mapper.convertValue(orderData.get("orderDetail"), type).stream()
 				.peek(d -> d.setOrder(order)).collect(Collectors.toList());
 		ddao.saveAll(details);
@@ -48,16 +46,16 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
-	public List<Order> findByIdAccount(String id) {
+	public List<Order> findByIdAccount(String Id) {
 		// TODO Auto-generated method stub
-		return dao.findByIdAccount(id);
+		return dao.findByIdAccount(Id);
 	}
 
 
 
 	@Override
-	public Order findById(Integer id) {
+	public Order findById(Integer Id) {
 		// TODO Auto-generated method stub
-		return dao.findById(id).get();
+		return dao.findById(Id).get();
 	}
 }

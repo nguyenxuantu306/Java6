@@ -66,5 +66,9 @@ public class Book implements Serializable {
 	public String toString() {
 		return "";
 	}
+	
+	private String Image1;
+	private String Image2;
+	private String Image3;
 
 }

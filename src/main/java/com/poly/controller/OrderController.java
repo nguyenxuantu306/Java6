@@ -25,14 +25,14 @@ public class OrderController {
 
 	@RequestMapping("/order/list")
 	public String list(Model model, HttpServletRequest request) {
-		String id = request.getRemoteUser();
-		model.addAttribute("orders", orderService.findByIdAccount(id));
+		String Id = request.getRemoteUser();
+		model.addAttribute("orders", orderService.findByIdAccount(Id));
 		return "order/list";
 	}
 
-	@RequestMapping("/order/detail/{id}")
-	public String detail(@PathVariable("id") Integer id, Model model) {
-		model.addAttribute("order", orderService.findById(id));
+	@RequestMapping("/order/detail/{Id}")
+	public String detail(@PathVariable("Id") Integer Id, Model model) {
+		model.addAttribute("order", orderService.findById(Id));
 		return "order/detail";
 	}
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{/layout/layout :: dynamic(~{::body})}">
 
 <head>
 	<meta charset="utf-8">
@@ -20,10 +20,10 @@
 						<div>Purchaser:</div>
 						<input th:field="*{account.username}" class="form-control" readonly>
 					</div>
-<!--					<div class="form-group col-sm-4">-->
-<!--						<div>Purchased Date:</div>-->
-<!--						<input th:field="*{creatDate}" class="form-control" readonly>-->
-<!--					</div>-->
+					<div class="form-group col-sm-4">
+						<div>Purchased Date:</div>
+						<input th:field="*{date}" class="form-control" readonly>
+					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-sm-12">
@@ -49,12 +49,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="detail: *{orderDetails}" th:object="${detail}">
-						<td>[[*{product.id}]]</td>
-						<td>[[*{product.name}]]</td>
-						<td>$[[*{#numbers.formatDecimal(price, 0, 'COMMA', 2, 'POINT')}]]</td>
+					<tr th:each="detail: *{orderDetail}" th:object="${detail}">
+						<td>[[*{book.id}]]</td>
+						<td>[[*{book.name}]]</td>
+						<td>[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]]đ</td>
 						<td>[[*{quantity}]]</td>
-						<td>$[[*{#numbers.formatDecimal(price * quantity, 0, 'COMMA', 2, 'POINT')}]]</td>
+						<td>[[*{#numbers.formatDecimal(price * quantity, 0, 'COMMA', 0, 'POINT')}]]đ</td>
 					</tr>
 				</tbody>
 			</table>

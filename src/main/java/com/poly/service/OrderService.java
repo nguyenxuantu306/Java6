@@ -10,12 +10,8 @@ public interface OrderService {
 	Order create(JsonNode orderData);
 	List<Order> findAll();
 
-	List<Order> findByIdAccount(String username);
+	List<Order> findByIdAccount(String Id);
 
-
-
-	Order findById(Integer id);
-	
-	
+	Order findById(Integer Id);
 
 }

@@ -84,7 +84,7 @@
 						<div class="row" >
 							<div class="form-group col-sm-6">
 								<div>Purchaser:</div>
-								<div class="form-control" id="id" sec:authentication="name">
+								<div class="form-control" id="username" sec:authentication="name">
 								
 								</div>
 							</div>
@@ -238,35 +238,23 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td> Handbag fringilla <strong> × 2</strong></td>
-										<td> $165.00</td>
-									</tr>
-									<tr>
-										<td> Handbag justo <strong> × 2</strong></td>
-										<td> $50.00</td>
-									</tr>
-									<tr>
-										<td> Handbag elit <strong> × 2</strong></td>
-										<td> $50.00</td>
-									</tr>
-									<tr>
-										<td> Handbag Rutrum <strong> × 1</strong></td>
-										<td> $50.00</td>
+									<tr ng-repeat="item in cart.items">
+										<td class="product_name"><a href="#">{{item.name}} <span style="font-weight: bold;">x</span>  {{item.qty}}</a></td>
+										<td class="product-price">{{item.price | number :0}}</td>
 									</tr>
 								</tbody>
 								<tfoot>
-									<tr>
+									<!--<tr>
 										<th>Cart Subtotal</th>
 										<td>$215.00</td>
 									</tr>
 									<tr>
 										<th>Shipping</th>
 										<td><strong>$5.00</strong></td>
-									</tr>
+									</tr>-->
 									<tr class="order_total">
 										<th>Order Total</th>
-										<td><strong>$220.00</strong></td>
+										<td><strong>{{cart.amount | number: 0}} đồng</strong></td>
 									</tr>
 								</tfoot>
 							</table>
@@ -277,14 +265,14 @@
 								<label for="payment" data-toggle="collapse" data-target="#method"
 									aria-controls="method">Create an account?</label>
 
-								<div id="method" class="collapse one" data-parent="#accordion">
+								<!--<div id="method" class="collapse one" data-parent="#accordion">
 									<div class="card-body1">
 										<p>Please send a check to Store Name, Store Street, Store Town, Store State /
 											County, Store Postcode.</p>
 									</div>
-								</div>
+								</div>-->
 							</div>
-							<div class="panel-default">
+							<!--<div class="panel-default">
 								<input id="payment_defult" name="check_method" type="radio"
 									data-target="createp_account">
 								<label for="payment_defult" data-toggle="collapse" data-target="#collapsedefult"
@@ -297,7 +285,7 @@
 											account.</p>
 									</div>
 								</div>
-							</div>
+							</div>-->
 							<div class="order_button">
 								<button type="submit"ng-click="order.purchase()">Proceed to PayPal</button>
 							</div>

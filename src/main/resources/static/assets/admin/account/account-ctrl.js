@@ -7,7 +7,7 @@ app.controller("account-ctrl", function($scope, $http) {
 
 	$scope.initialize = function() {
 		// Load products
-		$http.get("/rest/accounts").then(resp => {
+		$http.get("/rest/accounts/all").then(resp => {
 			$scope.items = resp.data;
 			$scope.items.forEach(item => {
 				item.date = new Date(item.date)

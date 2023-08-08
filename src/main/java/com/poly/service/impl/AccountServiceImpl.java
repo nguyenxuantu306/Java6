@@ -101,5 +101,11 @@ public class AccountServiceImpl implements AccountService, UserDetailsService {
 //			Authentication auth = new UsernamePasswordAuthenticationToken(user , null, user.getAuthorities());
 //			SecurityContextHolder.getContext().setAuthentication(auth);
 			
-		};
+		}
+
+	@Override
+	public List<Account> getAdministrators() {
+		// TODO Auto-generated method stub
+		return adao.getAdministrators();
+	};
 }

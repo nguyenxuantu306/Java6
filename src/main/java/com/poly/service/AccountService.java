@@ -17,4 +17,6 @@ public interface AccountService {
 	
 	public Account  findByUsername(String username);
 
+	public List<Account> getAdministrators();
+
 }

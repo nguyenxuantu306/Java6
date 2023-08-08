@@ -28,4 +28,10 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		return dao.getTop10();
 	}
 
+	@Override
+	public OrderDetail findById(String id) {
+		// TODO Auto-generated method stub
+		return dao.findById(id).get();
+	}
+
 }

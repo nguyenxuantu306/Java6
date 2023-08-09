@@ -14,7 +14,7 @@ public interface OrderDetailService {
 
 	OrderDetail findById(String id);
 
-	List<Report> thongke();
+	List<OrderDetail> findByIdOrder(Integer id);
 
 
 }

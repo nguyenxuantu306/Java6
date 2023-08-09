@@ -34,9 +34,13 @@ public class OrderDeatailRestController {
 		return orderDetailService.getTop10();
 	}
 	
+	/*
+	 * @GetMapping("{id}") public OrderDetail getOne(@PathVariable("id") String id)
+	 * { return orderDetailService.findById(id); }
+	 */
 	@GetMapping("{id}")
-	public OrderDetail getOne(@PathVariable("id") String id) {
-		return orderDetailService.findById(id);
+	public List<OrderDetail> getAllByIdUser(@PathVariable("id") Integer id) {
+		return orderDetailService.findByIdOrder(id);
 	}
 
 	@GetMapping("/thongke")

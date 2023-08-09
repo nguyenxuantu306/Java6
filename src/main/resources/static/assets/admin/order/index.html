@@ -9,8 +9,7 @@
 		</div>
 		<div class="card-body">
 			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%"
-					cellspacing="0">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 					<thead>
 						<tr>
 							<th>Id</th>
@@ -18,7 +17,7 @@
 							<th>Date</th>
 							<th>Shipper_id</th>
 							<th>State</th>
-							<th>Action</th>
+							<!--<th>Action</th>-->
 							<th>orderdetail</th>
 						</tr>
 					</thead>
@@ -27,11 +26,10 @@
 						<tr ng-repeat="item in pager.items ">
 							<th>{{item.id}}</th>
 							<th>{{item.account.username}}</th>
-							<!-- {{item.accounts.username}}-->
 							<th>{{item.date | date:'dd-MM-yyyy'}}</th>
 							<th>{{item.shipper.id}}</th>
 							<th>{{item.state.name}}</th>
-							<td style="text-align: center;">
+							<!--	<td style="text-align: center;">
 								<div class="btn-group btn-group-xs">
 									<button ng-click="edit(item)">
 										<i class="fas fa-edit"></i>
@@ -42,7 +40,9 @@
 								</div>
 
 							</td>
-							<th><a ng-click="edit(item)">Order details</a></th>
+-->
+							<th><button ng-click="edit(item)">Order details</button>
+							</th>
 						</tr>
 					</tbody>
 				</table>
@@ -66,14 +66,13 @@
 		</div>
 	</div>
 
-	<div class="card " id="card-form">
+	<div class="card info" id="card-form" ng-if="form.id">
 		<div class="card-header bg-primary">
 			<h3 class="text-white p-0 m-0">QUẢN LÝ ĐƠN ĐẶT HÀNG</h3>
 		</div>
 		<div class="card-body">
-			<div class="row" >
-				<div class="col-sm-3 " 
-					style="background-color: aquamarine;margin: 10px">
+			<div class="row">
+				<div class="col-sm-3 " style="background-color: aquamarine;margin: 10px">
 					<div class="form-group">
 						<div class="text-center">
 							<span>Order</span>
@@ -88,16 +87,14 @@
 							<span>Discount Id: {{form.discount.name}}</span>
 						</div>
 						<div>
-							<span>State: </span> <select ng-model="form.state.id"
-								class="form-control">
+							<span>State: </span> <select ng-model="form.state.id" class="form-control">
 								<option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
 							</select>
 
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-3 "
-					style="background-color: aquamarine;margin: 10px">
+				<div class="col-sm-3 " style="background-color: aquamarine;margin: 10px">
 					<div class="form-group">
 						<div class="text-center">
 							<span>Account</span>
@@ -122,8 +119,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-3 "
-					style="background-color: aquamarine;margin: 10px">
+				<div class="col-sm-3" ng-if="form.shipper" style="background-color: aquamarine;margin: 10px">
 					<div class="form-group">
 						<div class="text-center">
 							<span>Shipper</span>
@@ -148,6 +144,7 @@
 							<tr>
 								<th>Id</th>
 								<th>Order id</th>
+								<th>Image</th>
 								<th>Book id</th>
 								<th>Price</th>
 							</tr>
@@ -155,9 +152,11 @@
 						<tbody>
 							<tr ng-repeat="item in items2">
 								<td>{{item.id}}</td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>{{item.order.id}}</td>
+								<th><img ng-src="/assets/images/{{item.book.image}}" alt="Book Image"
+										style="width: 100px;"></th>
+								<td>{{item.book.id}}</td>
+								<td>{{item.book.price}}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -186,4 +185,3 @@
 <!-- /.container-fluid -->
 
 </div>
-

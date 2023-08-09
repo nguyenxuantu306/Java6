@@ -34,8 +34,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	}
 
 	@Override
-	public List<Report> thongke() {
-		return dao.reportTheoLuotMuaHang();
+	public List<OrderDetail> findByIdOrder(Integer id) {
+		// TODO Auto-generated method stub
+		return dao.findByIdOrder(id);
 	}
 
 }

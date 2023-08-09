@@ -12,6 +12,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,24 +33,6 @@ public class BookController {
 			@RequestParam("sort") Optional<String> sort) {
 		String valueFieldString;
 		String[] split;
-		Sort tempSort;
-		
-//		if (sort.isPresent()) {
-//			valueFieldString = sort.get();
-//			if (sort.get().contains("DESC")) {
-//				split = valueFieldString.split("DESC");
-//				System.out.println(split[0]);
-//				tempSort = Sort.by(Direction.DESC, split[0]);
-//			} else {
-//				split = valueFieldString.split("ASC");
-//				tempSort = Sort.by(Direction.ASC, split[0]);
-//			}
-//		} 
-//		else {
-//			valueFieldString = "Price";
-//			tempSort = Sort.by(Direction.DESC, valueFieldString);
-//		}
-//		model.addAttribute("sort", valueFieldString);
 		int currentPage = page.orElse(0);
 		int pageSize = size.orElse(12);
 		if (pageSize > 15) {
@@ -88,21 +71,7 @@ public class BookController {
 		Page<Book> productPage = null;
 		String valueFieldString;
 		String[] split;
-		Sort tempSort;
-//		if (sort.isPresent()) {
-//			valueFieldString = sort.get();
-//			if (sort.get().contains("DESC")) {
-//				split = valueFieldString.split("DESC");
-//				System.out.println(split[0]);
-//				tempSort = Sort.by(Direction.DESC, split[0]);
-//			} else {
-//				split = valueFieldString.split("ASC");
-//				tempSort = Sort.by(Direction.ASC, split[0]);
-//			}
-//		} else {
-//			valueFieldString = "price";
-//			tempSort = Sort.by(Direction.DESC, valueFieldString);
-//		}
+
 		int currentPage = page.orElse(0);
 		int pageSize = size.orElse(12);
 		if (pageSize > 15) {

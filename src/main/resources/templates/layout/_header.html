@@ -21,8 +21,8 @@
 			<div class="row align-items-center">
 				<div class="col-lg-6 col-md-6">
 					<div class="switcher float-left d-inline-flex">
-						<li class="languages"> 
-							<a><img src="assets\img\logo\fontlogo4.jpg" alt="" th:text=" #{nav.lang}"> <i class="fa fa-angle-down"></i></a>
+						<li class="languages py-1"> 
+							<a href=""><img src="assets\img\logo\fontlogo4.jpg" alt="" th:text=" #{nav.lang}"> <i class="fa fa-angle-down"></i></a>
 							
 								<ul class="dropdown_languages">
 									<li><a onclick="changeLanguage('vi')">
@@ -41,7 +41,7 @@
 									th:href="@{/admin/home/index}">Administration</a></li>
 
 							<li>
-								<a href="" sec:authentication="name"></a>
+								<a style="font-size:25px;color:red;font-variant: small-caps; " href="" sec:authentication="name"></a>
 
 							</li>
 							 
@@ -61,8 +61,7 @@
 					<div class="header_links float-right d-inline-flex">
 						<ul>
 							<li><a th:href="@{/product/contact}" title="Contact" th:text="#{nav.contact}">Contact</a></li>
-							<li><a th:href="@{/user/wishlist}" title="wishlist" th:text="#{nav.wishlist}">My wishlist</a></li>
-							<li><a th:href="@{/index/profile}" title="My account" th:text="#{nav.profile}">Profile</a></li>
+
 							<li><a th:href="@{/cart/view}" title="My cart" th:text="#{nav.cart}">My cart</a></li>
 						</ul>
 						<ul sec:authorize="isAnonymous()">
@@ -106,11 +105,11 @@
 									 <i class="fa fa-angle-down"  ng-show="showMiniCart"></i>
 								</a>
 							<!--mini cart-->
-							<div class="mini_cart" id="miniCart">
+					<div class="mini_cart" id="miniCart">
 								<div class="cart_item" ng-repeat="item in cart.items">
 									<div class="cart_img">
-										<a th:href="@{|/product/detail/${id}|}">
-											<img th:scr="@{|/assets/images/{{item.image}}|}">
+										<a th:href="@{|/product/detail/${id}|}"><img
+												th:src="@{|/assets/images/{{item.image}}|}">
 										</a>
 									</div>
 									<div class="cart_info">
@@ -126,16 +125,18 @@
 									</div>
 								</div>
 								<div class="shipping_price">
-									<span th:text="#{Calculateshipping}"> Shipping </span> <span> $7.00 </span>
+									<span th:text="#{Calculateshipping}"> Shipping </span> <span> 7.00 đ</span>
 								</div>
 								<div class="total_price">
 									<span th:text="#{cart.Total}"> Total </span> <span class="prices">{{cart.amount
-										| number:0}} đ </span>
+										| number:2}} đ </span>
 								</div>
 								<div class="cart_button">
 									<a th:href="@{/cart/view}" th:text="#{Checkout}"> Check out</a>
 								</div>
 							</div>
+					
+							
 							<!--mini cart end-->
 						</div>
 					</div>

@@ -69,7 +69,7 @@ CREATE TABLE [dbo].[Orders](
 	[Discount_id][int] ,
 	[Shipper_id][int],
 	[State_id][int] ,
-	[Address][nvarchar](max)
+	[Address][nvarchar](max) NOT NULL
 )
 GO
 /****** Object:  Table [dbo].[Order_detatils]     Script Date: 18/7/2023 ******/
@@ -656,6 +656,8 @@ select * from Orders_details;
 select * from Reviews;
 select * from Shippers;
 select * from wishlist
+select * from States
+
 
 SELECT b.Name AS BookName, d.Name AS DiscountName, b.Price, b.Price*d.Value as NewPrice
 FROM Books b
@@ -681,3 +683,5 @@ select Distinct * from Accounts Join Accounts_roles ON Accounts.Id = Accounts_ro
 
 select Distinct * from Accounts_roles Where Accounts_roles.Roles_id In (1)
 
+SELECT price, sum(Price * Quantity), sum(Quantity) FROM Orders_details GROUP BY price
+		

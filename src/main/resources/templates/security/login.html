@@ -10,7 +10,7 @@
 				<div class="account_form">
 					<h2 th:text="#{login.login}">login</h2>
 					<form th:action="@{/home/index}" method="post">
-						<i class="pull-left text-danger" th:text="${message}"></i>
+						<i class="pull-left text-danger" style="font-size:20px" th:text="${message}"></i> <br> <br>
 						<p>
 							<label th:text="#{login.Usernameoremail}">Username or email <span>*</span></label> <input
 								type="text" name="username">
@@ -19,24 +19,35 @@
 							<label th:text="#{login.password}">Passwords <span>*</span></label> <input type="password"
 								name="password">
 						</p>
+						<br>
 						<div class="login_submit">
 							<button type="submit" th:text="#{login.login}">login</button>
 							<label for="remember">
 								<input id="remember" type="checkbox" th:text="#{login.remember}">
 							</label>
-							<a th:href="@{/index/register}" th:text="#{login.register}"> Register?</a>
-							<a th:href="@{/index/forgotpassword}" th:text="#{login.lostyourpassword}"> Lost your
-								password? </a>
-						</div>
-						<div>
-							<div class="fb-login-button" data-width="" data-size="" data-button-type="" data-layout=""
-								data-auto-logout-link="false" data-use-continue-as="false"></div>
-						</div>
-						<div>
-							<a href="/oauth2/authorization/google">GOOGLE</a>
-							<a href="/oauth2/authorization/facebook">FACEBOOK</a>
+							<br>
+							
+							<a style="font-size:15px" th:href="@{/index/register}" th:text="#{login.register}"> Register ? </a>   
+						 	<a style="font-size:15px" th:href="@{/index/forgotpassword}" th:text="#{login.lostyourpassword}"> Lost your
+								password ? </a>
 						</div>
 						<p th:if="${loginError}" style="color: red;">${loginError}</p>
+						<br>
+						<div class="footer_social">
+								<ul>
+									<li><a href="/oauth2/authorization/facebook"><i
+											class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="/oauth2/authorization/google"><i
+											class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+									<li><a class="pinterest" href="#"><i
+											class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+									<li><a href="#"><i class="fa fa-wifi"
+											aria-hidden="true"></i></a></li>
+								</ul>
+							</div>
+						
+						
 					</form>
 				</div>
 			</div>

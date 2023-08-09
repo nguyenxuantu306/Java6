@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.poly.bean.Genres;
 import com.poly.bean.OrderDetail;
+import com.poly.bean.Report;
 import com.poly.bean.Top10;
 import com.poly.dao.GenresDAO;
 import com.poly.dao.OrderDetailDAO;
@@ -32,6 +33,11 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	public OrderDetail findById(String id) {
 		// TODO Auto-generated method stub
 		return dao.findById(id).get();
+	}
+
+	@Override
+	public List<Report> thongke() {
+		return dao.reportTheoLuotMuaHang();
 	}
 
 }

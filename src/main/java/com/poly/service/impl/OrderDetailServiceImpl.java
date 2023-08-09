@@ -40,4 +40,9 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		return dao.reportTheoLuotMuaHang();
 	}
 
+	@Override
+	public List<Report> tongdoanhthu() {		
+		return dao.daonhthu();
+	}
+
 }

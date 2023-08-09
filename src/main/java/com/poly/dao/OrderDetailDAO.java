@@ -21,7 +21,8 @@ public interface OrderDetailDAO extends JpaRepository<OrderDetail, String> {
 	@Query("SELECT new Report(o, sum(o.Price * o.Quantity), sum(o.Quantity)) FROM OrderDetail o" 
 	+ " GROUP BY o"
 	+ " ORDER BY sum(o.Price *o.Quantity) DESC")
-	List<Report> reportTheoLuotMuaHang(); 
-	
+	List<Report> reportTheoLuotMuaHang();
+
+
 
 }

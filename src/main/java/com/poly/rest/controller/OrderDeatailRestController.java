@@ -41,10 +41,12 @@ public class OrderDeatailRestController {
 	public OrderDetail getOne(@PathVariable("id") String id) {
 		return orderDetailService.findById(id);
 	}
-
+	
 	@GetMapping("/thongke")
 	public List<Report> thongke() {
 		return orderDetailService.thongke();
 	}
+	vv
+
 	
 }

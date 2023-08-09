@@ -17,5 +17,7 @@ public interface OrderDetailService {
 
 	List<Report> thongke();
 
+	List<Report> tongdoanhthu();
+
 
 }

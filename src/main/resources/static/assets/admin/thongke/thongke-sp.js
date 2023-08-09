@@ -16,7 +16,7 @@ app.controller('thongke-sp-ctrl', function($scope, $http) {
 	}
 	$scope.pager = {
 		page: 0,
-		size: 10,
+		size: 5,
 		get itemsThongKeSp() {
 			var start = this.page * this.size;
 			return $scope.itemsThongKeSp.slice(start, start + this.size);
@@ -29,7 +29,7 @@ app.controller('thongke-sp-ctrl', function($scope, $http) {
 			this.page = 0;
 
 		},
-		pre() {
+		prev() {
 			this.page--;
 			if (this.page < 0) {
 				this.last();

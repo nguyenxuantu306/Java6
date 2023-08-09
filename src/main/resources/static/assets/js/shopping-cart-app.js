@@ -83,11 +83,17 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 
 	$scope.cart.loadFromLocalStorage();
 
+	$scope.stateInfo = {
+		pending: { name: "Pending" },
+		shipped: { name: "Shipped" },
+		delivered: { name: "Delivered" }
+	};
 
 	$scope.order = {
 		date: new Date(),
 		address: "",
 		account: { id: $("#account_id").text() },
+		state: {id:1},
 		get orderDetail() {
 			return $scope.cart.items.map(item => {
 				return {
@@ -111,6 +117,7 @@ app.controller("shopping-cart-ctrl", function($scope, $http) {
 			})
 		}
 	}
+
 
 	$scope.showMiniCart = false; // Biến kiểm soát hiển thị giỏ hàng mở rộng
 

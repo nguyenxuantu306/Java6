@@ -40,7 +40,6 @@ public class PdfController {
         for (Account data : dataList) {
             document.add(new Paragraph("Photo: " + data.getPhoto()));
             document.add(new Paragraph("Username: " + data.getUsername()));
-            document.add(new Paragraph("Password: " + data.getPassword()));
             document.add(new Paragraph("Fullname: " + data.getFullname()));
             document.add(new Paragraph("Email: " + data.getEmail()));
             // Thêm các đoạn văn bản khác tùy ý

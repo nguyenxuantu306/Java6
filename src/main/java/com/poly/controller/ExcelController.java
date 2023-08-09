@@ -43,7 +43,7 @@ public class ExcelController {
 			Row row = sheet.createRow(rowIdx++);
 			row.createCell(0).setCellValue(data.getPhoto());
 			row.createCell(1).setCellValue(data.getUsername());
-			row.createCell(2).setCellValue(data.getPassword());
+			/* row.createCell(2).setCellValue(data.getPassword()); */
 			row.createCell(3).setCellValue(data.getFullname());
 			row.createCell(4).setCellValue(data.getEmail());
 			// Thêm cột khác tùy ý

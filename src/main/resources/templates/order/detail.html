@@ -42,6 +42,7 @@
 				<thead>
 					<tr>
 						<th>ID</th>
+						<th>Image</th>
 						<th>Name</th>
 						<th>Price</th>
 						<th>Quantity</th>
@@ -51,6 +52,7 @@
 				<tbody>
 					<tr th:each="detail: *{orderDetail}" th:object="${detail}">
 						<td>[[*{book.id}]]</td>
+						<th><img th:src="@{|/assets/images/*{book.image}|}" alt="Book Image"/ style="width: 100px;"></th>
 						<td>[[*{book.name}]]</td>
 						<td>[[*{#numbers.formatDecimal(price, 0, 'COMMA', 0, 'POINT')}]]đ</td>
 						<td>[[*{quantity}]]</td>

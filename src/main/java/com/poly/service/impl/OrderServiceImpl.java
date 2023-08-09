@@ -59,4 +59,12 @@ public class OrderServiceImpl implements OrderService {
 		return dao.findById(Id).get();
 	}
 
+
+
+	@Override
+	public Order update(Order order) {
+		// TODO Auto-generated method stub
+		return dao.save(order);
+	}
+
 }

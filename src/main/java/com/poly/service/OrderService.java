@@ -16,4 +16,6 @@ public interface OrderService {
 
 	Order findById(Integer Id);
 
+	Order update(Order order);
+
 }

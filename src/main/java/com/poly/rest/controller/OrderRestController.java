@@ -7,10 +7,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.poly.bean.Account;
 import com.poly.bean.Order;
 import com.poly.bean.OrderDetail;
 import com.poly.service.OrderService;
@@ -31,4 +33,10 @@ public class OrderRestController {
 	public Order create(@RequestBody JsonNode orderData) {
 		return orderService.create(orderData);
 	}
+	
+	@PutMapping("{id}")
+	public Order update(@PathVariable("id") Integer id, @RequestBody Order order) {
+		return orderService.update(order);
+	}
+
 }

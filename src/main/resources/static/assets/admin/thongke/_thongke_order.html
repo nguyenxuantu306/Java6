@@ -24,7 +24,6 @@
 					<div class="col-md-12">
 						<div class="table-responsive">
 							<div class="table-wrapper">
-
 								<table class="table table-striped table-hover">
 									<thead>
 										<tr>
@@ -47,13 +46,18 @@
 											<td>{{item.group.book.name}}</td>
 											<td>{{item.group.order.account.username}}</td>
 											<td>{{item.group.order.date}}</td>
-											<td>{{item.group.price | number : 3}}đ</td>
+											<td>{{item.group.price | number : 0}}đ</td>
 											<td>{{item.count}}</td>
-											<td>{{item.sum | number :3}}đ</td>
-
+											<td>{{item.sum | number :0}}đ</td>
 										</tr>
-
 									</tbody>
+									<tfoot>
+										<tr>
+											<td colspan="5">Tổng:</td>
+											
+											<td>{{items | number: 0}}đ</td>
+										</tr>
+									</tfoot>
 								</table>
 									
 								<div class="panel-footer text-center">

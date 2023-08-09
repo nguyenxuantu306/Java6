@@ -46,7 +46,9 @@ public class OrderDeatailRestController {
 	public List<Report> thongke() {
 		return orderDetailService.thongke();
 	}
-	vv
-
 	
+	@GetMapping("/tadao")
+	public Integer getSum() {
+		return orderDetailService.getSum();
+	}
 }

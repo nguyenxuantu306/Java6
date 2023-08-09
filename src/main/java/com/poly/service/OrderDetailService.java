@@ -19,5 +19,7 @@ public interface OrderDetailService {
 
 	List<Report> tongdoanhthu();
 
+	Integer getSum();
+
 
 }

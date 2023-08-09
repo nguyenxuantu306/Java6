@@ -7,14 +7,14 @@
 <body>
 	<main>
 		<div class="card">
-			<div class="card-header">YOUR ORDERS PURCHASED</div>
+			<div th:text="#{new.YOURORDERSPURCHASED}" class="card-header">YOUR ORDERS PURCHASED</div>
 			<table class="table">
 				<thead>
 					<tr>
-						<th>No.</th>
-						<th>Order No.</th>
-						<th>Order Date.</th>
-						<th>Shipping Address</th>
+						<th th:text="#{new.NO}">No.</th>
+						<th th:text="#{new.OrderNo}">Order No.</th>
+						<th th:text="#{new.OrderDate}">Order Date.</th>
+						<th th:text="#{new.ShippingAddress}">Shipping Address</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -25,7 +25,7 @@
 						<td>[[${order.date}]]</td>
 						<td>[[${order.address}]]</td>
 						<td>
-							<a th:href="@{|/order/detail/${order.id}|}" class="btn btn-primary">Sreach</a>
+							<a th:href="@{|/order/detail/${order.id}|}" th:text="#{new.Search}" class="btn btn-primary">Search</a>
 						</td>
 					</tr>
 				</tbody>

@@ -4,7 +4,7 @@
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
 			<div class="card-header bg-primary">
-				<h3 class="text-white p-0 m-0">DANH SÁCH SẢN PHẨM</h3>
+				<h3 class="text-white p-0 m-0">DANH MỤC SÁCH</h3>
 			</div>
 			<div class="row">
 				<div class="col-md-6">
@@ -23,7 +23,7 @@
 					<label>Tìm Kiếm</label> 
 							<input ng-model="searchText.name" type="text"
 								class="form-control bg-light "
-								placeholder="Search for..." aria-label="Search"
+								placeholder="Tìm kiếm..." aria-label="Search"
 								aria-describedby="basic-addon2">
 							
 						</div>
@@ -32,21 +32,19 @@
 		</div>
 
 		<div class="card-body">
-			<button class="btn btn-success m-2" ng-click="exportExcel()">Print
-				to Excel</button>
-			<button class="btn btn-success m-2" ng-click="exportPdf()">Print
-				to PDF</button>
+			<button class="btn btn-success m-2" ng-click="exportExcel()">In ra Excel</button>
+			<button class="btn btn-success m-2" ng-click="exportPdf()">In ra PDF</button>
 			<div class="table-responsive">
 				<table  class="table table-bordered">
 					<thead>
 						<tr>
 							<th>Id</th>
-							<th>Name</th>
-							<th>Price</th>
-							<th>Date</th>
-							<th>Image</th>
-							<th>Category</th>
-							<th>Available</th>
+							<th>Tên sách</th>
+							<th>Giá</th>
+							<th>Ngày nhập kho</th>
+							<th>Hình ảnh</th>
+							<th>Thể loại</th>
+							<th>Trạng thái</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -64,7 +62,7 @@
 
 								<div class="btn-group btn-group-xs">
 									<button ng-click="edit(item)" class="btn btn-warning"
-										id="btnEdit">Edit</button>
+										id="btnEdit">Chỉnh sửa</button>
 									<button type="button" class="btn btn-danger"
 										ng-click="delete(item)">Xóa</button>
 								</div>
@@ -75,18 +73,18 @@
 				</table>
 				<div class="panel-footer text-center">
 					<button ng-click="pager.first()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-up"></b> First
+						<b class="glyphicon glyphicon-hand-up"></b> Trang đầu
 					</button>
 					<button ng-click="pager.prev()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-left"></b> prev
+						<b class="glyphicon glyphicon-hand-left"></b> Trở về
 					</button>
-					<button class="btn btn-success">{{pager.page + 1}} of
+					<button class="btn btn-success">{{pager.page + 1}} trong
 						{{pager.count}}</button>
 					<button ng-click="pager.next()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-right"></b> next
+						<b class="glyphicon glyphicon-hand-right"></b> Tiếp tục
 					</button>
 					<button ng-click="pager.last()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-down"></b> last
+						<b class="glyphicon glyphicon-hand-down"></b> Trang cuối
 					</button>
 				</div>
 			</div>
@@ -112,42 +110,42 @@
 							<input ng-model="form.id" class="form-control">
 						</div>
 						<div class="form-group col-sm-6">
-							<div>Name:</div>
+							<div>Tên sách:</div>
 							<input ng-model="form.name" class="form-control">
 						</div>
 						<div class="form-group col-sm-6">
-							<div>Price:</div>
+							<div>Giá:</div>
 							<input ng-model="form.price" class="form-control">
 						</div>
 						<div class="form-group col-sm-6">
-							<div>Author:</div>
+							<div>Ngày nhập kho:</div>
 							<input ng-model="form.author" class="form-control">
 						</div>
 						<div class="form-group col-sm-6">
-							<div>PageCount:</div>
+							<div>Số trang:</div>
 							<input ng-model="form.pagecount" class="form-control">
 						</div>
 						<div class="form-group col-sm-6">
-							<div>Publisher:</div>
+							<div>Nhà xuất mục:</div>
 							<input ng-model="form.publisher" class="form-control">
 						</div>
 						<div class="form-group col-sm-6">
-							<div>Stock_quantity:</div>
+							<div>Hàng tồn:</div>
 							<input ng-model="form.stock_quantity" class="form-control">
 						</div>
 						<div class="form-group col-sm-6">
-							<div>Description:</div>
+							<div>Mô tả:</div>
 							<textarea ng-model="form.description" rows="2" cols="41"></textarea>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-sm-6">
-							<div>Image:</div>
+							<div>Hình ảnh:</div>
 							<input type="file" class="form-control" id="image"
 								onchange="angular.element(this).scope().imageChanged(this.files)">
 						</div>
 						<div class="form-group col-sm-6">
-							<div>Category:</div>
+							<div>Loại:</div>
 							<select ng-model="form.genres.id" class="form-control">
 								<option ng-repeat="c in cates" ng-value="c.id">{{c.genres}}</option>
 							</select>
@@ -155,19 +153,19 @@
 					</div>
 					<div class="row">
 						<div class="form-group col-sm-6">
-							<div>Creat Date:</div>
+							<div>Ngày tạo:</div>
 							<input ng-model="form.publication_date" type="date"
 								class="form-control" id="image">
 						</div>
 						<div class="form-group col-sm-6">
-							<div>Available:</div>
+							<div>Trạng thái:</div>
 							<div class="form-control">
 								<label class="radio-inline"> <input
 									ng-model="form.available" ng-value="true" type="radio"
-									name="available"> Yes
+									name="available"> Còn hàng
 								</label> <label class="radio-inline"> <input
 									ng-model="form.available" ng-value="false" type="radio"
-									name="available"> No
+									name="available"> Hết hàng
 								</label>
 							</div>
 						</div>
@@ -175,17 +173,17 @@
 				</div>
 				<div class="panel-footer text-center p-3">
 					<button id="btn-create" ng-click="create()" class="btn btn-success">
-						Create</button>
+						Tạo</button>
 					<button id="btn-update" disabled="disabled" ng-click="update()"
-						class="btn btn-success">
-						<b class="glyphicon glyphicon-save"></b> Update
+						class="btn btn-primary">
+						<b class="glyphicon glyphicon-save"></b> Cập nhật
 					</button>
 					<button id="btn-delete" disabled="disabled" ng-click="delete(form)"
-						class="btn btn-success">
-						<b class="glyphicon glyphicon-trash"></b> Delete
+						class="btn btn-danger">
+						<b class="glyphicon glyphicon-trash"></b> Xóa
 					</button>
-					<button id="btn-reset" ng-click="reset()" class="btn btn-success">
-						<b class="glyphicon glyphicon-refresh"></b> Reset
+					<button id="btn-reset" ng-click="reset()" class="btn btn-warning">
+						<b class="glyphicon glyphicon-refresh"></b> Làm mới
 					</button>
 
 				</div>

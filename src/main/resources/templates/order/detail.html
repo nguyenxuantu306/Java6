@@ -9,25 +9,25 @@
 <body>
 	<main th:object="${order}">
 		<div class="card">
-			<div class="card-header">ORDER INFOMATION</div>
+			<div  class="card-header" th:text="#{new.ORDERINFOMATION}">ORDER INFOMATION</div>
 			<div class="card-body">
 				<div class="row">
 					<div class="form-group col-sm-4">
-						<div>Order Number</div>
+						<div th:text="#{new.OrderNumber}">Order Number</div>
 						<input th:field="*{id}" class="form-control" readonly>
 					</div>
 					<div class="form-group col-sm-4">
-						<div>Purchaser:</div>
+						<div th:text="#{new.Purchaser}">Purchaser:</div>
 						<input th:field="*{account.username}" class="form-control" readonly>
 					</div>
 					<div class="form-group col-sm-4">
-						<div>Purchased Date:</div>
+						<div th:text="#{new.PurchasedDate}">Purchased Date:</div>
 						<input th:field="*{date}" class="form-control" readonly>
 					</div>
 				</div>
 				<div class="row">
 					<div class="form-group col-sm-12">
-						<label>Shipping Address:</label>
+						<label th:text="#{new.ShippingAddress}">Shipping Address:</label>
 						<textarea th:field="*{address}" class="form-control" readonly></textarea>
 					</div>
 				</div>
@@ -35,17 +35,17 @@
 		</div>
 
 		<div class="card">
-			<div class="card-header">
+			<div class="card-header" th:text="#{new.ORDERLINES}">
 				ORDER LINES
 			</div>
 			<table class="table">
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Name</th>
-						<th>Price</th>
-						<th>Quantity</th>
-						<th>Amount</th>
+						<th th:text="#{new.Name}">Name</th>
+						<th th:text="#{new.Price}">Price</th>
+						<th th:text="#{new.Quantity}">Quantity</th>
+						<th th:text="#{new.Amount}">Amount</th>
 					</tr>
 				</thead>
 				<tbody>

@@ -5,11 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.poly.bean.Genres;
 import com.poly.bean.OrderDetail;
 import com.poly.bean.Report;
 import com.poly.bean.Top10;
-import com.poly.dao.GenresDAO;
 import com.poly.dao.OrderDetailDAO;
 import com.poly.service.OrderDetailService;
 

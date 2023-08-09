@@ -43,8 +43,10 @@ public class AccountRestController {
 
 	@PutMapping("{id}")
 	public Account update(@PathVariable("id") String id, @RequestBody Account account) {
-		return accountService.update(account);
+	    account.setId(id);
+	    return accountService.update(account);
 	}
+
 
 	@DeleteMapping("{id}")
 	public void delete(@PathVariable("id") String id) {

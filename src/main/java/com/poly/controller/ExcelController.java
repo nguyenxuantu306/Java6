@@ -2,8 +2,6 @@ package com.poly.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.List;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -20,8 +18,6 @@ import com.poly.bean.Account;
 import com.poly.bean.Book;
 import com.poly.service.AccountService;
 import com.poly.service.BookService;
-
-import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 public class ExcelController {

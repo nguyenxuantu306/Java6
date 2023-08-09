@@ -2,7 +2,6 @@ package com.poly.service;
 
 import java.util.List;
 
-import com.poly.bean.Account;
 import com.poly.bean.OrderDetail;
 import com.poly.bean.Report;
 import com.poly.bean.Top10;

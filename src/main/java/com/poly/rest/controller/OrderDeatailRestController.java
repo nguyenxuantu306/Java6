@@ -42,10 +42,14 @@ public class OrderDeatailRestController {
 	public List<OrderDetail> getAllByIdUser(@PathVariable("id") Integer id) {
 		return orderDetailService.findByIdOrder(id);
 	}
-
+	
 	@GetMapping("/thongke")
 	public List<Report> thongke() {
 		return orderDetailService.thongke();
 	}
 	
+	@GetMapping("/tadao")
+	public Integer getSum() {
+		return orderDetailService.getSum();
+	}
 }

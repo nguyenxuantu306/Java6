@@ -39,4 +39,20 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		return dao.findByIdOrder(id);
 	}
 
+	@Override
+	public List<Report> tongdoanhthu() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Integer getSum() {
+		// TODO Auto-generated method stub
+		return dao.getSum();
+	}
+
+	/*
+	 * @Override public List<Report> tongdoanhthu() { return dao.daonhthu(); }
+	 */
+
 }

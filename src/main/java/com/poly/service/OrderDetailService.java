@@ -16,5 +16,9 @@ public interface OrderDetailService {
 
 	List<OrderDetail> findByIdOrder(Integer id);
 
+	List<Report> tongdoanhthu();
+
+	Integer getSum();
+
 
 }

@@ -684,4 +684,5 @@ select Distinct * from Accounts Join Accounts_roles ON Accounts.Id = Accounts_ro
 select Distinct * from Accounts_roles Where Accounts_roles.Roles_id In (1)
 
 SELECT price, sum(Price * Quantity), sum(Quantity) FROM Orders_details GROUP BY price
-		
+
+SELECT  sum(Price * Quantity) as doanhthu, sum(Quantity) as soluong FROM Orders_details 

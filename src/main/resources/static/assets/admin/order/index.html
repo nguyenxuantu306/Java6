@@ -1,35 +1,49 @@
 <div class="container-fluid" sty>
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <div class="card-header bg-primary">
-                <h3 class="text-white p-0 m-0">DANH SÁCH ĐƠN ĐẶT HÀNG</h3>
-            </div>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Tên đăng nhập</th>
-                            <th>Ngày đặt hàng</th>
-                            <th>ID Người giao hàng</th>
-                            <th>Trạng thái</th>
-                            <th>Hành động</th>
-                            <th>Chi tiết đơn hàng</th>
-                        </tr>
-                    </thead>
+	<!-- DataTales Example -->
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<div class="card-header bg-primary">
+				<h3 class="text-white p-0 m-0">DANH SÁCH ĐƠN ĐẶT HÀNG</h3>
+			</div>
+		</div>
+		<div class="card-body">
+			<div class="table-responsive">
+				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th scope="col" ng-click="sort('id')">Id
+								<span class="glyphicon sort-icon" ng-show="propertyName =='id'"
+									ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
+							</th>
+							<th scope="col" ng-click="sort('account.username')">Username
+								<span class="glyphicon sort-icon" ng-show="propertyName =='account.username'"
+									ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
+							</th>
+							<th scope="col" ng-click="sort('date')">Date
+								ra <span class="glyphicon sort-icon" ng-show="propertyName =='date'"
+									ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
+							</th>
+							<th scope="col" ng-click="sort('shipper.id')">Shipper Id <span class="glyphicon sort-icon" ng-show="propertyName =='shipper.id'"
+									ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
+							</th>
+							<th scope="col" ng-click="sort('state.name')">State
+								<span class="glyphicon sort-icon" ng-show="propertyName =='state.name'"
+									ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
+							</th>
+							<!--<th>Action</th>-->
+							<th>orderdetail</th>
+						</tr>
+					</thead>
 
-                    <tbody>
-                        <tr ng-repeat="item in pager.items ">
-                            <th>{{item.id}}</th>
-                            <th>{{item.account.username}}</th>
-                            <th>{{item.date | date:'dd-MM-yyyy'}}</th>
-                            <th>{{item.shipper.id}}</th>
-                            <th>{{item.state.name}}</th>
-                            <!--	<td style="text-align: center;">
+					<tbody>
+						<tr ng-repeat="item in pager.items | orderBy:propertyName:reverse">
+							<th>{{item.id}}</th>
+							<th>{{item.account.username}}</th>
+							<th>{{item.date | date:'dd-MM-yyyy'}}</th>
+							<th>{{item.shipper.id}}</th>
+							<th>{{item.state.name}}</th>
+							<!--	<td style="text-align: center;">
 								<div class="btn-group btn-group-xs">
 									<button ng-click="edit(item)">
 										<i class="fas fa-edit"></i>
@@ -40,24 +54,26 @@
 								</div>
 
 							</td>
-							<th><a ng-click="edit(item)">Chi tiết đơn hàng</a></th>
+-->
+							<th><button ng-click="edit(item)">Order details</button>
+							</th>
 						</tr>
 					</tbody>
 				</table>
 				<div class="panel-footer text-center">
 					<button ng-click="pager.first()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-up"></b> Trang đầu
+						<b class="glyphicon glyphicon-hand-up"></b> First
 					</button>
 					<button ng-click="pager.prev()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-left"></b> Trở về
+						<b class="glyphicon glyphicon-hand-left"></b> prev
 					</button>
-					<button class="btn btn-success">{{pager.page + 1}} Trong
+					<button class="btn btn-success">{{pager.page + 1}} of
 						{{pager.count}}</button>
 					<button ng-click="pager.next()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-right"></b> Tiếp tục
+						<b class="glyphicon glyphicon-hand-right"></b> next
 					</button>
 					<button ng-click="pager.last()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-down"></b> Trang cuối
+						<b class="glyphicon glyphicon-hand-down"></b> last
 					</button>
 				</div>
 			</div>
@@ -73,20 +89,19 @@
 				<div class="col-sm-3 " style="background-color: aquamarine;margin: 10px">
 					<div class="form-group">
 						<div class="text-center">
-							<span>Đơn hàng</span>
+							<span>Order</span>
 						</div>
 						<div>
-							<span>Id Đơn hàng: {{form.id}}</span>
+							<span>Order Id: {{form.id}}</span>
 						</div>
 						<div>
-							<span>Ngày tạo: {{form.date | date:'dd-MM-yyyy'}}</span>
+							<span>Create date: {{form.date | date:'dd-MM-yyyy'}}</span>
 						</div>
 						<div>
-							<span>Mã giảm giá: {{form.discount.name}}</span>
+							<span>Discount Id: {{form.discount.name}}</span>
 						</div>
 						<div>
-							<span>Trạng thái: </span> <select ng-model="form.state.id"
-								class="form-control">
+							<span>State: </span> <select ng-model="form.state.id" class="form-control">
 								<option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
 							</select>
 
@@ -96,41 +111,41 @@
 				<div class="col-sm-3 " style="background-color: aquamarine;margin: 10px">
 					<div class="form-group">
 						<div class="text-center">
-							<span>Tài khoản</span>
+							<span>Account</span>
 						</div>
 						<div>
 							<span>Id: {{form.account.id}}</span>
 						</div>
 						<div>
-							<span>Tên tài khoản: {{form.account.username}}</span>
+							<span>Username: {{form.account.username}}</span>
 						</div>
 						<div>
-							<span>Tên đầy đủ: {{form.account.fullname}}</span>
+							<span>Fullname: {{form.account.fullname}}</span>
 						</div>
 						<div>
 							<span>Email: {{form.account.email}}</span>
 						</div>
 						<div>
-							<span>Địa chỉ: {{form.account.address}}</span>
+							<span>Address: {{form.account.address}}</span>
 						</div>
 						<div>
-							<span>Số điện thoại: {{form.account.phone}}</span>
+							<span>Phone: {{form.account.phone}}</span>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-3" ng-if="form.shipper" style="background-color: aquamarine;margin: 10px">
 					<div class="form-group">
 						<div class="text-center">
-							<span>Người giao hàng</span>
-						</div>
-						<div> 
-							<span>Id người giao hàng: {{form.shipper.id}}</span>
+							<span>Shipper</span>
 						</div>
 						<div>
-							<span>Tên đầy đủ: {{form.shipper.name}}</span>
+							<span>Shipper Id: {{form.shipper.id}}</span>
 						</div>
 						<div>
-							<span>Số điện thoại: {{form.shipper.phone}}</span>
+							<span>Fullname: {{form.shipper.name}}</span>
+						</div>
+						<div>
+							<span>Phone: {{form.shipper.phone}}</span>
 						</div>
 					</div>
 				</div>
@@ -142,9 +157,10 @@
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>Id đơn hàng</th>
-								<th>Mã sách</th>
-								<th>Giá</th>
+								<th>Order id</th>
+								<th>Image</th>
+								<th>Book id</th>
+								<th>Price</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -161,22 +177,22 @@
 				</div>
 			</div>
 			<div class="panel-footer text-center">
-			<!-- 	<button ng-click="create()" class="btn btn-success">
+				<!-- <button ng-click="create()" class="btn btn-success">
 					<b class="glyphicon glyphicon-plus"></b> Create
 				</button> -->
-                            <button ng-click="update()" class="btn btn-success">
+				<button ng-click="update()" class="btn btn-success">
 					<b class="glyphicon glyphicon-save"></b> Update
 				</button>
-                            <!-- 	<button ng-click="delete(form)" class="btn btn-success">
+				<!-- <button ng-click="delete(form)" class="btn btn-success">
 					<b class="glyphicon glyphicon-trash"></b> Delete
 				</button>
 				<button ng-click="reset()" class="btn btn-success">
 					<b class="glyphicon glyphicon-refresh"></b> Reset
 				</button> -->
-            </div>
-        </div>
+			</div>
+		</div>
 
-    </div>
+	</div>
 
 
 </div>

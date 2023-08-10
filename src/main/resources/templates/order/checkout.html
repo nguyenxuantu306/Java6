@@ -72,7 +72,7 @@
 									<tr ng-repeat="item in cart.items">
 										<td class="product_name text-left"><a href="#">{{item.name}} <span style="font-weight: bold;">x</span>  {{item.qty}}</a></td>
 										<td class="product-price">{{item.price | number :0}}</td>
-										<td class="product-price">{{item.image}}</td>
+										<td class="product-price"> <img style="width: 100px" th:src="@{|/assets/images/{{item.image}}|}"/></td>
 									</tr>
 								</tbody>
 								<tfoot>

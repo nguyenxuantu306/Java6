@@ -45,7 +45,7 @@
 												ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 											</th>
 											<th>Email</th>
-											<th>Action</th>
+											<th>Hành động</th><!-- Action< -->
 										</tr>
 									</thead>
 									<tbody>
@@ -234,17 +234,16 @@
 				</div>
 				<div class="panel-footer text-left p-3">
 					<button id="btn-create" ng-click="create()" class="btn btn-success">
-						Create</button>
-					<button id="btn-update" disabled="disabled" ng-click="update()"
-						class="btn btn-success">
-						<b class="glyphicon glyphicon-save"></b> Update
+						Tạo
 					</button>
-					<button id="btn-delete" disabled="disabled" ng-click="delete(form)"
-						class="btn btn-success">
-						<b class="glyphicon glyphicon-trash"></b> Delete
+					<button id="btn-update" disabled="disabled" ng-click="update()" class="btn btn-primary">
+						<b class="glyphicon glyphicon-save"></b> Cập nhật
 					</button>
-					<button id="btn-reset" ng-click="reset()" class="btn btn-success">
-						<b class="glyphicon glyphicon-refresh"></b> Reset
+					<button id="btn-delete" disabled="disabled" ng-click="delete(form)" class="btn btn-danger">
+						<b class="glyphicon glyphicon-trash"></b> Xóa
+					</button>
+					<button id="btn-reset" ng-click="reset()" class="btn btn-warning">
+						<b class="glyphicon glyphicon-refresh"></b> Làm mới
 					</button>
 				</div>
 			</div>

@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="description" content="">
 	<meta name="author" content="">
+	
 	<style>
 		.sortorder:after {
 
@@ -82,29 +83,27 @@
 			<li class="nav-item active">
 				<a class="nav-link" href="#!main.html">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>HOME</span></a>
+					<span>Trang chủ</span></a>
 			</li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
 			<!-- Heading -->
-			<div class="sidebar-heading">
-				Interface
-			</div>
+			
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="#!main.html" data-toggle="collapse" data-target="#collapseTwo"
 					aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fas fa-fw fa-cog"></i>
-					<span>QUẢN LÝ</span>
+					<span th:text="#{new.NO}">QUẢN LÝ</span>
 				</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<a class="collapse-item" href="#!account">Tài khoản</a>
-						<a class="collapse-item" href="#!genres">Loại sản phẩm</a>
-						<a class="collapse-item" href="#!product">Sản phẩm</a>
+						<a  class="collapse-item" href="#!account">Tài khoản</a>
+						<a class="collapse-item" href="#!genres">Loại Sách</a>
+						<a class="collapse-item" href="#!product">Sách</a>
 						<a class="collapse-item" href="#!order">Đơn đặt hàng</a>
 
 
@@ -133,9 +132,6 @@
 			<hr class="sidebar-divider">
 
 			<!-- Heading -->
-			<div class="sidebar-heading">
-				Addons
-			</div>
 
 			<!-- Nav Item - Pages Collapse Menu -->
 			<li class="nav-item">
@@ -206,7 +202,51 @@
 
 						<!-- Nav Item - Alerts -->
 						<li class="nav-item dropdown no-arrow mx-1">
-							<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+						<!-- <li class="languages"> 
+							<a><img src="assets\img\logo\fontlogo4.jpg" alt="" th:text=" #{nav.lang}"> <i class="fa fa-angle-down"></i></a>
+							
+								<ul class="dropdown_languages">
+									<li><a onclick="changeLanguage('vi')">
+										Tiếng Việt</a></li>
+									<li><a  onclick="changeLanguage('en')">
+										Tiếng Anh</a></li>
+								</ul>
+							</li>
+							
+							
+							<a class="collapse-item" onclick="changeLanguage('vi')">
+										Tiếng Việt</a>
+									<a  class="collapse-item" onclick="changeLanguage('en')">
+										Tiếng Anh</a>
+							<li><a onclick="changeLanguage('vi')">
+										<img src="assets\img\logo\fontlogo3.jpg.png" th:text="#{nav.vi}" >Tiếng Việt</a></li>
+									<li><a onclick="changeLanguage('en')">
+										<img src="assets\img\logo\fontlogo.jpg"  th:text="#{nav.en}">Tiếng Anh</a></li>
+										<a  class="collapse-item" href="?lang=vi" >Tài khoản</a> -->
+										
+										<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="menu" data-toggle="dropdown"
+					th:text="#{nav.lang}">Ngôn ngữ</a>
+				<ul class="dropdown-menu" aria-labelledby="menu">
+					<li>
+						<a onclick="changeLanguage('vi')" class="dropdown-item" href="/?lang=vi" th:text="#{nav.vi}">Vietnamese</a>
+					</li>
+					<li>
+						<a onclick="changeLanguage('en')" class="dropdown-item" href="/?lang=en" th:text="#{nav.en}">English</a>
+					</li>
+				</ul>
+			</li>
+						<script>
+					  function changeLanguage(lang) {
+						$.ajax({
+						  url: "/assets/admin/index?lang=" + lang
+						}).then(resp => {
+						  location.reload();
+						});
+					  }
+					  </script>
+
+						<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
 								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fas fa-bell fa-fw"></i>
 								<!-- Counter - Alerts -->

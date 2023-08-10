@@ -14,84 +14,84 @@
 						<li>Profile</li>
 					</ul>
 
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--breadcrumbs area end-->
-	<!--about section area -->
-	<div class="container rounded bg-white mt-5 mb-5">
-		<div class="row">
-			<div class="col-md-4 border-right">
-				<div
-					class="d-flex flex-column align-items-center text-center p-3 py-5">
-					<img class="rounded-circle mt-5" width="150px"
-						th:src="@{|/assets/images/${ac.Photo}|}"> <span
-						class="font-weight-bold" th:text="${ac.Fullname}">Fullname</span>
-					<span class="text-black-50" th:text="${ac.Email}">Email</span> <span
-						class="text-black-50" th:text="${ac.Id}" id="Id"
-						></span>
-				</div>
-			</div>
-			<div class="col-md-8 border-right">
-				<form id="updateForm" action="/rest/accounts/{id}" method="post"
-					class="p-3 py-5">
-					<div class="d-flex justify-content-between align-items-center mb-3">
-						<h4 class="text-right">Profile Settings</h4>
-					</div>
-					<div class="row mt-3">
-						<div class="col-md-6">
-							<label class="labels">Fullname</label> <input type="text"
-								class="form-control" id="fullname" placeholder="Mobile Number"
-								th:value="${ac.Fullname}">
-						</div>
-						<div class="col-md-6">
-							<label class="labels">Email</label> <input type="text"
-								class="form-control" id="email" placeholder="Mobile Number"
-								th:value="${ac.Email}">
-						</div>
-						<div class="col-md-6">
-							<label class="labels">Mobile Number</label> <input type="text"
-								class="form-control" id="mobileNumber"
-								placeholder="Mobile Number" th:value="${ac.Phone}">
-						</div>
-						<div class="col-md-6">
-							<label class="labels">Address</label> <input type="text"
-								class="form-control" id="address" placeholder="Enter Address"
-								th:value="${ac.Address}">
-						</div>
-						<div class="form-group col-md-6">
-							<label>Date:</label> <input type="date" class="form-control"
-								id="date" th:value="${ac.date}">
-						</div>
-						<div class="form-group col-md-6">
-							<label>Gender:</label>
-							<div class="form-control" id="gender">
-								<label class="radio-inline  "> <input type="radio" id=""
-									th:checked="${ac.gender == true}" name="gender" value="true">
-									Nam
-								</label> <label class="radio-inline"> <input type="radio"
-									th:checked="${ac.gender == false}" name="gender" value="false">
-									Nữ
-								</label>
-							</div>
-						</div>
-						<div class="form-group col-md-6">
-							<label>Photo:</label> <input type="file" class="form-control"
-								id="photo"
-								onchange="angular.element(this).scope().imageChanged(this.files)">
-						</div>
-						<div class="form-group col-md-6">
-							<button style="font-size: 20px"
-								class="btn btn-primary profile-button" type="button"
-								id="submitFormButton">Save Profile</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!--about section end-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--breadcrumbs area end-->
+    <!--about section area -->
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <img class="rounded-circle mt-5" width="150px" th:src="@{|/assets/images/${ac.Photo}|}">
+                    <span class="font-weight-bold" th:text="${ac.Fullname}">Fullname</span>
+                    <span class="text-black-50" th:text="${ac.Email}">Email</span>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4  th:text="#{new.ProfileSettings}" class="text-right">Profile Settings</h4>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <label th:text="#{new.Fullname}" class="labels">Fullname</label>
+                            <input type="text" class="form-control" placeholder="Mobile Number" th:value="${ac.Fullname}">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Email</label>
+                            <input type="text" class="form-control" placeholder="Mobile Number" th:value="${ac.Email}">
+                        </div>
+                        <div class="col-md-12">
+                            <label th:text="#{new.MobileNumber}" class="labels">Mobile Number</label>
+                            <input type="text" class="form-control" placeholder="Mobile Number" th:value="${ac.Phone}">
+                        </div>
+                        <div class="col-md-12">
+                            <label  th:text="#{new.address}" class="labels">Address</label>
+                            <input type="text" class="form-control" placeholder="Enter Address" th:value="${ac.Address}">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="passwordField"  th:text="#{login.password}" class="labels">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="passwordField"
+                                    placeholder="Enter Password" th:value="${ac.Password}">
+                                <div class="input-group-append">
+                                    <button type="button" th:text="#{new.Showpassword}" class="btn btn-outline-secondary" id="passwordToggleBtn"
+                                        onclick="togglePasswordField()">Show password</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label th:text="#{new.Date}">Date:</label>
+                            <input type="date" class="form-control" th:value="${ac.date}">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label th:text="#{new.Gender}">Gender:</label>
+                            <div class="form-control">
+                                <label class="radio-inline">
+                                    <input type="radio" th:checked="${ac.gender == true}" name="gender" value="true" th:text="#{new.male}">
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" th:checked="${ac.gender == false}" name="gender" value="false" th:text="#{new.female}">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label th:text="#{new.photo}">Photo:</label>
+                            <input type="file" class="form-control" id="photo"
+                                onchange="angular.element(this).scope().imageChanged(this.files)">
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="button" ng-click="update()" th:text="#{new.SaveProfile}">Save
+                                Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--about section end-->
 
 
 	<!--counterup area -->

@@ -4,7 +4,7 @@
 	<div class="card shadow mb-4">
 		<div class="card-header py-3">
 			<div class="card-header bg-primary">
-				<h3 class="text-white p-0 m-0">DANH SÁCH LOẠI SẢN PHẨM</h3>
+				<h3 class="text-white p-0 m-0">DANH SÁCH LOẠI SÁCH</h3>
 			</div>
 		</div>
 		<div class="card-body">
@@ -32,30 +32,28 @@
 							<td style="text-align: center;">
 								<div class="btn-group btn-group-xs">
 									<button ng-click="edit(item)" class="btn btn-warning"
-										id="btnEdit">Edit</button>
+										id="btnEdit">Chỉnh sửa</button>
 									<button type="button" class="btn btn-danger"
 										ng-click="delete(item)">Xóa</button>
 								</div>
-
-
 							</td>
 						</tr>
 					</tbody>
 				</table>
 				<div class="panel-footer text-center">
 					<button ng-click="pager.first()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-up"></b> First
+						<b class="glyphicon glyphicon-hand-up"></b> Trở về
 					</button>
 					<button ng-click="pager.prev()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-left"></b> prev
+						<b class="glyphicon glyphicon-hand-left"></b> Trước
 					</button>
-					<button class="btn btn-success">{{pager.page + 1}} of
+					<button class="btn btn-success">{{pager.page + 1}} trong
 						{{pager.count}}</button>
 					<button ng-click="pager.next()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-right"></b> next
+						<b class="glyphicon glyphicon-hand-right"></b> Tiếp theo
 					</button>
 					<button ng-click="pager.last()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-down"></b> last
+						<b class="glyphicon glyphicon-hand-down"></b> Cuối cùng
 					</button>
 				</div>
 			</div>
@@ -64,7 +62,7 @@
 	<form name="myForm" role="form">
 	<div class="card info " id="card-form">
 		<div class="card-header bg-primary">
-			<h3 class="text-white p-0 m-0">QUẢN LÝ LOẠI SẢN PHẨM</h3>
+			<h3 class="text-white p-0 m-0">QUẢN LÝ LOẠI SÁCH</h3>
 		</div>
 		<div class="card-body">
 			<div class="row">
@@ -91,17 +89,17 @@
 			</div>
 			<div class="panel-footer text-center">
 				<button id="btn-create" ng-click="create()" class="btn btn-success">
-					Create</button>
+					Tạo</button>
 				<button id="btn-update" disabled="disabled" ng-click="update()"
-					class="btn btn-success">
-					<b class="glyphicon glyphicon-save"></b> Update
+					class="btn btn-primary">
+					<b class="glyphicon glyphicon-save"></b> Cập nhật
 				</button>
 				<button id="btn-delete" disabled="disabled" ng-click="delete(form)"
-					class="btn btn-success">
-					<b class="glyphicon glyphicon-trash"></b> Delete
+					class="btn btn-danger">
+					<b class="glyphicon glyphicon-trash"></b> Xóa
 				</button>
-				<button id="btn-reset" ng-click="reset()" class="btn btn-success">
-					<b class="glyphicon glyphicon-refresh"></b> Reset
+				<button id="btn-reset" ng-click="reset()" class="btn btn-warning">
+					<b class="glyphicon glyphicon-refresh"></b> Làm mới
 				</button>
 			</div>
 		</div>

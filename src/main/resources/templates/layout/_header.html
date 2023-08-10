@@ -35,10 +35,10 @@
 							<li>
 							<li><a th:href="@{/index/profile}" title="My account" th:text="#{nav.profile}">Profile</a>
 							</li>
-							<li><a th:href="@{/index/logoff}">Logoff</a></li>
-							<li><a th:href="@{/order/list}">Your Orders</a></li>
+							<li><a th:href="@{/index/logoff}" th:text="#{new.Logoff}">Logoff</a></li>
+							<li><a th:href="@{/order/list}" th:text="#{new.YourOrders}">Your Orders</a></li>
 							<li th:if="${#authorization.expression('hasRole(''Administrator'')')}"><a
-									th:href="@{/admin/home/index}">Administration</a></li>
+									th:href="@{/admin/home/index}" th:text="#{new.Administration}">Administration</a></li>
 
 							<li>
 								<a style="font-size:25px;color:red;font-variant: small-caps; " href="" sec:authentication="name"></a>
@@ -91,8 +91,8 @@
 						<div class="search_bar">
 							<form name="key" action="/product/search" method="GET">
 								<select class="input-select" name="key">
-									<option value="nameProduct">Search Keyword</option>
-									<option value="categoryProduct">Search Genres</option>
+									<option value="nameProduct" th:text="#{new.SearchKeyword}">Search Keyword</option>
+									<option value="categoryProduct" th:text="#{new.SearchGenres}">Search Genres</option>
 								</select>
 								<input style="height:42px" placeholder="Search..." class="input" name="keyword"
 									th:value="${valueSearch}">

@@ -1,35 +1,35 @@
 <div class="container-fluid" sty>
 
-	<!-- DataTales Example -->
-	<div class="card shadow mb-4">
-		<div class="card-header py-3">
-			<div class="card-header bg-primary">
-				<h3 class="text-white p-0 m-0">DANH SÁCH ĐƠN ĐẶT HÀNG</h3>
-			</div>
-		</div>
-		<div class="card-body">
-			<div class="table-responsive">
-				<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Username</th>
-							<th>Date</th>
-							<th>Shipper_id</th>
-							<th>State</th>
-							<!--<th>Action</th>-->
-							<th>orderdetail</th>
-						</tr>
-					</thead>
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <div class="card-header bg-primary">
+                <h3 class="text-white p-0 m-0">DANH SÁCH ĐƠN ĐẶT HÀNG</h3>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Tên đăng nhập</th>
+                            <th>Ngày đặt hàng</th>
+                            <th>ID Người giao hàng</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th>
+                            <th>Chi tiết đơn hàng</th>
+                        </tr>
+                    </thead>
 
-					<tbody>
-						<tr ng-repeat="item in pager.items ">
-							<th>{{item.id}}</th>
-							<th>{{item.account.username}}</th>
-							<th>{{item.date | date:'dd-MM-yyyy'}}</th>
-							<th>{{item.shipper.id}}</th>
-							<th>{{item.state.name}}</th>
-							<!--	<td style="text-align: center;">
+                    <tbody>
+                        <tr ng-repeat="item in pager.items ">
+                            <th>{{item.id}}</th>
+                            <th>{{item.account.username}}</th>
+                            <th>{{item.date | date:'dd-MM-yyyy'}}</th>
+                            <th>{{item.shipper.id}}</th>
+                            <th>{{item.state.name}}</th>
+                            <!--	<td style="text-align: center;">
 								<div class="btn-group btn-group-xs">
 									<button ng-click="edit(item)">
 										<i class="fas fa-edit"></i>
@@ -40,26 +40,24 @@
 								</div>
 
 							</td>
--->
-							<th><button ng-click="edit(item)">Order details</button>
-							</th>
+							<th><a ng-click="edit(item)">Chi tiết đơn hàng</a></th>
 						</tr>
 					</tbody>
 				</table>
 				<div class="panel-footer text-center">
 					<button ng-click="pager.first()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-up"></b> First
+						<b class="glyphicon glyphicon-hand-up"></b> Trang đầu
 					</button>
 					<button ng-click="pager.prev()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-left"></b> prev
+						<b class="glyphicon glyphicon-hand-left"></b> Trở về
 					</button>
-					<button class="btn btn-success">{{pager.page + 1}} of
+					<button class="btn btn-success">{{pager.page + 1}} Trong
 						{{pager.count}}</button>
 					<button ng-click="pager.next()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-right"></b> next
+						<b class="glyphicon glyphicon-hand-right"></b> Tiếp tục
 					</button>
 					<button ng-click="pager.last()" class="btn btn-success">
-						<b class="glyphicon glyphicon-hand-down"></b> last
+						<b class="glyphicon glyphicon-hand-down"></b> Trang cuối
 					</button>
 				</div>
 			</div>
@@ -75,19 +73,20 @@
 				<div class="col-sm-3 " style="background-color: aquamarine;margin: 10px">
 					<div class="form-group">
 						<div class="text-center">
-							<span>Order</span>
+							<span>Đơn hàng</span>
 						</div>
 						<div>
-							<span>Order Id: {{form.id}}</span>
+							<span>Id Đơn hàng: {{form.id}}</span>
 						</div>
 						<div>
-							<span>Create date: {{form.date | date:'dd-MM-yyyy'}}</span>
+							<span>Ngày tạo: {{form.date | date:'dd-MM-yyyy'}}</span>
 						</div>
 						<div>
-							<span>Discount Id: {{form.discount.name}}</span>
+							<span>Mã giảm giá: {{form.discount.name}}</span>
 						</div>
 						<div>
-							<span>State: </span> <select ng-model="form.state.id" class="form-control">
+							<span>Trạng thái: </span> <select ng-model="form.state.id"
+								class="form-control">
 								<option ng-repeat="c in cates" ng-value="c.id">{{c.name}}</option>
 							</select>
 
@@ -97,41 +96,41 @@
 				<div class="col-sm-3 " style="background-color: aquamarine;margin: 10px">
 					<div class="form-group">
 						<div class="text-center">
-							<span>Account</span>
+							<span>Tài khoản</span>
 						</div>
 						<div>
 							<span>Id: {{form.account.id}}</span>
 						</div>
 						<div>
-							<span>Username: {{form.account.username}}</span>
+							<span>Tên tài khoản: {{form.account.username}}</span>
 						</div>
 						<div>
-							<span>Fullname: {{form.account.fullname}}</span>
+							<span>Tên đầy đủ: {{form.account.fullname}}</span>
 						</div>
 						<div>
 							<span>Email: {{form.account.email}}</span>
 						</div>
 						<div>
-							<span>Address: {{form.account.address}}</span>
+							<span>Địa chỉ: {{form.account.address}}</span>
 						</div>
 						<div>
-							<span>Phone: {{form.account.phone}}</span>
+							<span>Số điện thoại: {{form.account.phone}}</span>
 						</div>
 					</div>
 				</div>
 				<div class="col-sm-3" ng-if="form.shipper" style="background-color: aquamarine;margin: 10px">
 					<div class="form-group">
 						<div class="text-center">
-							<span>Shipper</span>
+							<span>Người giao hàng</span>
+						</div>
+						<div> 
+							<span>Id người giao hàng: {{form.shipper.id}}</span>
 						</div>
 						<div>
-							<span>Shipper Id: {{form.shipper.id}}</span>
+							<span>Tên đầy đủ: {{form.shipper.name}}</span>
 						</div>
 						<div>
-							<span>Fullname: {{form.shipper.name}}</span>
-						</div>
-						<div>
-							<span>Phone: {{form.shipper.phone}}</span>
+							<span>Số điện thoại: {{form.shipper.phone}}</span>
 						</div>
 					</div>
 				</div>
@@ -143,10 +142,9 @@
 						<thead>
 							<tr>
 								<th>Id</th>
-								<th>Order id</th>
-								<th>Image</th>
-								<th>Book id</th>
-								<th>Price</th>
+								<th>Id đơn hàng</th>
+								<th>Mã sách</th>
+								<th>Giá</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -166,19 +164,19 @@
 			<!-- 	<button ng-click="create()" class="btn btn-success">
 					<b class="glyphicon glyphicon-plus"></b> Create
 				</button> -->
-				<button ng-click="update()" class="btn btn-success">
+                            <button ng-click="update()" class="btn btn-success">
 					<b class="glyphicon glyphicon-save"></b> Update
 				</button>
-			<!-- 	<button ng-click="delete(form)" class="btn btn-success">
+                            <!-- 	<button ng-click="delete(form)" class="btn btn-success">
 					<b class="glyphicon glyphicon-trash"></b> Delete
 				</button>
 				<button ng-click="reset()" class="btn btn-success">
 					<b class="glyphicon glyphicon-refresh"></b> Reset
 				</button> -->
-			</div>
-		</div>
+            </div>
+        </div>
 
-	</div>
+    </div>
 
 
 </div>

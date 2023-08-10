@@ -100,10 +100,10 @@
                                         
                                     </ul>
                                     
-                                    <p>Tác giả : <span th:text="*{author}"></span></p> 
-                                    <p>Số trang : <span th:text="*{pagecount}"></span></p> 
-                                    <p>Năm xuất bản : <span th:text="*{Publication_date}"></span></p> 
-                                    <p>Nhà xuất bản : <span th:text="*{Publisher}"></span></p>
+                                    <p th:text="*{name}">Tác giả : <span th:text="*{author}"></span></p> 
+                                    <p th:text="*{name}">Số trang : <span th:text="*{pagecount}"></span></p> 
+                                    <p th:text="*{name}">Năm xuất bản : <span th:text="*{Publication_date}"></span></p> 
+                                    <p th:text="*{name}">Nhà xuất bản : <span th:text="*{Publisher}"></span></p>
                                 </div>
                                 <div class="product_desc">
                                     <p th:text="*{Description}"></p>

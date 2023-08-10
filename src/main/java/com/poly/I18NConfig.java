@@ -38,4 +38,5 @@ public class I18NConfig implements WebMvcConfigurer {
 		lci.setParamName("lang");
 		registry.addInterceptor(lci).addPathPatterns("/**").excludePathPatterns("/img/**");
 	}
+
 }

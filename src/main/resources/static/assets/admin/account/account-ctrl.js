@@ -4,6 +4,10 @@ app.controller("account-ctrl", function($scope, $http) {
 	$scope.form = {};
 	$scope.field = [];
 	$scope.error = ['err'];
+	
+	$scope.email = {
+		text: 'me@example.com'
+	};
 
 	$scope.initialize = function() {
 		// Load products
@@ -15,8 +19,16 @@ app.controller("account-ctrl", function($scope, $http) {
 		});
 
 	}
+	$scope.$watch('searchText', function(term) {
+		$scope.filtered = filterFilter($scope.items, term);
+		$scope.size = $scope.filtered.length;
+		$scope.noOfPages = Math.ceil($scope.filtered.length / $scope.entryLimit);
+	}, true);
 
-
+$scope.sort = function(keyname) {
+		$scope.sortKey = keyname;
+		$scope.reverse = !$scope.reverse;
+	}
 	// Khởi đầu
 	$scope.initialize();
 
@@ -105,7 +117,7 @@ app.controller("account-ctrl", function($scope, $http) {
 		})
 	}
 
-	/*$scope.pager = {
+	$scope.pager = {
 		page: 0,
 		size: 10,
 		get items() {
@@ -134,7 +146,7 @@ app.controller("account-ctrl", function($scope, $http) {
 			this.page = this.count - 1;
 		}
 	}
-	$(document).ready(function() {
+	/*$(document).ready(function() {
 		$("#example1").DataTable({
 			"responsive": true,
 			"lengthChange": false,
@@ -155,7 +167,7 @@ app.controller("account-ctrl", function($scope, $http) {
 			$scope.propertyName = propertyName;
 		};
 	*/
-	$(function() {
+/*	$(function() {
 		$("#example1").DataTable({
 			"ajax": {
 				"url": "/rest/accounts",
@@ -179,9 +191,8 @@ app.controller("account-ctrl", function($scope, $http) {
 			],
 			"responsive": true, "lengthChange": false, "autoWidth": false,
 		}).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-	});
-
-	// Trong AngularJS controller hoặc service
+	});*/
+// Trong AngularJS controller hoặc service
 	$scope.exportExcel = function() {
 		$http.get('/print-to-excel', { responseType: 'arraybuffer' })
 			.then(function(response) {
@@ -211,5 +222,9 @@ app.controller("account-ctrl", function($scope, $http) {
 				console.error('Error exporting PDF:', error);
 			});
 	};
-
+	
 });
+
+	
+
+	

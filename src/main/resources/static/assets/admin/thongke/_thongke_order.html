@@ -51,14 +51,17 @@
 											<td>{{item.sum | number :0}}đ</td>
 										</tr>
 									</tbody>
+									
 									<tfoot>
-										<tr>
+										<tr style="font-size: 25px">
 											<td colspan="5">Tổng:</td>
+											<div >
+											<td style="color: red">{{items | number: 0}}đ</td></div>
 											
-											<td>{{items | number: 0}}đ</td>
 										</tr>
 									</tfoot>
 								</table>
+									
 									
 								<div class="panel-footer text-center">
 									<button ng-click="pager.first()" class="btn btn-success">

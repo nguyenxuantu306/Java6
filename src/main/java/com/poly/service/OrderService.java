@@ -14,4 +14,6 @@ public interface OrderService {
 	List<Order> findByIdAccount(String Id);
 
 	Order findById(Integer Id);
+
+	Order update(Order order);
 }

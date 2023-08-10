@@ -33,16 +33,15 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		return dao.findById(id).get();
 	}
 
-	@Override
-	public List<OrderDetail> findByIdOrder(Integer id) {
-		// TODO Auto-generated method stub
-		return dao.findByIdOrder(id);
-	}
+	/*
+	 * @Override public List<OrderDetail> findByIdOrder(String id) { // TODO
+	 * Auto-generated method stub return dao.findByIdOrder(id); }
+	 */
 
 	@Override
 	public List<Report> tongdoanhthu() {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.reportTheoLuotMuaHang();
 	}
 
 	@Override
@@ -50,6 +49,14 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 		// TODO Auto-generated method stub
 		return dao.getSum();
 	}
+
+	@Override
+	public List<OrderDetail> findByIdOrder(Integer id) {
+		// TODO Auto-generated method stub
+		return dao.findByIdOrder(id);
+	}
+
+
 
 	/*
 	 * @Override public List<Report> tongdoanhthu() { return dao.daonhthu(); }

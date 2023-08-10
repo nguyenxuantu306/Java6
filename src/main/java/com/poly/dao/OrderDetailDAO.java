@@ -24,6 +24,9 @@ public interface OrderDetailDAO extends JpaRepository<OrderDetail, String> {
 	@Query("SELECT sum(o.Price * o.Quantity) FROM OrderDetail o")
 	Integer getSum();
 
+	@Query("SELECT o FROM OrderDetail o WHERE o.order.id =?1")
+	List<OrderDetail> findByIdOrder(Integer id);
+
 
 
 }

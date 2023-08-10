@@ -19,6 +19,21 @@ app.controller("order-ctrl", function($scope, $http) {
 		});
 
 	}
+	
+	// cập nhật sản phẩm
+	$scope.update = function(){
+		var item = angular.copy($scope.form);
+		$http.put(`/rest/orders/${item.id}`,item).then(resp =>{
+			var index = $scope.items.findIndex(p => p.id == item.id);
+			$scope.items[index] = item;		
+			alert("Cập nhật sản phẩm thành công!");
+		})
+		.catch(error =>{
+			alert("Lỗi cập nhật sản phẩm");
+			console.log("Error",error);
+		});
+	}
+	
 
 	// Khởi đầu
 	$scope.initialize();
@@ -60,19 +75,7 @@ app.controller("order-ctrl", function($scope, $http) {
 		});
 	}*/
 
-	// cập nhật sản phẩm
-	$scope.update = function(){
-		var item = angular.copy($scope.form);
-		$http.put(`/rest/orders/${item.id}`,item).then(resp =>{
-			var index = $scope.items.findIndex(p => p.id == item.id);
-			$scope.items[index] = item;				
-			alert("Cập nhật sản phẩm thành công!");
-		})
-		.catch(error =>{
-			alert("Lỗi cập nhật sản phẩm");
-			console.log("Error",error);
-		});
-	}
+	
 
 	// Xóa sản phẩm 
 	$scope.delete = function(item) {

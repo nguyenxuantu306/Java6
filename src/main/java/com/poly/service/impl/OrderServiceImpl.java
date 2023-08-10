@@ -61,13 +61,4 @@ public class OrderServiceImpl implements OrderService {
 
 
 
-<<<<<<< HEAD
-	@Override
-	public Order update(Order order) {
-		// TODO Auto-generated method stub
-		return dao.save(order);
-	}
-
-=======
->>>>>>> origin/Hung_ThongKeTT
 }

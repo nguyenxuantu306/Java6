@@ -15,11 +15,6 @@ public interface OrderDetailDAO extends JpaRepository<OrderDetail, String> {
 	@Query("SELECT new Top10(o.book, sum(o.Quantity)) FROM OrderDetail o GROUP BY o.book ORDER BY sum(o.Quantity) DESC")
 	List<Top10> getTop10();
 
-<<<<<<< HEAD
-	@Query("SELECT o FROM OrderDetail o WHERE o.order.id =?1")
-	List<OrderDetail> findByIdOrder(Integer id); 
-		
-=======
 	
 	@Query("SELECT new Report(o, sum(o.Price * o.Quantity), sum(o.Quantity)) FROM OrderDetail o" 
 	+ " GROUP BY o"
@@ -30,6 +25,5 @@ public interface OrderDetailDAO extends JpaRepository<OrderDetail, String> {
 	Integer getSum();
 
 
->>>>>>> origin/Hung_ThongKeTT
 
 }

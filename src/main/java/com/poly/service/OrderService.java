@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.poly.bean.Order;
-import com.poly.bean.OrderDetail;
 
 public interface OrderService {
 
@@ -15,10 +14,4 @@ public interface OrderService {
 	List<Order> findByIdAccount(String Id);
 
 	Order findById(Integer Id);
-<<<<<<< HEAD
-
-	Order update(Order order);
-
-=======
->>>>>>> origin/Hung_ThongKeTT
 }

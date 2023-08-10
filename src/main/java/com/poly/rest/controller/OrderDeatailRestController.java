@@ -44,8 +44,8 @@ public class OrderDeatailRestController {
 	}
 	
 	@GetMapping("/thongke")
-	public List<Report> thongke() {
-		return orderDetailService.thongke();
+	public List<Report> tongdoanhthu(){
+		return orderDetailService.tongdoanhthu();
 	}
 	
 	@GetMapping("/tadao")

@@ -46,7 +46,7 @@
 													ng-class="{'fa fa-caret-down':reverse,'fa fa-caret-up':!reverse}"></span>
 											
 											</th>
-											<th scope="col" ng-click="sort('count')">Số sản
+											<th scope="col" ng-click="sort('count')" class="text-center">Số sản
 												phẩm <span class="glyphicon sort-icon" ng-show="sortKey ==='count'"
 													ng-class="{'fa fa-caret-down':reverse,'fa fa-caret-up':!reverse}"></span>
 											
@@ -61,7 +61,7 @@
 										<tr
 											ng-repeat="item in pager.itemsThongKeLoai | orderBy:sortKey:reverse">
 											<td>{{item.group.genres}}</td>
-											<td>{{item.count}}</td>
+											<td class="text-center">{{item.count}}</td>
 											<td>{{item.sum | number : 3}}đ</td>
 										</tr>
 									</tbody>

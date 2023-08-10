@@ -17,11 +17,11 @@
 								class="glyphicon sort-icon" ng-show="sortKey =='id'"
 								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 							</th>
-							<th scope="col" ng-click="sort('id')">Genres <span
+							<th scope="col" ng-click="sort('id')">Thể loại <span
 								class="glyphicon sort-icon" ng-show="sortKey =='id'"
 								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 							</th>
-							<th></th>
+							<th class="text-center"> Hành động</th>
 						</tr>
 					</thead>
 
@@ -76,7 +76,7 @@
 								</div>
 							</div>
 						<div class="form-group col-sm-6">
-							<div>Category:</div>
+							<div>Thể loại:</div>
 							<select ng-model="form.genres" class="form-control">
 								<option ng-repeat="c in cates" >{{c.genres}}</option>
 							</select>

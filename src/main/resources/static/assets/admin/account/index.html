@@ -13,10 +13,8 @@
 							<!-- /.card-header -->
 							<div class="card-body">
 
-								<button class="btn btn-success m-2" ng-click="exportExcel()">Print
-									to Excel</button>
-								<button class="btn btn-success m-2" ng-click="exportPdf()">Print
-									to PDF</button>
+								<button class="btn btn-success m-2" ng-click="exportExcel()">In ra Excel</button>
+								<button class="btn btn-success m-2" ng-click="exportPdf()"> In ra PDF</button>
 								<div class="col-md-6 text-left">
 									<div class="filter-group">
 										<label>Tìm Kiếm</label> <input ng-model="searchText.fullname"
@@ -24,7 +22,7 @@
 											placeholder="Search for name..." aria-label="Search"
 											aria-describedby="basic-addon2">
 
-									</div>
+									</div> <br>
 								</div>
 								<table class="table table-bordered table-striped">
 									<thead>
@@ -33,14 +31,14 @@
 												class="glyphicon sort-icon" ng-show="sortKey =='id'"
 												ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 											</th>
-											<th>Photo</th>
-											<th scope="col" ng-click="sort('username')">Username <span
+											<th>Hình ảnh</th>
+											<th scope="col" ng-click="sort('username')">Tên đăng nhập <span
 												class="glyphicon sort-icon" ng-show="sortKey =='username'"
 												ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 											</th>
 
 											<!-- <th>Password</th> -->
-											<th scope="col" ng-click="sort('fullname')">Fullname <span
+											<th scope="col" ng-click="sort('fullname')">Tên đầy đủ <span
 												class="glyphicon sort-icon" ng-show="sortKey =='fullname'"
 												ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 											</th>
@@ -61,7 +59,7 @@
 											<td style="text-align: center;">
 												<div class="btn-group btn-group-xs">
 													<button ng-click="edit(item)" class="btn btn-warning"
-														id="btnEdit">Edit</button>
+														id="btnEdit">Chỉnh sửa</button>
 													<button type="button" class="btn btn-danger"
 														ng-click="delete(item)">Xóa</button>
 												</div>
@@ -73,18 +71,18 @@
 								</table>
 								<div class="panel-footer text-center">
 									<button ng-click="pager.first()" class="btn btn-success">
-										<b class="glyphicon glyphicon-hand-up"></b> First
+										<b class="glyphicon glyphicon-hand-up"></b> Đầu trang
 									</button>
 									<button ng-click="pager.prev()" class="btn btn-success">
-										<b class="glyphicon glyphicon-hand-left"></b> prev
+										<b class="glyphicon glyphicon-hand-left"></b> Trở về
 									</button>
-									<button class="btn btn-success">{{pager.page + 1}} of
+									<button class="btn btn-success">{{pager.page + 1}} trong
 										{{pager.count}}</button>
 									<button ng-click="pager.next()" class="btn btn-success">
-										<b class="glyphicon glyphicon-hand-right"></b> next
+										<b class="glyphicon glyphicon-hand-right"></b> Tiếp tục
 									</button>
 									<button ng-click="pager.last()" class="btn btn-success">
-										<b class="glyphicon glyphicon-hand-down"></b> last
+										<b class="glyphicon glyphicon-hand-down"></b> Trang cuối
 									</button>
 								</div>
 							</div>
@@ -128,7 +126,7 @@
 							
 							
 						<div class="form-group col-sm-6">
-								<div>Username:</div>
+								<div>Tên đăng nhập:</div>
 								<input ng-model="form.username" class="form-control" name="username" required>
 								<div class="errortext" ng-show="myForm.id.$dirty && myForm.username.$invalid">
 									<span style="color: red;" ng-show="myForm.username.$error.required">Tên không được
@@ -179,7 +177,7 @@
 										được để trống</span>
 									<span style="color: red;" ng-show="myForm.address.$error.minlength">Địa chỉ phải
 										chứa ít nhất 6 ký tự</span>
-									<span style="color: red;" ng-show="myForm.address.$error.maxlength">Địa chỉkhông
+									<span style="color: red;" ng-show="myForm.address.$error.maxlength">Địa chỉ không
 										được lớn hơn 250 ký tự</span>
 
 								</div>
@@ -196,7 +194,7 @@
 						
 						
 						<div class="form-group col-sm-6">
-								<div>Gender:</div>
+								<div>Giới tính:</div>
 								<div class="form-control">
 									<label class="radio-inline"> <input ng-model="form.gender" ng-value="true"
 						type="radio" name="gender" required> Nam
@@ -215,12 +213,12 @@
 						
 					
 					<div class="form-group col-sm-6">
-								<div>Photo:</div>
+								<div>Hình ảnh:</div>
 								<input type="file" class="form-control" id="photo"
 									onchange="angular.element(this).scope().imageChanged(this.files)">
 							</div>
 							<div class="form-group col-sm-6">
-								<div>Date:</div>
+								<div>Ngày sinh:</div>
 								<input ng-model="form.date" type="date" class="form-control" name="date" required>
 								<div class="errortext" ng-show="myForm.date.$dirty && myForm.date.$invalid">
 									<span style="color: red;" ng-show="myForm.date.$error.required">Chọn ngày

@@ -64,7 +64,7 @@
 												ng-show="sortKey =='group.price'"
 												ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 											</th>
-											<th scope="col" ng-click="sort('count')">Số sản phẩm bán
+											<th scope="col" ng-click="sort('count')" class="text-center">Số sản phẩm bán
 												ra <span class="glyphicon sort-icon"
 												ng-show="sortKey =='count'"
 												ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
@@ -81,25 +81,25 @@
 											ng-repeat="item in pager.itemsThongKeSp | orderBy:sortKey:reverse">
 											<td>{{item.group.name}}</td>
 											<td>{{item.group.price | number : 3}}đ</td>
-											<td>{{item.count}}</td>
+											<td class="text-center">{{item.count}}</td>
 											<td>{{item.group.price * item.count | number : 3}}đ</td>
 										</tr>
 									</tbody>
 								</table>
 								<div class="panel-footer text-center">
 									<button ng-click="pager.first()" class="btn btn-success">
-										<b class="glyphicon glyphicon-hand-up"></b> First
+										<b class="glyphicon glyphicon-hand-up"></b> Trang đầu
 									</button>
 									<button ng-click="pager.prev()" class="btn btn-success">
-										<b class="glyphicon glyphicon-hand-left"></b> prev
+										<b class="glyphicon glyphicon-hand-left"></b> Trở về
 									</button>
-									<button class="btn btn-success">{{pager.page + 1}} of
+									<button class="btn btn-success">{{pager.page + 1}} trong
 										{{pager.count}}</button>
 									<button ng-click="pager.next()" class="btn btn-success">
-										<b class="glyphicon glyphicon-hand-right"></b> next
+										<b class="glyphicon glyphicon-hand-right"></b> Tiếp tục
 									</button>
 									<button ng-click="pager.last()" class="btn btn-success">
-										<b class="glyphicon glyphicon-hand-down"></b> last
+										<b class="glyphicon glyphicon-hand-down"></b> Trang cuối
 									</button>
 								</div>
 							</div>

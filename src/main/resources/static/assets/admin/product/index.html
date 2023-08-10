@@ -42,24 +42,24 @@
 								class="glyphicon sort-icon" ng-show="sortKey =='id'"
 								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 							</th>
-							<th scope="col" ng-click="sort('name')">Name <span
+							<th scope="col" ng-click="sort('name')">Tên sách <span
 								class="glyphicon sort-icon" ng-show="sortKey =='name'"
 								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 							</th>
-							<th scope="col" ng-click="sort('price')">Price<span
+							<th scope="col" ng-click="sort('price')">Giá<span
 								class="glyphicon sort-icon" ng-show="sortKey =='price'"
 								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 							</th>
-							<th scope="col" ng-click="sort('publication_date')">Date <span
+							<th scope="col" ng-click="sort('publication_date')">Ngày cập nhật <span
 								class="glyphicon sort-icon" ng-show="sortKey =='publication_date'"
 								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 							</th>							
-							<th>Image</th>
-							<th scope="col" ng-click="sort('genres.genres')">Genres<span
+							<th>Hình ảnh</th>
+							<th scope="col" ng-click="sort('genres.genres')">Thể loại<span
 								class="glyphicon sort-icon" ng-show="sortKey =='genres.genres'"
 								ng-class="{'fa fa-arrow-circle-o-down':reverse,'fa fa-arrow-circle-o-up':!reverse}"></span>
 							</th>
-							<th>Available</th>
+							<th>Trạng thái</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -143,7 +143,7 @@
 							<input ng-model="form.pagecount" class="form-control">
 						</div>
 						<div class="form-group col-sm-6">
-							<div>Nhà xuất mục:</div>
+							<div>Nhà xuất bản:</div>
 							<input ng-model="form.publisher" class="form-control">
 						</div>
 						<div class="form-group col-sm-6">

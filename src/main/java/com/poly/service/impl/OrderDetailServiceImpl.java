@@ -36,7 +36,7 @@ public class OrderDetailServiceImpl implements OrderDetailService {
 	@Override
 	public List<OrderDetail> findByIdOrder(Integer id) {
 		// TODO Auto-generated method stub
-		return findByIdOrder(id);
+		return dao.findByIdOrder(id);
 	}
 
 	@Override

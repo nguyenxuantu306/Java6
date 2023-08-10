@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.poly.bean.Account;
 import com.poly.bean.Order;
+<<<<<<< HEAD
 import com.poly.bean.OrderDetail;
+=======
+import com.poly.bean.Report;
+>>>>>>> origin/Hung_ThongKeTT
 import com.poly.service.OrderService;
 
 @CrossOrigin("*")
@@ -34,9 +38,12 @@ public class OrderRestController {
 		return orderService.create(orderData);
 	}
 	
+<<<<<<< HEAD
 	@PutMapping("{id}")
 	public Order update(@PathVariable("id") Integer id, @RequestBody Order order) {
 		return orderService.update(order);
 	}
+=======
+>>>>>>> origin/Hung_ThongKeTT
 
 }

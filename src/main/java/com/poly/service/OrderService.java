@@ -15,7 +15,10 @@ public interface OrderService {
 	List<Order> findByIdAccount(String Id);
 
 	Order findById(Integer Id);
+<<<<<<< HEAD
 
 	Order update(Order order);
 
+=======
+>>>>>>> origin/Hung_ThongKeTT
 }
